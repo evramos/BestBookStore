@@ -9,8 +9,8 @@ import data.dbConnect.DBConnectionPool;
 public class UserDB {
 	//select one user
 	final static String db_url = "jdbc:mysql://localhost:3306/CSS490D";
-	final static String db_username = "test";
-	final static String db_passwd = "test12";
+	final static String db_username root";
+	final static String db_passwd ="p0p1c0rn";
 	
 	DBConnectionPool connPool = null;
 	
@@ -27,7 +27,7 @@ public class UserDB {
 		return connPool;
 	}
 	
-	public User selectUser(String username){
+	public User selectUser(String email){
 		Statement stmt = null;
 		ResultSet rs = null;
 		User user = new User();
@@ -38,8 +38,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select username, u_name, email, signUpDate, lastLogin from user "+
-						" where username = '"+username+"'";
+				String strQuery = "select 'User ID', 'Email Address', 'FirstName', 'LastName' 'SignUpDate', 'LastSignIn' from user where 'Email Address' = "+ email;
 				rs = stmt.executeQuery(strQuery);
 				if(rs.next()){
 					user.setUsername(rs.getString(1));

@@ -4,9 +4,9 @@ import java.io.Serializable;
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String username;
+	private String FirstName;
+	private String LastName;
 	private String passwd;
-	private String name;
 	private String email;
 	private String signDate;
 	private String lastDate;
@@ -14,11 +14,11 @@ public class User implements Serializable{
 	public User(){
 	}
 	
-	public User(String username, String passwd, String name, String email){
-		this.username = username;
+	public User( String passwd, String FirstName, String LastName, String email){
 		this.passwd = passwd;
-		this.name = name;
 		this.email = email;
+		this.FirstName = FirstName;
+		this.LastName = LastName;
 	}
 	
 	public String getUsername(){

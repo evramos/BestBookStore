@@ -4,6 +4,7 @@ import java.io.Serializable;
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	private String UserId;
 	private String FirstName;
 	private String LastName;
 	private String passwd;
@@ -21,12 +22,29 @@ public class User implements Serializable{
 		this.LastName = LastName;
 	}
 	
-	public String getUsername(){
-		return username;
+	public String getUserId() {
+
+		return UserId;
 	}
 	
-	public void setUsername(String username){
-		this.username = username;
+	public void setUserId(String UserId) {
+		this.UserId = UserId;
+	}
+	
+	public String getFirstName(){
+		return FirstName;
+	}
+	
+	public void setFirstName(String FirstName){
+		this.FirstName = FirstName;
+	}
+	
+	public String getLastName(){
+		return LastName;
+	}
+	
+	public void setLastName(String LastName){
+		this.LastName = LastName;
 	}
 	
 	public String getPasswd(){
@@ -37,13 +55,6 @@ public class User implements Serializable{
 		this.passwd = passwd;
 	}
 	
-	public String getName(){
-		return name;
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
 	
 	public String getEmail(){
 		return email;
@@ -68,4 +79,6 @@ public class User implements Serializable{
 	public void setLastDate(String lastDate){
 		this.lastDate = lastDate;
 	}
+
+
 }

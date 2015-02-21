@@ -13,12 +13,12 @@ public class SignUp extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-			String username= request.getParameter("username");
-			String passwd= request.getParameter("passwd");
-			String name= request.getParameter("name");
+			String FirstName= request.getParameter("FirstName");
+			String LastName= request.getParameter("LastName");
+			String passwd= request.getParameter("password");
 			String email= request.getParameter("email");
 			
-			User user = new User(username, passwd, name, email);
+			User user = new User(passwd, FirstName, LastName, email);
 			UserDB dbConn = new UserDB();
 			
 			int i = dbConn.registerUser(user);

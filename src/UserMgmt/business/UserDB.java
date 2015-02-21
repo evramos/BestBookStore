@@ -8,8 +8,8 @@ import data.dbConnect.DBConnectionPool;
 
 public class UserDB {
 	//select one user
-	final static String db_url = "jdbc:mysql://localhost:3306/CSS490D";
-	final static String db_username root";
+	final static String db_url ="jdbc:mysql://localhost:3306/CSS490D";
+	final static String db_username ="root";
 	final static String db_passwd ="p0p1c0rn";
 	
 	DBConnectionPool connPool = null;
@@ -38,14 +38,16 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select 'User ID', 'Email Address', 'FirstName', 'LastName' 'SignUpDate', 'LastSignIn' from user where 'Email Address' = "+ email;
+				String strQuery = "select 'User ID', 'FirstName', 'LastName', 'Email Address', 'SignUpDate', 'LastSignIn' from user where 'Email Address' = "+ email;
 				rs = stmt.executeQuery(strQuery);
-				if(rs.next()){
-					user.setUsername(rs.getString(1));
-					user.setName(rs.getString(2));
-					user.setEmail(rs.getString(3));
-					user.setSignDate(rs.getString(4));
-					user.setLastDate(rs.getString(5));
+				if(rs.next())
+				{
+					user.setUserId(rs.getString(1));
+					user.setFirstName(rs.getString(2));
+					user.setLastName(rs.getString(3));
+					user.setEmail(rs.getString(4));
+					user.setSignDate(rs.getString(5));
+					user.setLastDate(rs.getString(6));
 				}
 			}
 		}catch(SQLException e){
@@ -85,8 +87,8 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "insert user(username, passwd, u_name, email, signUpDate, lastLogin) values('"+
-						user.getUsername()+"', '"+user.getPasswd()+"', '"+user.getName()+"', '"+user.getEmail()+
+				String strQuery = "insert user(FirstName, LastName, password, Email Address, SignUpDate, LastSignIn) values('"+
+						user.getFirstName()+"','"+user.getLastName()+"', '"+user.getPasswd()+"', '"+user.getEmail()+
 						"', now(), now())";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
@@ -128,8 +130,8 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "update user set u_name= '"+user.getName()+"', email = '"+user.getEmail()+
-						"' where username = '"+user.getUsername()+"'"; 
+				String strQuery = "update user set = FirstName'"+user.getFirstName()+"', LastName'"+user.getLastName()+"',email = '"+user.getEmail()+
+						"' where User ID = '"+user.getUserId()+"'"; 
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -211,15 +213,16 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select username, u_name, email, signUpDate, lastLogin from user";
+				String strQuery = "select User ID, FirstName, LastName email, signUpDate, lastLogin from user";
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					User u = new User();
-					u.setUsername(rs.getString(1));
-					u.setName(rs.getString(2));
-					u.setEmail(rs.getString(3));
-					u.setSignDate(rs.getString(4));
-					u.setLastDate(rs.getString(5));
+					u.setUserId(rs.getString(1));
+					u.setFirstName(rs.getString(2));
+					u.setLastName(rs.getString(3));
+					u.setEmail(rs.getString(4));
+					u.setSignDate(rs.getString(5));
+					u.setLastDate(rs.getString(6));
 					users.add(u);
 				}
 			}

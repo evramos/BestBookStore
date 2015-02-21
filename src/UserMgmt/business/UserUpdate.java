@@ -14,9 +14,9 @@ public class UserUpdate extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		User user = new User();
-		user.setUsername(request.getParameter("username"));
-		user.setUsername(request.getParameter("name"));
-		user.setUsername(request.getParameter("email"));
+		user.setFirstName(request.getParameter("FirstName"));
+		user.setLastName(request.getParameter("LastName"));
+		user.setEmail(request.getParameter("email"));
 		
 		UserDB dbConn = new UserDB();
 		int i = dbConn.updateUser(user);

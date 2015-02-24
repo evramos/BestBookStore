@@ -4,6 +4,7 @@
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="UserMgmt.user.User" %>
 <%@ page import="UserMgmt.business.UserDB"%> 
+<%@ page import="UserMgmt.business.UserUpdate"%> 
 <%	
 	String email = request.getParameter("Email");
 	UserDB userDB = new UserDB();

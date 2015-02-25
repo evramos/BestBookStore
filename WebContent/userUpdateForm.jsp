@@ -19,8 +19,8 @@
 		<form action="UserUpdate" method="post">
 			<fieldset>
 				<legend class="legend_text"> Your Login Info</legend>
-				<div><label>  First Name: </label><input type="text" name="name" value="<%=user.getFirstName()%>"/>
-				<label>  Last Name: </label><input type="text" name="name" value="<%=user.getLastName()%>"/></div>
+				<div><label>  First Name: </label><input type="text" name="FirstName" value="<%=user.getFirstName()%>"/>
+				<label>  Last Name: </label><input type="text" name="LastName" value="<%=user.getLastName()%>"/></div>
 				<div><span class="star"></span><label>  Email: </label><input type="text" name="email" id="email" value="<%=user.getEmail()%>"/></div>
 				<input type="hidden" name="UserId" value="<%=user.getUserId()%>"/>
 				<input type="submit" value="Update Info" id="submit"/>

@@ -65,19 +65,19 @@ public class User implements Serializable{
 	}
 	
 	public String getSignDate(){
-		return signDate;
+		return SignUpDate;
 	}
 	
 	public void setSignDate(String signDate){
-		this.signDate = signDate;
+		this.SignUpDate = SignUpDate;
 	}
 	
 	public String getLastDate(){
-		return lastDate;
+		return LastSignIn;
 	}
 	
-	public void setLastDate(String lastDate){
-		this.lastDate = lastDate;
+	public void setLastDate(String LastSignIn){
+		this.LastSignIn = LastSignIn;
 	}
 
 

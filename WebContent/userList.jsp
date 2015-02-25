@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
+<title>List of Users</title>
 <link rel="stylesheet" href="css/c06.css"/>
 </head>
 <body>

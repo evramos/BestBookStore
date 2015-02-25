@@ -8,7 +8,7 @@ import data.dbConnect.DBConnectionPool;
 
 public class UserDB {
 	//select one user
-	final static String db_url ="jdbc:mysql://localhost:3306/CSS490D";
+	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
 	final static String db_passwd ="p0p1c0rn";
 	

@@ -12,7 +12,7 @@ public class DBConnectionPool
 	String passwd; 
 	ArrayList<Connection> connList = new ArrayList<Connection>();
 	
-// -----------------------------------------------------------------------------
+/*------------------------------------------------------------------------------------------------*/
 	//Default Constructors
 	public DBConnectionPool() throws Exception
 	{
@@ -32,7 +32,7 @@ public class DBConnectionPool
 		Class.forName(driver);
 	}
 	
-// -----------------------------------------------------------------------------
+/*------------------------------------------------------------------------------------------------*/
 	//Get Connection 
 	public Connection getConnection() throws Exception
 	{

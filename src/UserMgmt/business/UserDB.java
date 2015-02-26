@@ -1,5 +1,6 @@
 package UserMgmt.business;
 
+import java.io.PrintWriter;
 import java.sql.*;
 import java.util.*;
 
@@ -11,10 +12,10 @@ public class UserDB
 	DBConnectionPool connPool = null;
 	
 // -----------------------------------------------------------------------------
-	public UserDB()
+	public UserDB() throws Exception
 	{
-		connPool = setDBConnection();
-	}
+		connPool = setDBConnection();    	
+    }
 	
 // -----------------------------------------------------------------------------
 	public DBConnectionPool setDBConnection()
@@ -96,8 +97,9 @@ public class UserDB
 			if (conn != null)
 			{
 				stmt = conn.createStatement();
-				String strQuery = "INSERT INTO BookStore.user (LastName, FirstName, Password, Email Address) VALUES ('" + user.getLastName() + "', '" + user.getFirstName() + "', '" + user.getPasswd() + "', '" + user.getEmail() + "')";
-				// String strQuery = "INSERT User(FirstName, LastName, password, Email Address, SignUpDate, LastSignIn) VALUES('" + user.getFirstName() + "','" + user.getLastName() + "', '" + user.getPasswd() + "', '" + user.getEmail() + "', NOW(), NOW())";
+				String strQuery =
+					"INSERT INTO `BookStore`.`user` (`LastName`, `FirstName`, `Password`, `Email Address`)
+					 VALUES (\"" + user.getLastName() + "\", \"" + user.getLastName() + "\", \"" + user.getPasswd() + "\", \"" + user.getEmail() + "\")";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}

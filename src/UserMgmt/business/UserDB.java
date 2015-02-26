@@ -6,41 +6,48 @@ import java.util.*;
 import UserMgmt.user.User;
 import data.dbConnect.DBConnectionPool;
 
-public class UserDB {
-	//select one user
-	final static String db_url ="jdbc:mysql://localhost:3306/CSS490D";
-	final static String db_username ="root";
-	final static String db_passwd ="p0p1c0rn";
-	
+public class UserDB
+{	
 	DBConnectionPool connPool = null;
 	
-	public UserDB(){
-		this.connPool = setDBConnection();
+// -----------------------------------------------------------------------------
+	public UserDB()
+	{
+		connPool = setDBConnection();
 	}
 	
-	public DBConnectionPool setDBConnection(){
-		try{
-			connPool = new DBConnectionPool(db_url, db_username, db_passwd);
-		}catch (Exception et) {
-			et.printStackTrace();
+// -----------------------------------------------------------------------------
+	public DBConnectionPool setDBConnection()
+	{
+		try
+		{
+			connPool = new DBConnectionPool();
 		}
+		catch (Exception et) { et.printStackTrace(); }
+
 		return connPool;
 	}
 	
-	public User selectUser(String email){
+// -----------------------------------------------------------------------------
+	public User selectUser(String email)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		User user = new User();
 		Connection conn = null;
-		try{
+
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "select 'User ID', 'FirstName', 'LastName', 'Email Address', 'SignUpDate', 'LastSignIn' from user where 'Email Address' = "+ email;
+				String strQuery = "SELECT 'User ID', 'FirstName', 'LastName', 'Email Address', 'SignUpDate', 'LastSignIn' FROM User WHERE 'Email Address' = " + email;
 				rs = stmt.executeQuery(strQuery);
-				if(rs.next())
+				
+				if (rs.next())
 				{
 					user.setUserId(rs.getString(1));
 					user.setFirstName(rs.getString(2));
@@ -50,172 +57,176 @@ public class UserDB {
 					user.setLastDate(rs.getString(6));
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		}catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+
+		catch (SQLException e)
+		{
+			for(Throwable t:e) { t.printStackTrace(); }
+		}
+
+		catch (Exception et) { et.printStackTrace(); }
+
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return user;
 	}
 	
+// -----------------------------------------------------------------------------
 	//insert a new user
-	
-	public int registerUser(User user){
+	public int registerUser(User user)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
+
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
-				
-				String strQuery = "insert user(FirstName, LastName, password, Email Address, SignUpDate, LastSignIn) values('"+
-						user.getFirstName()+"','"+user.getLastName()+"', '"+user.getPasswd()+"', '"+user.getEmail()+
-						"', now(), now())";
+				String strQuery = "INSERT INTO BookStore.user (LastName, FirstName, Password, Email Address) VALUES ('" + user.getLastName() + "', '" + user.getFirstName() + "', '" + user.getPasswd() + "', '" + user.getEmail() + "')";
+				// String strQuery = "INSERT User(FirstName, LastName, password, Email Address, SignUpDate, LastSignIn) VALUES('" + user.getFirstName() + "','" + user.getLastName() + "', '" + user.getPasswd() + "', '" + user.getEmail() + "', NOW(), NOW())";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		}catch(Exception et) {
+		}
+		catch (SQLException e)
+		{
+			for (Throwable t:e) { t.printStackTrace(); }
+		}
+		catch(Exception et) {
 			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
 	
+// -----------------------------------------------------------------------------
 	//update one user's information
-	
-	public int updateUser(User user){
+	public int updateUser(User user)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
-
+		
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "update user set = FirstName'"+user.getFirstName()+"', LastName'"+user.getLastName()+"',email = '"+user.getEmail()+
-						"' where User ID = '"+user.getUserId()+"'"; 
+				String strQuery = "UPDATE User set = FirstName'" + user.getFirstName() + "', LastName'" + user.getLastName() + "',email = '" + user.getEmail() + "' WHERE User ID = '" + user.getUserId() + "'"; 
 				resultNo = stmt.executeUpdate(strQuery);
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
+		}
+		catch (SQLException e)
+		{
+			for (Throwable t: e) { t.printStackTrace(); }
+		}
+		catch (Exception et)
+		{
 			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		  	catch (Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
 	
-	//delete one user
-	
-	public int deleteUser(String username){
+// -----------------------------------------------------------------------------
+	//Delete one user
+	public int deleteUser(String username)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
 
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from user where username = '"+username+"'";
+				String strQuery = "DELETE FROM User WHERE username = '" + username + "'";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
+		}
+		catch (SQLException e)
+		{	
+			for (Throwable t:e) { t.printStackTrace(); }
+		}
+		catch (Exception et)
+		{
 			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    } catch(Exception e){
-		    	 System.err.println(e);
+		}
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch(Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
 	
+// -----------------------------------------------------------------------------
 	//select multiple users 
-	
-	public ArrayList<User> selectUsers(){
+	public ArrayList<User> selectUsers()
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
 		ArrayList<User> users = new ArrayList<>();
-		try{
 
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "select User ID, FirstName, LastName email, signUpDate, lastLogin from user";
+				String strQuery = "SELECT User ID, FirstName, LastName email, signUpDate, lastLogin FROM User";
 				rs = stmt.executeQuery(strQuery);
-				while(rs.next()){
+				
+				while (rs.next())
+				{
 					User u = new User();
 					u.setUserId(rs.getString(1));
 					u.setFirstName(rs.getString(2));
@@ -226,26 +237,24 @@ public class UserDB {
 					users.add(u);
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
+		}
+		catch (SQLException e)
+		{
+			for (Throwable t:e){ t.printStackTrace(); }
+		} 
+		catch (Exception et)
+		{
 			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return users;
 	}

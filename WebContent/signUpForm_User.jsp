@@ -14,10 +14,9 @@
 		<form action="SignUp" method="post">
 			<fieldset>
 				<legend class="legend_text"> New to BestBooks.com? Register Below. </legend>
-				
-				<div><span class="star">*</span><label> Username: </label>
-					<input type="text" name="userId" id="userId" required="required"/></div>
 
+				<a href="https://www.google.com" class="login icon-lock">Sign In</a>
+				
 				<div><span class="star">*</span><label>  First Name: </label>
 					<input type="text" name="firstName" id="firstName"  required="required"/></div>
 
@@ -45,12 +44,6 @@
 		 
 		function loginCheck()
 		{
-	        if (document.getElementById('userId').value == "")
-	        {
-	                elMsg.textContent= "Pleaes enter a username";
-	                document.getElementById('userId').focus();
-	                return false;
-	        }
 	        if (document.getElementById('firstName').value == "")
 	        {
 	                elMsg.textContent= "Pleaes enter a first name";

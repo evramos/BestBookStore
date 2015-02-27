@@ -5,7 +5,6 @@ public class User implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
-	private String userId;
 	private String lastName;
 	private String firstName;
 	private String passwd;
@@ -18,28 +17,15 @@ public class User implements Serializable
 	//Default Constructors
 	public User() {}
 
-	// public User(String lastName, String firstName, String passwd, String email)
-	// {
-	// 	this.lastName = lastName;
-	// 	this.firstName = firstName;
-	// 	this.passwd = passwd;
-	// 	this.email = email;
-	// }
-
-	public User(String userId, String lastName, String firstName, String passwd, String email)
+	public User(String lastName, String firstName, String passwd, String email)
 	{
-		this.userId = userId;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.passwd = passwd;
 		this.email = email;
 	}
-	
-/*------------------------------------------------------------------------------------------------*/
-	//Get & Set UserId
-	public String getUserId(){ return userId; }
-	public void setUserId(String userId) { this.userId = userId; }
 
+/*------------------------------------------------------------------------------------------------*/
 	//Get & Set Last Name
 	public String getLastName() { return lastName; }
 	public void setLastName(String lastName) { this.lastName = lastName; }
@@ -55,6 +41,7 @@ public class User implements Serializable
 	//Get & Set Email
 	public String getEmail() { return email; }
 	public void setEmail(String email) { this.email = email; }
+	
 	
 	//Get & Set Sign-in Date (The date user was created)
 	public String getSignDate() { return signDate; }

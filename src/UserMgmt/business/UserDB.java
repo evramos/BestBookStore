@@ -49,7 +49,7 @@ public class UserDB
 				
 				if (rs.next())
 				{
-					user.setUserId(rs.getString(1));
+//					user.setUserId(rs.getString(1));
 					user.setFirstName(rs.getString(2));
 					user.setLastName(rs.getString(3));
 					user.setEmail(rs.getString(4));
@@ -96,8 +96,7 @@ public class UserDB
 			if (conn != null)
 			{
 				stmt = conn.createStatement();
-								// INSERT INTO `BookStore`.`User` (`Username`, `LastName`, `FirstName`, `Password`, `Email Address`) VALUES ('a', 'b', 'c', 'e', 'f');
-				String strQuery = "INSERT INTO `BookStore`.`user` (`Username`, `LastName`, `FirstName`, `Password`, `Email Address`) VALUES (\"" + user.getUserId() + "\", \"" + user.getLastName() + "\", \"" + user.getFirstName() + "\", \"" + user.getPasswd() + "\", \"" + user.getEmail() + "\")";
+				String strQuery = "INSERT INTO `BookStore`.`user` (`LastName`, `FirstName`, `Password`, `Email Address`) VALUES (\"" + user.getLastName() + "\", \"" + user.getFirstName() + "\", \"" + user.getPasswd() + "\", \"" + user.getEmail() + "\")";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}
@@ -121,7 +120,7 @@ public class UserDB
 		return resultNo;
 	}
 	
-// -----------------------------------------------------------------------------
+/*------------------------------------------------------------------------------------------------*/
 	//update one user's information
 	public int updateUser(User user)
 	{
@@ -138,8 +137,8 @@ public class UserDB
 			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "UPDATE User set = FirstName'" + user.getFirstName() + "', LastName'" + user.getLastName() + "',email = '" + user.getEmail() + "' WHERE User ID = '" + user.getUserId() + "'"; 
-				resultNo = stmt.executeUpdate(strQuery);
+//				String strQuery = "UPDATE User set = FirstName'" + user.getFirstName() + "', LastName'" + user.getLastName() + "',email = '" + user.getEmail() + "' WHERE User ID = '" + user.getUserId() + "'"; 
+//				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}
 		catch (SQLException e)
@@ -221,19 +220,18 @@ public class UserDB
 			if (conn != null)
 			{
 				stmt = conn.createStatement();
-				
-				String strQuery = "SELECT User ID, FirstName, LastName email, signUpDate, lastLogin FROM User";
+				String strQuery = "SELECT FirstName, LastName, `Email Address`, SignUpDate, LastSignIn FROM User";
+				// String strQuery = "SELECT User ID, FirstName, LastName email, signUpDate, lastLogin FROM User";
 				rs = stmt.executeQuery(strQuery);
 				
 				while (rs.next())
 				{
 					User u = new User();
-					u.setUserId(rs.getString(1));
-					u.setFirstName(rs.getString(2));
-					u.setLastName(rs.getString(3));
-					u.setEmail(rs.getString(4));
-					u.setSignDate(rs.getString(5));
-					u.setLastDate(rs.getString(6));
+					u.setFirstName(rs.getString(1));
+					u.setLastName(rs.getString(2));
+					u.setEmail(rs.getString(3));
+					u.setSignDate(rs.getString(4));
+					u.setLastDate(rs.getString(5));
 					users.add(u);
 				}
 			}

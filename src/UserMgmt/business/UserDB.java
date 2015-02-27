@@ -38,7 +38,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select 'User ID', 'FirstName', 'LastName', 'Email Address', 'SignUpDate', 'LastSignIn' from user where 'Email Address' = "+ email;
+				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address`, `SignUpDate`, `LastSignIn` from user where 'Email Address' = "+ email;
 				rs = stmt.executeQuery(strQuery);
 				if(rs.next())
 				{
@@ -87,9 +87,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "insert user(FirstName, LastName, password, Email Address, SignUpDate, LastSignIn) values('"+
-						user.getFirstName()+"','"+user.getLastName()+"', '"+user.getPasswd()+"', '"+user.getEmail()+
-						"', now(), now())";
+				String strQuery = "INSERT INTO `bookstore`.`user` (`LastName`, `FirstName`, `Password`, `Email Address` ) VALUES (\""+user.getFirstName()+"\",\""+user.getLastName()+"\", \""+user.getPasswd()+"\", \""+user.getEmail()+"\")";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -160,7 +158,7 @@ public class UserDB {
 	
 	//delete one user
 	
-	public int deleteUser(String username){
+	public int deleteUser(String email){
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
@@ -172,7 +170,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from user where username = '"+username+"'";
+				String strQuery = "delete from user where email = '"+email+"'";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -213,7 +211,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select User ID, FirstName, LastName email, signUpDate, lastLogin from user";
+				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address` from `user`";
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					User u = new User();
@@ -221,8 +219,8 @@ public class UserDB {
 					u.setFirstName(rs.getString(2));
 					u.setLastName(rs.getString(3));
 					u.setEmail(rs.getString(4));
-					u.setSignDate(rs.getString(5));
-					u.setLastDate(rs.getString(6));
+//					u.setSignDate(rs.getString(5));
+//					u.setLastDate(rs.getString(6));
 					users.add(u);
 				}
 			}

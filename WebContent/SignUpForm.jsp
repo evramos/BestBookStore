@@ -23,7 +23,7 @@
 				<div><label>  First Name: </label><input type="text" name="FirstName" id="FirstName"/>
 				<label>  Last Name: </label><input type="text" name="LastName" id="LastName"/></div>
 				<div><span class="star"></span><label>  Email:</label><input type="text" name="email" id="email" /></div>
-				<div><label>  Password:</label><input type="text" name="password" id="password"></div>
+				<div><label>  Password:</label><input type="password" name="password" id="password"></div>
 				<input type="hidden" name="UserId" />
 				<input type="submit" value="Sign Up" id="submit"/>
 			</fieldset>

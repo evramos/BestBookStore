@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <%@ page import="exercise.servlet.*, java.io.*" %>
-     
      
      
 	<%

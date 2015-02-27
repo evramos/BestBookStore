@@ -1,20 +1,27 @@
 package UserMgmt.business;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.*;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 import UserMgmt.user.User;
 import UserMgmt.business.UserDB;
 
+/**
+ * Servlet implementation class SignUp
+ */
 
 @WebServlet("/SignUp")
 
 public class SignUp extends HttpServlet
 {
-	private static final long serialVersionUID = 1234;
+	private static final long serialVersionUID = 1L;
 
     public SignUp() throws Exception
     {
@@ -30,27 +37,56 @@ public class SignUp extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		PrintWriter out = response.getWriter();
-		out.println("Hello World");
-//		String firstName = request.getParameter("firstName");
-//		String lastName = request.getParameter("lastName");
-//		String passwd = request.getParameter("password");
-//		String email = request.getParameter("email");
-		
-//		User user = new User(passwd, firstName, lastName, email);
-//		UserDB dbConn = new UserDB();
-//		
-//		int i = dbConn.registerUser(user);
-//
-//		if (i > 0)
-//		{
-//			out.println("<h1>Successful Register</h1>");
+		try
+		{
+			PrintWriter out = response.getWriter();
+			
+			String username = request.getParameter("userId");
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String passwd = request.getParameter("password");
+			String email = request.getParameter("email");
+			
+			//In case any of the values might be NULL
+			if (username != null)
+			{
+				User user = new User(username, lastName, firstName, passwd, email);
+				UserDB dbConn = new UserDB();
+				
+				int index = dbConn.registerUser(user);
+				
+				if (index > 0)
+				{	
+					out.println("Welcome " + firstName + ", " + lastName);
+					out.println("Your Username is: " + username);
+					out.println("Your email is: " + email);
+					out.println("Your password is: " + passwd);
 
+					out.println();
+					out.println(user.getUserId());
+					out.println(user.getLastName());
+					out.println(user.getFirstName());
+					out.println(user.getPasswd());
+					out.println(user.getEmail());
+					out.println();
 
+					out.println("Successful Register");
 
-			// response.sendRedirect("../index.jsp");
-//		}
-
-//		else { response.sendRedirect("signUpError.html"); }
+					// response.sendRedirect("./signUpForm_User.jsp");
+				}
+				else
+				{
+					response.sendRedirect("signUpError.html");
+				}	
+			}
+			else
+			{
+				out.println("Unsuccessful Registration");
+			}
+		}
+        catch (Exception e)
+        {
+        	e.printStackTrace();	
+        }
 	}
 }

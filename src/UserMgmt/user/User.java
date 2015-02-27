@@ -18,13 +18,13 @@ public class User implements Serializable
 	//Default Constructors
 	public User() {}
 
-	public User(String lastName, String firstName, String passwd, String email)
-	{
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.passwd = passwd;
-		this.email = email;
-	}
+	// public User(String lastName, String firstName, String passwd, String email)
+	// {
+	// 	this.lastName = lastName;
+	// 	this.firstName = firstName;
+	// 	this.passwd = passwd;
+	// 	this.email = email;
+	// }
 
 	public User(String userId, String lastName, String firstName, String passwd, String email)
 	{

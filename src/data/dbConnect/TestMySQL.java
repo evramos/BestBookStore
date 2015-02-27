@@ -42,8 +42,6 @@ public class TestMySQL extends HttpServlet {
 		try
 		{
 			PrintWriter out = response.getWriter();
-			out.println("Hello World Again");
-
 			
 			String firstName = "asdf";
 			String lastName = "aasdf";

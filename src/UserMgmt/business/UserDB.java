@@ -1,6 +1,5 @@
 package UserMgmt.business;
 
-import java.io.PrintWriter;
 import java.sql.*;
 import java.util.*;
 
@@ -81,8 +80,8 @@ public class UserDB
 		return user;
 	}
 	
-// -----------------------------------------------------------------------------
-	//insert a new user
+/*------------------------------------------------------------------------------------------------*/
+	//Insert a new user into the database
 	public int registerUser(User user)
 	{
 		Statement stmt = null;
@@ -97,9 +96,8 @@ public class UserDB
 			if (conn != null)
 			{
 				stmt = conn.createStatement();
-				String strQuery =
-					"INSERT INTO `BookStore`.`user` (`LastName`, `FirstName`, `Password`, `Email Address`)
-					 VALUES (\"" + user.getLastName() + "\", \"" + user.getLastName() + "\", \"" + user.getPasswd() + "\", \"" + user.getEmail() + "\")";
+								// INSERT INTO `BookStore`.`User` (`Username`, `LastName`, `FirstName`, `Password`, `Email Address`) VALUES ('a', 'b', 'c', 'e', 'f');
+				String strQuery = "INSERT INTO `BookStore`.`user` (`Username`, `LastName`, `FirstName`, `Password`, `Email Address`) VALUES (\"" + user.getUserId() + "\", \"" + user.getLastName() + "\", \"" + user.getFirstName() + "\", \"" + user.getPasswd() + "\", \"" + user.getEmail() + "\")";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}

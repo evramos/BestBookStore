@@ -20,6 +20,14 @@ public class DBConnectionPool {
 		Class.forName(driver);
 	}
 	
+	public DBConnectionPool() throws Exception {
+		url = "jdbc:mysql://localhost:3306/bookstore";
+		username = "root";
+		passwd = "nopassword";
+		
+		Class.forName(driver);
+	}
+	
 	public Connection getConnection() throws Exception{
 		if(connList.size() > 0){
 			Connection conn = connList.get(0);

@@ -6,9 +6,9 @@
 <%@ page import="UserMgmt.business.UserDB"%> 
 <%@ page import="UserMgmt.business.UserUpdate"%> 
 <%	
-	String email = request.getParameter("Email");
+	String userId = request.getParameter("userId");
 	UserDB userDB = new UserDB();
-	User user = userDB.selectUser(email);
+	User user = userDB.selectUser(Integer.parseInt(userId));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -27,7 +27,7 @@ public class UserDB {
 		return connPool;
 	}
 	
-	public User selectUser(String email){
+	public User selectUser(int userId){
 		Statement stmt = null;
 		ResultSet rs = null;
 		User user = new User();
@@ -38,11 +38,11 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address`, `SignUpDate`, `LastSignIn` from user where 'Email Address' = "+ email;
+				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address` from `user` where `User ID` = " + userId;
 				rs = stmt.executeQuery(strQuery);
 				if(rs.next())
 				{
-					user.setUserId(rs.getString(1));
+					user.setUserId(rs.getInt(1));
 					user.setFirstName(rs.getString(2));
 					user.setLastName(rs.getString(3));
 					user.setEmail(rs.getString(4));
@@ -128,8 +128,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "update user set = FirstName'"+user.getFirstName()+"', LastName'"+user.getLastName()+"',email = '"+user.getEmail()+
-						"' where User ID = '"+user.getUserId()+"'"; 
+				String strQuery = "update `bookstore`.`user` set `FirstName` = \""+user.getFirstName()+"\", `LastName` = \""+user.getLastName()+"\",`Email Address` = \""+user.getEmail()+"\" where `User ID` = "+user.getUserId(); 
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -158,7 +157,7 @@ public class UserDB {
 	
 	//delete one user
 	
-	public int deleteUser(String email){
+	public int deleteUser(int userId){
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
@@ -170,7 +169,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from user where email = '"+email+"'";
+				String strQuery = "delete from `bookstore`.`user` where `User ID` = "+ userId;
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -215,7 +214,7 @@ public class UserDB {
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					User u = new User();
-					u.setUserId(rs.getString(1));
+					u.setUserId(rs.getInt(1));
 					u.setFirstName(rs.getString(2));
 					u.setLastName(rs.getString(3));
 					u.setEmail(rs.getString(4));

@@ -20,8 +20,8 @@
 				<th>LastName</th>
 				<th>Email</th>
 				<th>Date of Signup</th>
-				<th>Last Date to Log In</th>
-				<th>Update/Delete</th>
+				<th>Last Sign In</th>
+				<th>Modify</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,8 +37,8 @@
 			out.println("<td>"+userList.get(i).getEmail()+"</td>");
 //			out.println("<td>"+userList.get(i).getSignDate()+"</td>");
 //			out.println("<td>"+userList.get(i).getLastDate()+"</td>");
-			out.println("<td><a href=\"userUpdateForm.jsp?username="+userList.get(i).getUserId()+"\">[ Update ]</a>"+
-				"<a href=\"userDelete?username="+userList.get(i).getUserId()+"\">[ Delete ]</a></td>");
+			out.println("<td><a href=\"userUpdateForm.jsp?userId="+userList.get(i).getUserId()+"\">[ Update ]</a>"+
+				"<a href=\"userDelete?userId="+userList.get(i).getUserId()+"\">[ Delete ]</a></td>");
 			out.println("</tr>");
 		}
 

@@ -4,13 +4,13 @@ import java.io.Serializable;
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String UserId;
+	private int UserId;
 	private String FirstName;
 	private String LastName;
 	private String passwd;
 	private String email;
-	private String signDate;
-	private String lastDate;
+	private String SignUpDate;
+	private String LastSignIn;
 	
 	public User(){
 	}
@@ -22,12 +22,12 @@ public class User implements Serializable{
 		this.LastName = LastName;
 	}
 	
-	public String getUserId() {
+	public int getUserId() {
 
 		return UserId;
 	}
 	
-	public void setUserId(String UserId) {
+	public void setUserId(int UserId) {
 		this.UserId = UserId;
 	}
 	
@@ -68,7 +68,7 @@ public class User implements Serializable{
 		return SignUpDate;
 	}
 	
-	public void setSignDate(String signDate){
+	public void setSignDate(String SignUpDate){
 		this.SignUpDate = SignUpDate;
 	}
 	

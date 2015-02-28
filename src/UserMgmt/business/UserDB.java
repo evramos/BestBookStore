@@ -169,7 +169,7 @@ public class UserDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from `bookstore`.`user` where `User ID` = "+ userId;
+				String strQuery = "delete from `bookstore`.`user` where `User ID` = "+userId;
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){

@@ -38,7 +38,7 @@
 //			out.println("<td>"+userList.get(i).getSignDate()+"</td>");
 //			out.println("<td>"+userList.get(i).getLastDate()+"</td>");
 			out.println("<td><a href=\"userUpdateForm.jsp?userId="+userList.get(i).getUserId()+"\">[ Update ]</a>"+
-				"<a href=\"userDelete?userId="+userList.get(i).getUserId()+"\">[ Delete ]</a></td>");
+				"<a href=\"UserDelete?UserId="+userList.get(i).getUserId()+"\">[ Delete ]</a></td>");
 			out.println("</tr>");
 		}
 

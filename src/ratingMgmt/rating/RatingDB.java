@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import UserMgmt.user.User;
-import BookMgmt.book.book;
+import BookMgmt.book;
 import ratingMgmt.rating.rating;
 import data.dbConnect.DBConnectionPool;
 

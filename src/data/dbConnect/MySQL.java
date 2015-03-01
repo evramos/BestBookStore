@@ -16,14 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/MySQL")
 
-public class MySQL extends HttpServlet {
+public class MySQL extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
-       
     
-    public MySQL() throws Exception
-    {
-        super();
-    }
+    public MySQL() throws Exception { super(); }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException
@@ -34,7 +31,6 @@ public class MySQL extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException
 	{
-
 		try
 		{
 			PrintWriter out = response.getWriter();
@@ -48,11 +44,7 @@ public class MySQL extends HttpServlet {
         	} else {
         		out.println("Failed");
         	}
-        	
         }
-        catch (Exception e)
-        {
-        	e.printStackTrace();	
-        }
+        catch (Exception e) { e.printStackTrace(); }
 	}
 }

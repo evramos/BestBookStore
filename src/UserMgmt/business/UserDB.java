@@ -6,27 +6,30 @@ import java.util.*;
 import UserMgmt.user.User;
 import data.dbConnect.DBConnectionPool;
 
-public class UserDB {
-	//select one user
-	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
-	final static String db_username ="root";
-	final static String db_passwd ="p0p1c0rn";
-	
+public class UserDB
+{	
 	DBConnectionPool connPool = null;
 	
-	public UserDB(){
+/*----------------------------------------------------------------------------*/
+	//Default Constructors	
+	public UserDB()
+	{
 		this.connPool = setDBConnection();
 	}
 	
-	public DBConnectionPool setDBConnection(){
-		try{
-			connPool = new DBConnectionPool(db_url, db_username, db_passwd);
-		}catch (Exception et) {
-			et.printStackTrace();
+/*----------------------------------------------------------------------------*/
+	public DBConnectionPool setDBConnection()
+	{
+		try
+		{
+			connPool = new DBConnectionPool();
 		}
+		catch (Exception et) { et.printStackTrace(); }
+
 		return connPool;
 	}
 	
+/*----------------------------------------------------------------------------*/
 	public User selectUser(int userId){
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -73,7 +76,8 @@ public class UserDB {
 		}
 		return user;
 	}
-	
+
+/*----------------------------------------------------------------------------*/
 	//insert a new user
 	
 	public int registerUser(User user){
@@ -113,7 +117,8 @@ public class UserDB {
 		}
 		return resultNo;
 	}
-	
+
+/*----------------------------------------------------------------------------*/
 	//update one user's information
 	
 	public int updateUser(User user){
@@ -154,7 +159,8 @@ public class UserDB {
 		}
 		return resultNo;
 	}
-	
+
+/*----------------------------------------------------------------------------*/
 	//delete one user
 	
 	public int deleteUser(int userId){
@@ -196,6 +202,7 @@ public class UserDB {
 		return resultNo;
 	}
 	
+/*----------------------------------------------------------------------------*/	
 	//select multiple users 
 	
 	public ArrayList<User> selectUsers(){

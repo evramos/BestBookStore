@@ -4,15 +4,31 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
-public class DBConnectionPool {
+public class DBConnectionPool
+{
 	final String driver = "org.gjt.mm.mysql.Driver";
 	String url;
 	String username;
 	String passwd; 
 	ArrayList<Connection> connList = new ArrayList<Connection>();
 	
-	// Adding a comment here
-	public DBConnectionPool(String url, String username, String passwd) throws Exception{
+/*----------------------------------------------------------------------------*/
+	//Default Constructors
+	public DBConnectionPool() throws Exception
+	{
+    	url = "jdbc:mysql://localhost:3306/BookStore";
+    	username = "root";
+    	passwd = "Blacktail85$";	// Matthew's mySQL Password
+    	
+		// passwd = "p0p1c0rn";		// David's mySQL Password
+		// passwd = "nopassword";	// Martha's mySQL Password
+    	
+    	Class.forName(driver);
+	}
+
+	public DBConnectionPool(String url, String username, String passwd)
+		throws Exception
+	{
 		this.url = url;
 		this.username = username;
 		this.passwd = passwd; 
@@ -20,35 +36,32 @@ public class DBConnectionPool {
 		Class.forName(driver);
 	}
 	
-	public DBConnectionPool() throws Exception {
-		url = "jdbc:mysql://localhost:3306/bookstore";
-		username = "root";
-		passwd = "nopassword";
-		
-		Class.forName(driver);
-	}
-	
-	public Connection getConnection() throws Exception{
-		if(connList.size() > 0){
+/*----------------------------------------------------------------------------*/
+	//Get Connection 
+	public Connection getConnection() throws Exception
+	{
+		if (connList.size() > 0)
+		{
 			Connection conn = connList.get(0);
-			if(conn.isValid(10)){
-				return conn;
-			}
+			if (conn.isValid(10)) { return conn; }
 		}
-		
 		return DriverManager.getConnection(url, username, passwd);
 	}
-	
-	public void returnConnection(Connection conn) throws Exception{
+
+	//Return Connection
+	public void returnConnection(Connection conn) throws Exception
+	{
 		connList.add(conn);
 	}
-	
-	public void closeAll(){
-		for(Connection conn: connList){
-			try{
-				conn.close();
-			}catch(Exception e){
-			}
+
+	//Close All Connections
+	public void closeAll()
+	{
+		for( Connection conn : connList)
+		{
+			try { conn.close(); }
+
+			catch(Exception e) { }
 		}
 	}
 }

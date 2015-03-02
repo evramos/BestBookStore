@@ -60,7 +60,7 @@ public class rating implements Serializable{
 	{
 		this.userId = userId;
 	}
-	public int getbookId()
+	public int getBookId()
 	{
 		return bookId;
 	}

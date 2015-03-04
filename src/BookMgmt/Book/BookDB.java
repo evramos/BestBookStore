@@ -1,9 +1,10 @@
-package BookMgmt;
+package BookMgmt.Book;
 
 import java.sql.*;
 import java.util.*;
 
 import data.dbConnect.DBConnectionPool;
+import BookMgmt.Book.Book;
 
 public class BookDB {
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";

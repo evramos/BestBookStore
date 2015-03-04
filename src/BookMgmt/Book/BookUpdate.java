@@ -1,14 +1,13 @@
-package BookMgmt;
+package BookMgmt.Book;
 import java.io.IOException;
-import java.sql.Blob;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import BookMgmt.Book;
+import BookMgmt.Book.Book; 
+import BookMgmt.Book.BookDB;
 
 @WebServlet("/BookUpdate")
 public class BookUpdate extends HttpServlet{

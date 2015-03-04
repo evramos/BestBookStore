@@ -195,7 +195,7 @@ public class RatingDB {
 		return Rating;
 	}
 	
-	public ArrayList<rating> selectRatings()
+	public ArrayList<rating> selectRatingsByUser(int UserId)
 	{
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -208,7 +208,7 @@ public class RatingDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings`";
+				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `User_User ID = "+ UserId;
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					rating r = new rating();
@@ -244,5 +244,54 @@ public class RatingDB {
 		}
 		return ratings;
 	}
+public ArrayList<rating> selectRatingsByBook(int BookId)
+	{
+		Statement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		ArrayList<rating> ratings = new ArrayList<>();
+		try{
+
+			conn = connPool.getConnection();
+			
+			if(conn != null){
+				stmt = conn.createStatement();
+				
+				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `User_User ID = "+ BookId;
+				rs = stmt.executeQuery(strQuery);
+				while(rs.next()){
+					rating r = new rating();
+					r.setBookId(rs.getInt(1));
+					r.setComments(rs.getString(2));
+					r.setDate(rs.getString(3));
+					r.setRatingsId(Integer.parseInt(rs.getString(4)));
+					r.setStars(Integer.parseInt(rs.getString(5)));
+					r.setUserId(Integer.parseInt(rs.getString(6)));
+					ratings.add(r);
+				}
+			}
+		}catch(SQLException e){
+			for(Throwable t: e){	
+				t.printStackTrace();
+			}
+		} catch (Exception et) {
+			et.printStackTrace();
+		}finally {
+		    try {
+		    	if (rs != null){
+		            rs.close();
+		        }
+		    	if (stmt != null){
+		            stmt.close();
+		        }
+		        if (conn != null) {
+		            connPool.returnConnection(conn);
+		        }
+		    }catch(Exception e){
+		    	 System.err.println(e);
+		    }
+		}
+		return ratings;
+	}	
 }
 

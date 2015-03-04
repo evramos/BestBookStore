@@ -29,7 +29,7 @@
 </div>
 <div>
 <label>Book Info: </label>
-<%=book.getTitle %><br>
+<%=book.getTitle() %><br>
 </div>
 <form action="AddRating" method="post">
 			<fieldset>

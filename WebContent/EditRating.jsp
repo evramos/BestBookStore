@@ -23,7 +23,7 @@
 <body>
 <div>
 	<form action="UpdateRating" method="post">
-		<legend class="legend_text"> Book</legend>
+
 			<div>
 				<label>  Title: </label><%=book.getTitle()%><br>
 				<label>  Author: </label><%=book.getAuthor()%><br>

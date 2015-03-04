@@ -34,7 +34,7 @@ public class AddRating extends HttpServlet
 			if(i > 0){
 					response.sendRedirect("../index.jsp");
 			}else{
-				response.sendRedirect("AddRatingsError.html");
+				response.sendRedirect("/AddRatingsError.html");
 			}
 	}
 	

@@ -8,7 +8,7 @@ import data.dbConnect.DBConnectionPool;
 public class BookDB {
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
-	final static String db_passwd ="nopassword";
+	final static String db_passwd ="p0p1c0rn";
 	
 	DBConnectionPool connPool = null;
 	
@@ -38,8 +38,8 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `bookId`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`, `year`,"
-						+ "`publisher`, `category`, `isbn10`, `isbn13`, `price`, `invQty` from `book` where `bookId` = " + bookId;
+				String strQuery = "select `book Id`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, `year`,"
+						+ "`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `book` where `book Id` = " + bookId;
 				rs = stmt.executeQuery(strQuery);
 				if(rs.next())
 				{					
@@ -95,8 +95,8 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "insert into `bookstore`.`book` (`bookId`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`, `year`,"
-						+ "`publisher`, `category`, `isbn10`, `isbn13`, `price`, `invQty`) values (\"" + book.getBookId()+"\",\""+book.getTitle()+"\",\""
+				String strQuery = "insert into `bookstore`.`book` (`book Id`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, `year`,"
+						+ "`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty`) values (\"" + book.getBookId()+"\",\""+book.getTitle()+"\",\""
 						+book.getAuthor()+"\",\""+book.getBookCoverArt()+"\",\""+book.getBookDescription()+"\",\""+book.getEdition()+"\",\""+book.getYear()+
 						book.getPublisher()+"\",\""+book.getCategory()+"\",\""+book.getIsbn10()+"\",\""+book.getIsbn13()+"\",\""+book.getPrice()+"\",\""+book.getInvQty()+"\")";
 				resultNo = stmt.executeUpdate(strQuery);
@@ -139,9 +139,9 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();		
 				String strQuery = "update `bookstore`.`book` set `title` = \""+book.getTitle()+"\", `author` = \""+book.getAuthor()+"\",`bookCoverArt` = \""+book.getBookCoverArt()+
-				"\", `description` = \""+book.getBookDescription()+"\",`edition' = \""+book.getEdition()+"\",`year` = \""+book.getYear()+"\", `publisher` = \""+book.getPublisher()+
-				"\", `category` = \""+ book.getCategory()+"\", `isbn10` = \""+ book.getIsbn10()+"\", `isbn13` = \""+ book.getIsbn13()+"\", `price` = \""+ book.getPrice()+"\","
-				+"`invQty` = \""+ book.getInvQty()+"\", where `bookId` = "+book.getBookId(); 
+				"\", `description` = \""+book.getBookDescription()+"\",` edition' = \""+book.getEdition()+"\",`year` = \""+book.getYear()+"\", `publisher` = \""+book.getPublisher()+
+				"\", `category` = \""+ book.getCategory()+"\", `isbn-10` = \""+ book.getIsbn10()+"\", `isbn-13` = \""+ book.getIsbn13()+"\", `price` = \""+ book.getPrice()+"\","
+				+"`invQty` = \""+ book.getInvQty()+"\", where `book Id` = "+book.getBookId(); 
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -181,7 +181,7 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from `bookstore`.`book` where `bookId` = "+bookId;
+				String strQuery = "delete from `bookstore`.`book` where `book Id` = "+bookId;
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -221,8 +221,8 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `bookId`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`,"
-						+ "`year`, `publisher`, `category`, `isbn10`, `isbn13`, `price`, `invQty` from `book`";
+				String strQuery = "select `book Id`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`,"
+						+ "`year`, `publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `book`";
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					Book book = new Book();
@@ -279,8 +279,8 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `bookId`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`,"
-						+ "`year`, `publisher`, `category`, `isbn10`, `isbn13`, `price`, `invQty` from `book` "
+				String strQuery = "select `book Id`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`,"
+						+ "`year`, `publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `book` "
 						+ "where 'category' = " + category;
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){

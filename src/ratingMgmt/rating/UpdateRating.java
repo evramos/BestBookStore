@@ -21,7 +21,8 @@ public class UpdateRating extends HttpServlet{
 		rating Rating = new rating();
 		Rating.setComments(request.getParameter("Comments"));
 		Rating.setStars(Integer.parseInt(request.getParameter("Stars")));
-
+		Rating.setUserId(Integer.parseInt(request.getParameter("UserId")));
+		Rating.setBookId(Integer.parseInt(request.getParameter("BookId")));
 		
 		RatingDB dbConn = new RatingDB();
 		int i = dbConn.editRating(Rating);

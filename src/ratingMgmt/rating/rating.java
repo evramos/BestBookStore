@@ -12,9 +12,8 @@ public class rating implements Serializable{
 	private int bookId;
 
 	public rating(){}
-	public rating(String date, int stars, String comments, int userId, int bookId)
+	public rating(int stars, String comments, int userId, int bookId)
 	{
-		this.date = date;
 		this.stars = stars;
 		this.comments = comments;
 		this.userId = userId;
@@ -60,7 +59,7 @@ public class rating implements Serializable{
 	{
 		this.userId = userId;
 	}
-	public int getbookId()
+	public int getBookId()
 	{
 		return bookId;
 	}

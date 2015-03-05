@@ -216,5 +216,12 @@ pip-log.txt
 .mr.developer.cfg
 /bin/
 /bin/
+<<<<<<< HEAD
 src/UserMgmt/MySQL.java
 *.jsdtscope
+=======
+/bin/
+/bin/
+/bin/
+/bin/
+>>>>>>> davids-brqnch

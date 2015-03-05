@@ -18,16 +18,16 @@
 				<a href="https://www.google.com" class="login icon-lock">Sign In</a>
 				
 				<div><span class="star">*</span><label>  First Name: </label>
-					<input type="text" name="firstName" id="firstName"  required="required"/></div>
+					<input type="text" name="FirstName" id="FirstName"  required/></div>
 
 				<div><span class="star">*</span><label>  Last Name: </label>
-					<input type="text" name="lastName" id="lastName"  required="required"/></div>
+					<input type="text" name="LastName" id="LastName"  required/></div>
 					
 				<div><span class="star">*</span><label>  Password: </label>
-					<input type="password" name="password" id="password"  required="required"/></div>
+					<input type="password" name="password" id="password"  required/></div>
 					
 				<div><span class="star">*</span><label>  Confirm Password:  </label>
-					<input type="password" name="repasswd" id="repasswd" required="required"/></div>
+					<input type="password" name="repasswd" id="repasswd" required/></div>
 									
 				<div><span class="star">*</span><label>  Email: </label>
 					<input type="text" name="email" id="email"/></div>

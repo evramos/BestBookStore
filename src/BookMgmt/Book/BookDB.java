@@ -96,10 +96,7 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "insert into `bookstore`.`book` ( `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, `year`,"
-						+ "`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty`) values (\""+book.getTitle()+"\",\""
-						+book.getAuthor()+"\",\""+book.getBookCoverArt()+"\",\""+book.getBookDescription()+"\",\""+book.getEdition()+"\",\""+book.getYear()+
-						book.getPublisher()+"\",\""+book.getCategory()+"\",\""+book.getIsbn10()+"\",\""+book.getIsbn13()+"\",\""+book.getPrice()+"\",\""+book.getInvQty()+"\")";
+				String strQuery = "insert into `bookstore`.`book` (`title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, `year`,`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty`) values (\""+book.getTitle()+"\",\""+book.getAuthor()+"\",\""+book.getBookCoverArt()+"\",\""+book.getBookDescription()+"\",\""+book.getEdition()+"\",\""+book.getYear()+"\","+book.getPublisher()+"\",\""+book.getCategory()+"\",\""+book.getIsbn10()+"\",\""+book.getIsbn13()+"\",\""+book.getPrice()+"\",\""+book.getInvQty()+"\")";
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){

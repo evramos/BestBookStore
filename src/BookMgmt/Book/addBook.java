@@ -37,13 +37,13 @@ public class addBook extends HttpServlet{
 		book.setCategory(request.getParameter("category"));
 		book.setIsbn10(request.getParameter("isbn10"));
 		book.setIsbn13(request.getParameter("isbn13"));
-		book.setPrice(Integer.parseInt(request.getParameter("price")));
+		book.setPrice(Float.parseFloat(request.getParameter("price")));
 		book.setInvQty(Integer.parseInt(request.getParameter("invQty")));		
 		
 		BookDB dbConn = new BookDB();
 		int i = dbConn.addBook(book);
 		if(i > 0){
-				response.sendRedirect("../index.jsp");
+				response.sendRedirect("../addBook.jsp");
 		}else{
 			response.sendRedirect("signUpError.html");
 		}

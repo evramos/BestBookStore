@@ -78,6 +78,8 @@
 					<input type="text" name="invQty" id="invQty" /></div>										
 			</fieldset>
 			<div><span class="star">*</span><label>Mandatory Information</label></div><br/>
+				<input type="hidden" name="BookId" />
+				<input type="submit" value="Add Book" id="submit"/>
 		</form>
 		
 		<script>

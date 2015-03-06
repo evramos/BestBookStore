@@ -15,7 +15,7 @@ public class DeleteBook extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String BookId= request.getParameter("RatingId");
+		String BookId= request.getParameter("BookId");
 		
 		BookDB dbConn = new BookDB();
 		

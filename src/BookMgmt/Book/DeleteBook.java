@@ -1,4 +1,5 @@
-package ratingMgmt.rating;
+package BookMgmt.Book;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -6,23 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import UserMgmt.business.UserDB;
-
-@WebServlet("/DeleteRating")
-public class DeleteRating extends HttpServlet
-{
+import BookMgmt.Book.BookDB;
+@WebServlet("/DeleteBook")
+public class DeleteBook extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String RatingId= request.getParameter("RatingId");
+		String BookId= request.getParameter("RatingId");
 		
-		RatingDB dbConn = new RatingDB();
+		BookDB dbConn = new BookDB();
 		
-		int i = dbConn.deleteRating(Integer.parseInt(RatingId));
+		int i = dbConn.deleteBook(Integer.parseInt(BookId));
 		if(i > 0){
-				response.sendRedirect("/RatingList.jsp");
+				response.sendRedirect("/bookList.jsp");
 		}else{
 			response.sendRedirect("AddRatingsError.html");
 		}
@@ -34,3 +32,5 @@ public class DeleteRating extends HttpServlet
 	}
 
 }
+
+

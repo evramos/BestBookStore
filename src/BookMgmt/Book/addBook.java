@@ -1,23 +1,29 @@
 package BookMgmt.Book;
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
-import BookMgmt.Book.Book; 
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+import BookMgmt.Book.Book;
 import BookMgmt.Book.BookDB;
 
-@WebServlet("/BookUpdate")
-public class BookUpdate extends HttpServlet{
+
+@WebServlet("/AddBook")
+public class addBook extends HttpServlet{
+
 	private static final long serialVersionUID = 1L;
-    
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+
+	public addBook() throws Exception
 	{
+		super();
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
 		Book book = new Book();
-		book.setBookId(Integer.parseInt(request.getParameter("bookId")));
+
 		book.setTitle(request.getParameter("title"));
 		book.setAuthor(request.getParameter("author"));
 		book.setCategory(request.getParameter("category"));
@@ -32,17 +38,14 @@ public class BookUpdate extends HttpServlet{
 		book.setIsbn10(request.getParameter("isbn10"));
 		book.setIsbn13(request.getParameter("isbn13"));
 		book.setPrice(Integer.parseInt(request.getParameter("price")));
-		book.setInvQty(Integer.parseInt(request.getParameter("invQty")));
+		book.setInvQty(Integer.parseInt(request.getParameter("invQty")));		
 		
 		BookDB dbConn = new BookDB();
-		int i = dbConn.updateBook(book);
-		if(i > 0)
-		{
-			response.sendRedirect("/bookList.jsp");
-		}
-		else
-		{
-			response.sendRedirect("bookError.html");
+		int i = dbConn.addBook(book);
+		if(i > 0){
+				response.sendRedirect("../index.jsp");
+		}else{
+			response.sendRedirect("signUpError.html");
 		}
 	}
 	
@@ -50,5 +53,4 @@ public class BookUpdate extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		doPost(request, response);
 	}
-
 }

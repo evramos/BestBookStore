@@ -85,7 +85,7 @@ public class BookDB {
 	
 	//insert a new book
 	
-	public int registerBook(Book book){
+	public int addBook(Book book){
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;

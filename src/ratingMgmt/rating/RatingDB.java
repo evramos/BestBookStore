@@ -3,11 +3,9 @@ package ratingMgmt.rating;
 import java.sql.*;
 import java.util.*;
 
-<<<<<<< HEAD
+
 import UserMgmt.user.User;
-import BookMgmt.book;
-=======
->>>>>>> davids-brqnch
+import BookMgmt.Book.*;
 import ratingMgmt.rating.rating;
 import data.dbConnect.DBConnectionPool;
 

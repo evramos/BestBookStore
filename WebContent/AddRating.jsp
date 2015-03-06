@@ -42,6 +42,8 @@
 				</div>
 				<div><label> Comments: <br></label><textarea name="comment" rows="5" cols="80"></textarea></div>
 				<input type="hidden" name="RatingId" />
+				<input type = "hidden" name="BookId" value=<%=book.getBookId() %> />
+				<input type = "hidden" name="UserId" value=<%=user.getUserId() %> />
 				<input type="submit" value="Add Rating" id="submit"/>
 			</fieldset>
 		</form>

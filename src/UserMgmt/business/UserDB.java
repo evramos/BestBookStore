@@ -8,24 +8,22 @@ import data.dbConnect.DBConnectionPool;
 
 public class UserDB
 {	
+	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
+	final static String db_username ="root";
+	final static String db_passwd ="p0p1c0rn";
+	
 	DBConnectionPool connPool = null;
 	
-/*----------------------------------------------------------------------------*/
-	//Default Constructors	
-	public UserDB()
-	{
+	public UserDB(){
 		this.connPool = setDBConnection();
 	}
 	
-/*----------------------------------------------------------------------------*/
-	public DBConnectionPool setDBConnection()
-	{
-		try
-		{
-			connPool = new DBConnectionPool();
+	public DBConnectionPool setDBConnection(){
+		try{
+			connPool = new DBConnectionPool(db_url, db_username, db_passwd);
+		}catch (Exception et) {
+			et.printStackTrace();
 		}
-		catch (Exception et) { et.printStackTrace(); }
-
 		return connPool;
 	}
 	

@@ -23,9 +23,9 @@ public class AddRating extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 			int Stars = Integer.parseInt(request.getParameter("Stars"));
-			String Comments= request.getParameter("Comments");
-			int BookId= Integer.parseInt(request.getParameter("BookId"));
-			int UserId= Integer.parseInt(request.getParameter("UserId"));
+			String Comments= request.getParameter("comment");
+			int BookId = Integer.parseInt(request.getParameter("BookId"));
+			int UserId = Integer.parseInt(request.getParameter("UserId"));
 			
 			rating Rating = new rating(Stars, Comments, UserId, BookId );
 			RatingDB dbConn = new RatingDB();

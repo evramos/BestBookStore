@@ -2,8 +2,7 @@
     pageEncoding="US-ASCII"%>
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
-<%@ page import="BookMgmt.Book" %>
-<%@ page import="BookMgmt.BookDB" %>
+<%@ page import="BookMgmt.Book.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

@@ -2,9 +2,7 @@
     pageEncoding="US-ASCII"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
-<%@ page import="BookMgmt.Book" %>
-<%@ page import="BookMgmt.BookDB"%> 
-<%@ page import="BookMgmt.BookUpdate"%> 
+<%@ page import="BookMgmt.Book.*" %>
 <%	
 	String bookId = request.getParameter("bookId");
 	BookDB bookDB = new BookDB();

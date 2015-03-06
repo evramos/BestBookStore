@@ -5,7 +5,7 @@
 <%@ page import="ratingMgmt.rating.*" %>
 <%@ page import="UserMgmt.user.*" %>
 <%@ page import="UserMgmt.business.UserDB" %>
-<%@ page import="BookMgmt.*"%>
+<%@ page import="BookMgmt.Book.*"%>
 <%	
 	RatingDB ratingDB = new RatingDB();
 	UserDB userDBConn = new UserDB();

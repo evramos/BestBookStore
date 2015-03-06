@@ -51,7 +51,7 @@
 			out.println("<td>"+bookList.get(i).getPrice()+"</td>");
 			out.println("<td>"+bookList.get(i).getInvQty()+"</td>");
 			out.println("<td><a href=\"bookUpdateForm.jsp?bookId="+bookList.get(i).getBookId()+"\">[ Update ]</a>"+
-				"<a href=\"BookDelete?bookId="+bookList.get(i).getBookId()+"\">[ Delete ]</a></td>");
+				"<a href=\"DeleteBook?bookId="+bookList.get(i).getBookId()+"\">[ Delete ]</a></td>");
 			out.println("</tr>");
 		}
 

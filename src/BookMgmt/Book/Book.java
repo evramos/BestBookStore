@@ -26,8 +26,8 @@ public class Book implements Serializable
 	
 
 	//Default Constructor
-	public Book((String title, String author, int year, String publisher,
-		String category, String isbn10, String isbn13, float price, int invQty))
+	public Book(String title, String author, int year, String publisher,
+		String category, String isbn10, String isbn13, float price, int invQty)
 	{
 		this.title = title;
 		this.author = author;

@@ -18,10 +18,10 @@
 				<a href="https://www.google.com" class="login icon-lock">Sign In</a>
 				
 				<div><span class="star">*</span><label>  First Name: </label>
-					<input type="text" name="FirstName" id="FirstName"  required/></div>
+					<input type="text" name="firstName" id="firstName"  required/></div>
 
 				<div><span class="star">*</span><label>  Last Name: </label>
-					<input type="text" name="LastName" id="LastName"  required/></div>
+					<input type="text" name="lastName" id="lastName"  required/></div>
 					
 				<div><span class="star">*</span><label>  Password: </label>
 					<input type="password" name="password" id="password"  required/></div>

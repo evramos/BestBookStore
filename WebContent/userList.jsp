@@ -40,8 +40,8 @@
 			out.println("<td>"+userList.get(i).getEmail()+"</td>");
 			out.println("<td>"+userList.get(i).getSignDate()+"</td>");
 			out.println("<td>"+userList.get(i).getLastDate()+"</td>");
-			<!-- out.println("<td><a href=\"userUpdateForm.jsp?username="+userList.get(i).getUserId()+"\">[ Update ]</a>"+
-				"<a href=\"userDelete?username="+userList.get(i).getUserId()+"\">[ Delete ]</a></td>"); -->
+			out.println("<td><a href=\"userUpdateForm.jsp?username="+userList.get(i).getUserId()+"\">[ Update ]</a>"+
+			"<a href=\"userDelete?username="+userList.get(i).getUserId()+"\">[ Delete ]</a></td>"); 
 			out.println("</tr>");
 		}
 

@@ -32,10 +32,12 @@
 		<tbody>
 <%
 		ArrayList<rating> ratingList=ratingDB.selectRatingsByBook(book.getBookId()); 
-		for(int i = 0; i < ratingList.size(); i++){
+		for(int i = 0; i < ratingList.size(); i++)
+		{
 			user = userDB.selectUser(ratingList.get(i).getUserId());
+			
 			out.println("<tr>");
-			out.println("<td>"+user.getFirstName()+"</td>");
+			out.println("<td>"+user.getLastName()+", "+user.getFirstName()+"</td>");
 			out.println("<td>"+ratingList.get(i).getStars()+"</td>");
 			out.println("<td>"+ratingList.get(i).getComments()+"</td>");
 			out.println("</tr>");

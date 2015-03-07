@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="BookMgmt.Book.*" %>
 <%	

@@ -11,8 +11,9 @@
 	UserDB userDBConn = new UserDB();
 	BookDB bookDBConn = new BookDB();
 	
-	Book book= bookDBConn.selectBook(Integer.parseInt(request.getParameter("BookId")));
-	User user = userDBConn.selectUser(Integer.parseInt(request.getParameter("UserId")));
+	rating Rating = ratingDB.selectRating(Integer.parseInt(request.getParameter("ratingId")));
+	Book book= bookDBConn.selectBook(Rating.getBookId());
+	User user = userDBConn.selectUser(Rating.getUserId());
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

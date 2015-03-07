@@ -45,7 +45,7 @@
 			out.println("<td>"+ratingList.get(i).getComments()+"</td>");
 
 			out.println("<td><a href=\"EditRating.jsp?ratingId="+ratingList.get(i).getRatingsId()+"\">[ Update ]</a>"+
-				"<a href=\"DeleteRating?RatingId="+ratingList.get(i).getRatingsId()+"\">[ Delete ]</a></td>");
+				"<a href=\"DeleteRating?ratingId="+ratingList.get(i).getRatingsId()+"\">[ Delete ]</a></td>");
 			out.println("</tr>");
 		}
 %>

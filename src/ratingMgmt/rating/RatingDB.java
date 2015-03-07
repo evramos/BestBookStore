@@ -3,9 +3,6 @@ package ratingMgmt.rating;
 import java.sql.*;
 import java.util.*;
 
-
-import UserMgmt.user.User;
-import BookMgmt.Book.*;
 import ratingMgmt.rating.rating;
 import data.dbConnect.DBConnectionPool;
 

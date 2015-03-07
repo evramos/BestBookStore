@@ -120,7 +120,7 @@ public class RatingDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from `bookstore`.`rating` where `RatingId` = "+RatingId;
+				String strQuery = "delete from `bookstore`.`ratings` where `RatingId` = "+RatingId;
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){

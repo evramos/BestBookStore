@@ -37,7 +37,7 @@
 				<input type="radio" name="Stars" value=5/> 5
 			</div>
 			<div><label> Comments: </label><textarea name="comment" rows="5" cols="80"></textarea></div>
-				<input type="hidden" name="RatingId" />
+				<input type="hidden" name="RatingId" value=<%=Rating.getRatingsId()%> />
 				<input type="submit" value="Update Rating" id="submit"/>
 		</fieldset>
 	</form>

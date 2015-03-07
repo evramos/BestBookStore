@@ -19,6 +19,7 @@ public class UpdateRating extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		rating Rating = new rating();
+		Rating.setRatingsId(Integer.parseInt(request.getParameter("RatingId")));
 		Rating.setComments(request.getParameter("Comments"));
 		Rating.setStars(Integer.parseInt(request.getParameter("Stars")));
 		Rating.setUserId(Integer.parseInt(request.getParameter("UserId")));

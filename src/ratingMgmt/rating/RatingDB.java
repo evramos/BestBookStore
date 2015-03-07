@@ -80,7 +80,7 @@ public class RatingDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "update `bookstore`.`rating` set `Date` = \""+Rating.getDate()+"\",`Stars` = \""+Rating.getStars()+"\",`Comments` = \""+Rating.getComments()+"\", `User_User ID` = "+Rating.getUserId()+", `Book_Book ID` = "+Rating.getBookId()+" where `RatingId` = "+Rating.getRatingsId(); 
+				String strQuery = "update `bookstore`.`ratings` set `Date` = \""+Rating.getDate()+"\",`Stars` = \""+Rating.getStars()+"\",`Comments` = \""+Rating.getComments()+"\", `User_User ID` = "+Rating.getUserId()+", `Book_Book ID` = "+Rating.getBookId()+" where `Ratings Id` = "+Rating.getRatingsId(); 
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -159,7 +159,7 @@ public class RatingDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `RatingId` = " + RatingId;
+				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `Ratings Id` = " + RatingId;
 				rs = stmt.executeQuery(strQuery);
 				if(rs.next())
 				{

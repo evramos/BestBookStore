@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Create New Account</title>
+	<title>Add Book to inventory</title>
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
@@ -15,7 +15,7 @@
 			<fieldset>
 				<legend class="legend_text"> Add a New Book to the Inventory. </legend>
 
-				<a href="https://www.google.com" class="login icon-lock">Sign In</a>
+
 				
 				<div><span class="star">*</span><label>  Title: </label>
 					<input type="text" name="title" id="title"  required/></div>

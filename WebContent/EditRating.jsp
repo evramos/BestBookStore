@@ -32,9 +32,9 @@
 			</div>
 		<fieldset>
 			<div><span class="star"></span><label>  Stars: </label>
-				<input type="radio" name="Stars" value=1/> 1<input type="radio" name="Stars" value=2/> 2
-				<input type="radio" name="Stars" value=3/> 3<input type="radio" name="Stars" value=4/> 4
-				<input type="radio" name="Stars" value=5/> 5
+				<input type="radio" name="Stars" value="1" /> 1<input type="radio" name="Stars" value="2" /> 2
+				<input type="radio" name="Stars" value="3" /> 3<input type="radio" name="Stars" value="4" /> 4
+				<input type="radio" name="Stars" value="5" /> 5
 			</div>
 			<div><label> Comments: </label><textarea name="comment" rows="5" cols="80"></textarea></div>
 				<input type="hidden" name="RatingId" value=<%=Rating.getRatingsId()%> />

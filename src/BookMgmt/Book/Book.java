@@ -2,7 +2,8 @@ package BookMgmt.Book;
 import java.io.Serializable;
 import java.sql.Blob;
 
-public class Book implements Serializable{
+public class Book implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 	
 	private int bookId;
@@ -19,15 +20,34 @@ public class Book implements Serializable{
 	private float price;
 	private int invQty;
 	
-	public Book(){
-	}
+/*----------------------------------------------------------------------------*/
+	//Blank Constructor
+	public Book(){}
 	
-	public Book(String title, String author, Blob art, String description, String edition, int year, String publisher, 
-    String category, String isbn10, String isbn13, float price, int invQty){
+
+	//Default Constructor
+	public Book((String title, String author, int year, String publisher,
+		String category, String isbn10, String isbn13, float price, int invQty))
+	{
 		this.title = title;
 		this.author = author;
-		this.bookCoverArt = art;
-		this.bookDescription = description;
+		this.year = year;
+		this.publisher = publisher;
+		this.category = category;
+		this.isbn10 = isbn10;
+		this.isbn13 = isbn13;
+		this.price = price;
+		this.invQty = invQty;
+	}
+
+	//Book Everything Constructor
+	public Book(String title, String author, Blob art, String description, String edition, int year,
+		String publisher, String category, String isbn10, String isbn13, float price, int invQty)
+    {
+		this.title = title;
+		this.author = author;
+		bookCoverArt = art;
+		bookDescription = description;
 		this.edition = edition;
 		this.year = year;
 		this.publisher = publisher;
@@ -38,108 +58,44 @@ public class Book implements Serializable{
 		this.invQty = invQty;
 	}
 	
-	public int getBookId() {
-		return this.bookId;
-	}
+/*----------------------------------------------------------------------------*/
+	public int getBookId() { return bookId; }
+	public void setBookId(int bookId) { this.bookId = bookId; }
 	
-	public void setBookId(int BookId) {
-		this.bookId = BookId;
-	}
+	public String getTitle() { return title; }
+	public void setTitle(String title) { this.title = title; }
 	
-	public String getTitle() {
-		return this.title; 
-	}
+	public String getAuthor() { return author; }
+	public void setAuthor(String author) { this.author = author; }
 	
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	public Blob getBookCoverArt() { return bookCoverArt; }
+	public void setBookCoverArt(Blob art) { bookCoverArt = art; }
 	
-	public String getAuthor(){
-		return this.author;
-	}
+	public String getBookDescription() { return bookDescription; }
+	public void setBookDescription(String description) { bookDescription = description; }
 	
-	public void setAuthor(String Author){
-		this.author = Author;
-	}
+	public String getEdition() { return edition; }
+	public void setEdition(String edition) { this.edition = edition; }
 	
-	public Blob getBookCoverArt() {
-		return this.bookCoverArt;
-	}
+	public int getYear() { return year; }
+	public void setYear(int year) { this.year = year; }
 	
-	public void setBookCoverArt(Blob art) {
-		this.bookCoverArt = art;
-	}
+	public String getPublisher() { return publisher; }
+	public void setPublisher(String publisher) { this.publisher = publisher; }
 	
-	public String getBookDescription() {
-		return this.bookDescription;
-	}
+	public String getCategory() { return category; }
+	public void setCategory(String category) { this.category = category; }
 	
-	public void setBookDescription(String description) {
-		this.bookDescription = description;
-	}
+	public String getIsbn10() { return isbn10; }
+	public void setIsbn10(String isbn10) { this.isbn10 = isbn10; }
 	
-	public String getEdition() {
-		return this.edition;
-	}
+	public String getIsbn13() { return isbn13; }
+	public void setIsbn13(String isbn13) { this.isbn13 = isbn13;}
 	
-	public void setEdition(String edition) {
-		this.edition = edition;
-	}
+	public float getPrice() { return price; }
+	public void setPrice(float price) { this.price = price; }
 	
-	public int getYear() {
-		return this.year;
-	}
-	
-	public void setYear(int year) {
-		this.year = year;
-	}
-	
-	public String getPublisher() {
-		return this.publisher;
-	}
-	
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-	
-	public String getCategory(){
-		return this.category;
-	}
-	
-	public void setCategory(String Category){
-		this.category = Category;
-	}
-	
-	public String getIsbn10() {
-		return this.isbn10;
-	}
-	
-	public void setIsbn10(String isbn10) {
-		this.isbn10 = isbn10;
-	}
-	
-	public String getIsbn13() {
-		return this.isbn13;
-	}
-	
-	public void setIsbn13(String isbn13) {
-		this.isbn13 = isbn13;
-	}
-	
-	public float getPrice() {
-		return this.price;
-	}
-	
-	public void setPrice(float price) {
-		this.price = price;
-	}
-	
-	public int getInvQty() {
-		return this.invQty;
-	}
-	
-	public void setInvQty(int qty) {
-		this.invQty = qty;
-	}
+	public int getInvQty() { return invQty; }
+	public void setInvQty(int qty) { this.invQty = qty; }
 }
 

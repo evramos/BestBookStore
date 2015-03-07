@@ -16,7 +16,7 @@ public class DeleteRating extends HttpServlet
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String RatingId= request.getParameter("RatingId");
+		String RatingId= request.getParameter("ratingId");
 		
 		RatingDB dbConn = new RatingDB();
 		

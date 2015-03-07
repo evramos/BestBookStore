@@ -29,37 +29,37 @@
 				<div><span class="star">*</span><label>  Category: </label>
 					<select name="category" >
 						<option value="">Please Choose a Category</option>
-						<option <% if(book.getCategory() == "Arts & Photography Books"){echo("selected");} %> value="Arts & Photography Books">Arts & Photography Books</option>
-						<option <% if(book.getCategory() == "Biographies & Memoirs"){echo("selected");} %>value="Biographies & Memoirs">Biographies & Memoirs</option>
-						<option <% if(book.getCategory() == "Business & Money"){echo("selected");} %>value="Business & Money">Business & Money</option>
-						<option <% if(book.getCategory() == "Calendars"){echo("selected");} %>value="Calendars">Calendars</option>
-						<option <% if(book.getCategory() == "Children's Books"){echo("selected");} %>value="Children's Books">Children's Books</option>
-						<option <% if(book.getCategory() == "Christian Books & Bibles"){echo("selected");} %>value="Christian Books & Bibles">Christian Books & Bibles</option>
-						<option <% if(book.getCategory() == "Comics & Graphic Novels"){echo("selected");} %>value="Comics & Graphic Novels">Comics & Graphic Novels</option>
-						<option <% if(book.getCategory() == "Computers & Technology"){echo("selected");} %>value="Computers & Technology">Computers & Technology</option>
-						<option <% if(book.getCategory() == "Cookbooks, Food & Wine"){echo("selected");} %>value="Cookbooks, Food & Wine">Cookbooks, Food & Wine</option>
-						<option <% if(book.getCategory() == "Crafts, Hobbies & Home"){echo("selected");} %>value="Crafts, Hobbies & Home">Crafts, Hobbies & Home</option>
-						<option <% if(book.getCategory() == "Education & Teaching"){echo("selected");} %>value="Education & Teaching">Education & Teaching</option>
-						<option <% if(book.getCategory() == "Engineering & Transportation"){echo("selected");} %>value="Engineering & Transportation">Engineering & Transportation</option>
-						<option <% if(book.getCategory() == "Gay & Lesbian"){echo("selected");} %>value="Gay & Lesbian">Gay & Lesbian</option>
-						<option <% if(book.getCategory() == "Health, Fitness & Dieting"){echo("selected");} %>value="Health, Fitness & Dieting">Health, Fitness & Deiting</option>
-						<option <% if(book.getCategory() == "History"){echo("selected");} %>value="History">History</option>
-						<option <% if(book.getCategory() == "Humor & Entertainment"){echo("selected");} %>value="Humor & Entertainment">Humor & Entertainment</option>
-						<option <% if(book.getCategory() == "Law"){echo("selected");} %>value="Law">Law</option>
-						<option <% if(book.getCategory() == "Literature & Fiction"){echo("selected");} %>value="Literature & Fiction">Literature & Fiction</option>
-						<option <% if(book.getCategory() == "Medical Books"){echo("selected");} %>value="Medical Books">Medical Books</option>
-						<option <% if(book.getCategory() == "Mystery, Thriller & Suspense"){echo("selected");} %>value="Mystery, Thriller & Suspense">Mystery, Thriller & Suspense</option>
-						<option <% if(book.getCategory() == "Parenting & Relationships"){echo("selected");} %>value="Parenting & Relationships">Parenting & Relationships</option>
-						<option <% if(book.getCategory() == "Politics & Social Sciences"){echo("selected");} %>value="Politics & Social Sciences">Politics & Social Sciences</option>
-						<option <% if(book.getCategory() == "Reference"){echo("selected");} %>value="Reference">Reference</option>
-						<option <% if(book.getCategory() == "Religion & Spirituality"){echo("selected");} %>value="Religion & Spirituality">Religion & Spirituality</option>
-						<option <% if(book.getCategory() == "Romance"){echo("selected");} %>value="Romance">Romance</option>
-						<option <% if(book.getCategory() == "Science & Math"){echo("selected");} %>value="Science & Math">Science & Math</option>
-						<option <% if(book.getCategory() == "Science Fiction & Fantasy"){echo("selected");} %>value="Science Fiction & Fantasy">Science Fiction & Fantasy</option>
-						<option <% if(book.getCategory() == "Self-Help"){echo("selected");} %>value="Self-Help">Self-Help</option>
-						<option <% if(book.getCategory() == "Sports & Outdoors"){echo("selected");} %>value="Sports & Outdoors">Sports & Outdoors</option>
-						<option <% if(book.getCategory() == "Teen & Young Adult"){echo("selected");} %>value="Teen & Young Adult">Teen & Young Adult</option>
-						<option <% if(book.getCategory() == "Travel"){echo("selected");} %>value="Travel">Travel</option>
+						<option <% if(book.getCategory() == "Arts & Photography Books"){out.println("selected");} %> value="Arts & Photography Books">Arts & Photography Books</option>
+						<option <% if(book.getCategory() == "Biographies & Memoirs"){out.println("selected");} %>value="Biographies & Memoirs">Biographies & Memoirs</option>
+						<option <% if(book.getCategory() == "Business & Money"){out.println("selected");} %>value="Business & Money">Business & Money</option>
+						<option <% if(book.getCategory() == "Calendars"){out.println("selected");} %>value="Calendars">Calendars</option>
+						<option <% if(book.getCategory() == "Children's Books"){out.println("selected");} %>value="Children's Books">Children's Books</option>
+						<option <% if(book.getCategory() == "Christian Books & Bibles"){out.println("selected");} %>value="Christian Books & Bibles">Christian Books & Bibles</option>
+						<option <% if(book.getCategory() == "Comics & Graphic Novels"){out.println("selected");} %>value="Comics & Graphic Novels">Comics & Graphic Novels</option>
+						<option <% if(book.getCategory() == "Computers & Technology"){out.println("selected");} %>value="Computers & Technology">Computers & Technology</option>
+						<option <% if(book.getCategory() == "Cookbooks, Food & Wine"){out.println("selected");} %>value="Cookbooks, Food & Wine">Cookbooks, Food & Wine</option>
+						<option <% if(book.getCategory() == "Crafts, Hobbies & Home"){out.println("selected");} %>value="Crafts, Hobbies & Home">Crafts, Hobbies & Home</option>
+						<option <% if(book.getCategory() == "Education & Teaching"){out.println("selected");} %>value="Education & Teaching">Education & Teaching</option>
+						<option <% if(book.getCategory() == "Engineering & Transportation"){out.println("selected");} %>value="Engineering & Transportation">Engineering & Transportation</option>
+						<option <% if(book.getCategory() == "Gay & Lesbian"){out.println("selected");} %>value="Gay & Lesbian">Gay & Lesbian</option>
+						<option <% if(book.getCategory() == "Health, Fitness & Dieting"){out.println("selected");} %>value="Health, Fitness & Dieting">Health, Fitness & Deiting</option>
+						<option <% if(book.getCategory() == "History"){out.println("selected");} %>value="History">History</option>
+						<option <% if(book.getCategory() == "Humor & Entertainment"){out.println("selected");} %>value="Humor & Entertainment">Humor & Entertainment</option>
+						<option <% if(book.getCategory() == "Law"){out.println("selected");} %>value="Law">Law</option>
+						<option <% if(book.getCategory() == "Literature & Fiction"){out.println("selected");} %>value="Literature & Fiction">Literature & Fiction</option>
+						<option <% if(book.getCategory() == "Medical Books"){out.println("selected");} %>value="Medical Books">Medical Books</option>
+						<option <% if(book.getCategory() == "Mystery, Thriller & Suspense"){out.println("selected");} %>value="Mystery, Thriller & Suspense">Mystery, Thriller & Suspense</option>
+						<option <% if(book.getCategory() == "Parenting & Relationships"){out.println("selected");} %>value="Parenting & Relationships">Parenting & Relationships</option>
+						<option <% if(book.getCategory() == "Politics & Social Sciences"){out.println("selected");} %>value="Politics & Social Sciences">Politics & Social Sciences</option>
+						<option <% if(book.getCategory() == "Reference"){out.println("selected");} %>value="Reference">Reference</option>
+						<option <% if(book.getCategory() == "Religion & Spirituality"){out.println("selected");} %>value="Religion & Spirituality">Religion & Spirituality</option>
+						<option <% if(book.getCategory() == "Romance"){out.println("selected");} %>value="Romance">Romance</option>
+						<option <% if(book.getCategory() == "Science & Math"){out.println("selected");} %>value="Science & Math">Science & Math</option>
+						<option <% if(book.getCategory() == "Science Fiction & Fantasy"){out.println("selected");} %>value="Science Fiction & Fantasy">Science Fiction & Fantasy</option>
+						<option <% if(book.getCategory() == "Self-Help"){out.println("selected");} %>value="Self-Help">Self-Help</option>
+						<option <% if(book.getCategory() == "Sports & Outdoors"){out.println("selected");} %>value="Sports & Outdoors">Sports & Outdoors</option>
+						<option <% if(book.getCategory() == "Teen & Young Adult"){out.println("selected");} %>value="Teen & Young Adult">Teen & Young Adult</option>
+						<option <% if(book.getCategory() == "Travel"){out.println("selected");} %>value="Travel">Travel</option>
 					</select>						
 				</div>
 					

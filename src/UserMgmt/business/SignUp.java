@@ -31,7 +31,7 @@ public class SignUp extends HttpServlet{
 			
 			int i = dbConn.registerUser(user);
 			if(i > 0){
-					response.sendRedirect("../index.jsp");
+					response.sendRedirect("/TheBestBookstore/index.jsp");
 			}else{
 				response.sendRedirect("signUpError.html");
 			}

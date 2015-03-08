@@ -10,7 +10,7 @@ public class UserDB
 {	
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
-	final static String db_passwd ="p0p1c0rn";
+	final static String db_passwd ="nopassword";
 	
 	DBConnectionPool connPool = null;
 	

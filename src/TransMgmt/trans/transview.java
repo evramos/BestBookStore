@@ -1,11 +1,12 @@
 package TransMgmt.trans;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 	public class transview implements Serializable{
 		private static final long serialVersionUID = 1L;
 		
 		private int order;
-		private int transDate;
+		private Timestamp transDate;
 		private int userId;
 		private String lastName;
 		private String firstName;
@@ -24,8 +25,8 @@ import java.io.Serializable;
 		public int getOrder(){return order;}
 		public void setOrder(int order){ this.order = order;}
 		
-		public int getTransDate(){return transDate;}
-		public void setTransDate(int transDate){this.transDate = transDate;}
+		public Timestamp getTransDate(){return transDate;}
+		public void setTransDate(Timestamp transDate){this.transDate = transDate;}
 		
 		public int getUserId(){return userId;}
 		public void setUserId(int userId){this.userId = userId;}
@@ -58,7 +59,7 @@ import java.io.Serializable;
 		public void setPrice(float price){this.price = price;}
 		
 		public int getInvQty(){return invQty;}
-		publi void int setInvQty(int invQty){ this.invQty = invQty;}
+		public void setInvQty(int invQty){ this.invQty = invQty;}
 	}
 	
 

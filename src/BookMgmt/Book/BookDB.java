@@ -10,9 +10,12 @@ public class BookDB {
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
 	final static String db_passwd ="nopassword";
+	// final static String db_passwd ="p0p1c0rn";
+	//final static String db_passwd ="Blacktail85$";
 	
 	DBConnectionPool connPool = null;
-	
+/*----------------------------------------------------------------------------*/
+	//Default Constructor
 	public BookDB(){
 		this.connPool = setDBConnection();
 	}
@@ -26,8 +29,8 @@ public class BookDB {
 		return connPool;
 	}
 	
+/*----------------------------------------------------------------------------*/
 	//select one book
-	
 	public Book selectBook(int bookId){
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -82,9 +85,9 @@ public class BookDB {
 		}
 		return book;
 	}
-	
-	//insert a new book
-	
+
+/*----------------------------------------------------------------------------*/
+	//insert a new book	
 	public int addBook(Book book){
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -122,9 +125,9 @@ public class BookDB {
 		}
 		return resultNo;
 	}
-	
+
+/*----------------------------------------------------------------------------*/
 	//update one book's information
-	
 	public int updateBook(Book book){
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -165,9 +168,9 @@ public class BookDB {
 		}
 		return resultNo;
 	}
-	
-	//delete one book
-	
+
+/*----------------------------------------------------------------------------*/
+	//delete one book	
 	public int deleteBook(int bookId){
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -205,9 +208,9 @@ public class BookDB {
 		}
 		return resultNo;
 	}
-	
-	//select all books 
-	
+
+/*----------------------------------------------------------------------------*/
+	//select all books 	
 	public ArrayList<Book> selectBooks(){
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -271,6 +274,7 @@ public class BookDB {
 		ResultSet rs = null;
 		Connection conn = null;
 		ArrayList<Book> books = new ArrayList<>();
+		
 		try{
 			conn = connPool.getConnection();
 			
@@ -280,7 +284,9 @@ public class BookDB {
 				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, "
 						+ "`year`, `publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `bookstore`.`book` "
 						+ "where `"+type+"` like " + term;
+
 				rs = stmt.executeQuery(strQuery);
+				
 				while(rs.next()){
 					Book book = new Book();
 					book.setBookId(rs.getInt(1));

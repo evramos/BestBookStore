@@ -7,15 +7,15 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Create New Account</title>
+	<title>Add Book to inventory</title>
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
-		<form action="AddBook" method="post">
+		<form action="addBook" method="post">
 			<fieldset>
 				<legend class="legend_text"> Add a New Book to the Inventory. </legend>
 
-				<a href="https://www.google.com" class="login icon-lock">Sign In</a>
+
 				
 				<div><span class="star">*</span><label>  Title: </label>
 					<input type="text" name="title" id="title"  required/></div>
@@ -25,7 +25,7 @@
 					
 				<div><span class="star">*</span><label>  Category: </label>
 					<select name="category">
-						<option value="">Please Choose a Category</option>
+						<option value="" disabled>Please Choose a Category</option>
 						<option value="Arts & Photography Books">Arts & Photography Books</option>
 						<option value="Biographies & Memoirs">Biographies & Memoirs</option>
 						<option value="Business & Money">Business & Money</option>
@@ -81,54 +81,5 @@
 				<input type="hidden" name="BookId" />
 				<input type="submit" value="Add Book" id="submit"/>
 		</form>
-		
-		<script>
-   		var elMsg = document.getElementById('warning');
-		 
-		function loginCheck()
-		{
-	        if (document.getElementById('firstName').value == "")
-	        {
-	                elMsg.textContent= "Pleaes enter a first name";
-	                document.getElementById('firstName').focus();
-	                return false;
-	        }
-	        if (document.getElementById('lastName').value == "")
-	        {
-	                elMsg.textContent= "Pleaes enter a last name";
-	                document.getElementById('lastName').focus();
-	                return false;
-	        }
-	        if (document.getElementById('password').value == "")
-	        {
-	              	elMsg.textContent = "Please enter a password";
-	                document.getElementById('password').focus();
-	                return false;
-	        }
-	        if (document.getElementById('repasswd').value == "")
-	        {
-	        	elMsg.textContent = "Please confirm your password";
-                document.getElementById('repasswd').focus();
-                return false;
-	        }
-
-	        if (document.getElementById('password').value != document.getElementById('repasswd').value)
-			{
-                elMsg.textContent = "The new password and confirmation password do not match.";
-                document.getElementById('password').focus();
-                return false;
-        	}
-
-	        if (document.getElementById('email').value == "")
-	        {
-	        	elMsg.textContent = "Please enter your email";
-                document.getElementById('email').focus();
-                return false;
-	        }
-		}
-		
-		var elSubmit = document.getElementById('submit');
-		elSubmit.onclick =loginCheck;
-	</script>
 	</body>
 </html>

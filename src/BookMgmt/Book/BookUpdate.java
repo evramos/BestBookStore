@@ -17,7 +17,7 @@ public class BookUpdate extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		Book book = new Book();
-		book.setBookId(Integer.parseInt(request.getParameter("bookId")));
+		book.setBookId(Integer.parseInt(request.getParameter("BookId")));
 		book.setTitle(request.getParameter("title"));
 		book.setAuthor(request.getParameter("author"));
 		book.setCategory(request.getParameter("category"));
@@ -31,7 +31,7 @@ public class BookUpdate extends HttpServlet{
 		book.setCategory(request.getParameter("category"));
 		book.setIsbn10(request.getParameter("isbn10"));
 		book.setIsbn13(request.getParameter("isbn13"));
-		book.setPrice(Integer.parseInt(request.getParameter("price")));
+		book.setPrice(Float.parseFloat(request.getParameter("price")));
 		book.setInvQty(Integer.parseInt(request.getParameter("invQty")));
 		
 		BookDB dbConn = new BookDB();

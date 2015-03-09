@@ -244,7 +244,8 @@ public class RatingDB {
 		}
 		return ratings;
 	}
-public ArrayList<rating> selectRatingsByBook(int BookId)
+	
+	public ArrayList<rating> selectRatingsByBook(int BookId)
 	{
 		Statement stmt = null;
 		ResultSet rs = null;

@@ -20,6 +20,8 @@
 <li><a href="signUpForm_User.jsp">Create an account</a></li>
 <li><a href="SignIn.jsp">Log in</a></li>
 <li><a href="bookList.jsp">View all books</a></li>
+<li><a href="BookListRatings.jsp">View all book ratings</a>
+<li><a href="userList.jsp">View all users</a>
 </ul>
 
 <form action="SearchResults.jsp" method="get">

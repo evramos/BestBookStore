@@ -55,7 +55,7 @@ ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
 			out.println("<td>"+bookList.get(i).getIsbn13()+"</td>");
 			out.println("<td>"+bookList.get(i).getPrice()+"</td>");
 			out.println("<td>"+bookList.get(i).getInvQty()+"</td>");
-			out.println("<td><a href=\"BookView.jsp?BookId="+bookList.get(i).getBookId()+"\">View</a>");
+			out.println("<td><a href=\"BookView.jsp?BookId="+bookList.get(i).getBookId()+"\">[View]</a>");
 			out.println("</tr>");
 		}
 		%>

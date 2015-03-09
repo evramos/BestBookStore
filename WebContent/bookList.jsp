@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>All Books in the Bookstore</title>
+<title>Book List - The Best Bookstore</title>
 <link rel="stylesheet" href="css/c06.css"/>
 </head>
 <body>
@@ -50,8 +50,8 @@
 			out.println("<td>"+bookList.get(i).getIsbn13()+"</td>");
 			out.println("<td>"+bookList.get(i).getPrice()+"</td>");
 			out.println("<td>"+bookList.get(i).getInvQty()+"</td>");
-			out.println("<td><a href=\"bookUpdateForm.jsp?BookId="+bookList.get(i).getBookId()+"\">[ Update ]</a>"+
-				"<a href=\"DeleteBook?BookId="+bookList.get(i).getBookId()+"\">[ Delete ]</a></td>");
+			out.println("<td><a href=\"bookUpdateForm.jsp?BookId="+bookList.get(i).getBookId()+"\">[Update]</a>"+
+				"<br><a href=\"DeleteBook?BookId="+bookList.get(i).getBookId()+"\">[Delete]</a></td>");
 			out.println("</tr>");
 		}
 

@@ -21,7 +21,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Rating for <%=book.getTitle()%>></title>
+<link rel="stylesheet" href="css/c06.css" />
+<title>Rate <%=book.getTitle()%> - The Best Bookstore</title>
 </head>
 <body>
 <div>

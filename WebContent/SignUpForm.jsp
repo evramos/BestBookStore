@@ -14,7 +14,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SignUpForm</title>
+<link rel="stylesheet" href="css/c06.css"/>
+</head>
+<title>Create Account - The Best Bookstore</title>
 </head>
 <body>
 <form action="SignUp" method="post">

@@ -16,7 +16,7 @@
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head><title>User Ratings</title>
+	<head><title>Your Ratings - The Best Bookstore</title>
 		<link rel="stylesheet" href="css/c06.css" />
 	</head>
 	<body>

@@ -1,6 +1,6 @@
 package BookMgmt.Book;
+import java.io.IOException;
 import java.io.Serializable;
-import java.io.InputStream;
 
 public class Book implements Serializable
 {
@@ -12,7 +12,7 @@ public class Book implements Serializable
 	private String author;
 	private String category;
 
-	private InputStream bookCoverArt;
+	private byte[] bookCoverArt;
 
 	private String bookDescription;
 	private String edition;
@@ -31,8 +31,8 @@ public class Book implements Serializable
 	public Book(){}
 
 	//Default Constructor
-	public Book(String title, String author, InputStream bookCoverArt, String category, String description,
-		String edition, int year, String publisher, String isbn10, String isbn13, float price, int invQty)
+	public Book(String title, String author, byte[] bookCoverArt, String category, String description,
+		String edition, int year, String publisher, String isbn10, String isbn13, float price, int invQty) throws IOException
 	{
 		this.title = title;
 		this.author = author;
@@ -61,8 +61,8 @@ public class Book implements Serializable
 	public String getCategory() { return category; }
 	public void setCategory(String category) { this.category = category; }
 	
-	public InputStream getBookCoverArt() { return bookCoverArt; }
-	public void setBookCoverArt(InputStream art) { bookCoverArt = art; }
+	public byte[] getBookCoverArt() { return bookCoverArt; }
+	public void setBookCoverArt(byte[] art) { bookCoverArt = art; }
 	
 	public String getBookDescription() { return bookDescription; }
 	public void setBookDescription(String description) { bookDescription = description; }

@@ -47,22 +47,8 @@
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
 
-//			String bookCoverImage = new String(Base64.encodeBase64(IOUtils.toByteArray(bookList.get(i).getBookCoverArt())));
-//           out.println("<td><img style='display:block; width:40px; height:60px;' src = 'data:image/jpeg;base64," + Base64.encodeBase64(IOUtils.toByteArray(bookList.get(i).getBookCoverArt())) + "' /></td>");
-
-
-			out.println("<td>");
-//			out.println("<td><IMG  style=\"display:block; width:40px; height:60px;\" SRC=\"data:image/jpeg;base64,");
-			
-//			out.println(bookList.get(i).getBookCoverArt().available());
-
-			String bookCoverImage = new String(Base64.encodeBase64(IOUtils.toByteArray(bookList.get(i).getBookCoverArt())));
-			out.println(bookCoverImage);
-
-//			out.println("\"></td>");
-			out.println("</td>");
-
-
+			String bookCoverImage = new String(Base64.encodeBase64(bookList.get(i).getBookCoverArt()));
+			out.println("<td><IMG  style=\"display:block; width:40px; height:60px;\" SRC=\"data:image/jpeg;base64," + bookCoverImage + "\"></td>");
 
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));

@@ -41,9 +41,10 @@ public class addBook extends HttpServlet{
 		if (title != null)
 		{
 			String author = request.getParameter("author");
-
+			
 			String filepath = "/Users/RevZero/Desktop/images/" + request.getParameter("bookCoverArt");
 			InputStream bookCoverArt = new FileInputStream(new File(filepath));
+			byte[] bytes = IOUtils.toByteArray(bookCoverArt);			
 
 			String category = request.getParameter("category");
 			String description = request.getParameter("bookDescription");
@@ -55,14 +56,12 @@ public class addBook extends HttpServlet{
 			Float price = Float.parseFloat(request.getParameter("price"));
 			int invQty = Integer.parseInt(request.getParameter("invQty"));
 
-			Book book = new Book(title, author, bookCoverArt, category, description, edition, year, publisher, isbn10, isbn13, price, invQty);
+			Book book = new Book(title, author, bytes, category, description, edition, year, publisher, isbn10, isbn13, price, invQty);
 
 			out.println("<p>" + title + "</p>");
 			out.println("<p>" + author + "</p>");
 
-			out.println(bookCoverArt.available());
-
-			String bookCoverImage = new String(Base64.encodeBase64(IOUtils.toByteArray(bookCoverArt)));
+			String bookCoverImage = new String(Base64.encodeBase64(book.getBookCoverArt()));
 			out.println("<img style='display:block; width:200px; height:300px;' src='data:image/jpeg;base64," + bookCoverImage + "' />");
 
 			out.println("<p>" + category + "</p>");

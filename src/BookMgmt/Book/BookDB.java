@@ -183,40 +183,36 @@ public class BookDB {
 
 /*----------------------------------------------------------------------------*/
 	//delete one book	
-	public int deleteBook(int bookId){
+	public int deleteBook(int bookId)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
+	
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from `bookstore`.`book` where `Book ID` = "+bookId;
+				String strQuery = "DELETE FROM bookstore.book WHERE `Book ID` = " + bookId;
 				resultNo = stmt.executeUpdate(strQuery);
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    } catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch(SQLException e) { for (Throwable t:e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
@@ -239,7 +235,6 @@ public class BookDB {
 				stmt = conn.createStatement();
 				
 				String strQuery = "SELECT `Book ID`, title, author, bookCoverArt, bookDescription, edition, year, publisher, category, isbn_10, isbn_13, price, invQty FROM bookstore.book";
-				// String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`, `year`, `publisher`, `category`, `isbn_10`, `isbn_13`, `price`, `invQty` from `bookstore`.`book`";
 				rs = stmt.executeQuery(strQuery);
 
 				while (rs.next())
@@ -276,17 +271,6 @@ public class BookDB {
 		}
 		return books;
 	}
-// @Test
-// public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream()
-//   throws IOException {
-//     Reader initialReader = new StringReader("With Commons IO");
- 
-//     InputStream targetStream =
-//       IOUtils.toInputStream(initialReader.toString());
- 
-//     initialReader.close();
-//     targetStream.close();
-// }
 
 /*----------------------------------------------------------------------------*/
 	//select all books 	

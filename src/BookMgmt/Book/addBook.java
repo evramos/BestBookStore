@@ -60,6 +60,8 @@ public class addBook extends HttpServlet{
 			out.println("<p>" + title + "</p>");
 			out.println("<p>" + author + "</p>");
 
+			out.println(bookCoverArt.available());
+
 			String bookCoverImage = new String(Base64.encodeBase64(IOUtils.toByteArray(bookCoverArt)));
 			out.println("<img style='display:block; width:200px; height:300px;' src='data:image/jpeg;base64," + bookCoverImage + "' />");
 

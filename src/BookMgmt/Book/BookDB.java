@@ -1,5 +1,6 @@
 package BookMgmt.Book;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
@@ -9,9 +10,9 @@ import BookMgmt.Book.Book;
 public class BookDB {
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
-	final static String db_passwd ="nopassword";
 	// final static String db_passwd ="p0p1c0rn";
-	//final static String db_passwd ="Blacktail85$";
+	final static String db_passwd ="Blacktail85$";
+
 	
 	DBConnectionPool connPool = null;
 /*----------------------------------------------------------------------------*/
@@ -31,26 +32,31 @@ public class BookDB {
 	
 /*----------------------------------------------------------------------------*/
 	//select one book
-	public Book selectBook(int bookId){
+	public Book selectBook(int bookId)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Book book = new Book();
 		Connection conn = null;
-		try{
+
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, `year`,"
-						+ "`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `bookstore`.`book` where `Book ID` = " + bookId;
+				String strQuery = "SELECT `Book ID`, title, author, bookCoverArt, bookDescription, edition, year,"
+						+ "publisher, category, isbn_10, isbn_13, price, invQty FROM bookstore.book WHERE `Book ID` = " + bookId;
 				rs = stmt.executeQuery(strQuery);
-				if(rs.next())
+				
+				if (rs.next())
 				{					
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-					book.setBookCoverArt(rs.getBlob(4));
+					book.setBookCoverArt(rs.getBytes(4));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));
@@ -62,66 +68,67 @@ public class BookDB {
 					book.setInvQty(rs.getInt(13));
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		}catch (Exception et) {
-			et.printStackTrace();
-		}finally {
+		}
+		catch (SQLException e) { for (Throwable t:e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
 		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch(Exception e) { System.err.println(e); }
 		}
 		return book;
 	}
 
 /*----------------------------------------------------------------------------*/
-	//insert a new book	
-	public int addBook(Book book){
-		Statement stmt = null;
+	//Insert a new book	
+	public int addBook(Book book) throws IOException
+	{
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
+		PreparedStatement stmt = null;
+
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
-				stmt = conn.createStatement();
-				
-				String strQuery = "insert into `bookstore`.`book` (`title`, `author`, `bookDescription`, ` edition`, `year`,`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty`) values (\""+book.getTitle()+"\",\""+book.getAuthor()+"\",\""+book.getBookDescription()+"\",\""+book.getEdition()+"\",\""+book.getYear()+"\","+book.getPublisher()+"\",\""+book.getCategory()+"\",\""+book.getIsbn10()+"\",\""+book.getIsbn13()+"\",\""+book.getPrice()+"\",\""+book.getInvQty()+"\")";
-				resultNo = stmt.executeUpdate(strQuery);
+			if(conn != null)
+			{
+				String strQuery = "INSERT INTO BookStore.book (Title, Author, BookCoverArt, BookDescription, Edition, Year, Publisher, Category, ISBN_10, ISBN_13, Price, InvQty) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+				stmt = conn.prepareStatement(strQuery);
+
+				stmt.setString(1, book.getTitle());
+				stmt.setString(2, book.getAuthor());				
+				stmt.setBytes(3, book.getBookCoverArt());
+				stmt.setString(4, book.getBookDescription());
+				stmt.setString(5, book.getEdition());
+				stmt.setInt(6, book.getYear());
+				stmt.setString(7, book.getPublisher());
+				stmt.setString(8, book.getCategory());
+				stmt.setString(9, book.getIsbn10());
+				stmt.setString(10, book.getIsbn13());
+				stmt.setFloat(11, book.getPrice());
+				stmt.setInt(12, book.getInvQty());
+
+				resultNo = stmt.executeUpdate();
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		}catch(Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch(SQLException e) { for(Throwable t:e) { t.printStackTrace(); } }
+		catch(Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch(Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
@@ -133,104 +140,100 @@ public class BookDB {
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
 
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
-				stmt = conn.createStatement();		
-				String strQuery = "update `bookstore`.`book` set `title` = \""+book.getTitle()+"\", `author` = \""+book.getAuthor()+"\",`bookCoverArt` = \""+book.getBookCoverArt()+
-				"\", `description` = \""+book.getBookDescription()+"\",` edition' = \""+book.getEdition()+"\",`year` = \""+book.getYear()+"\", `publisher` = \""+book.getPublisher()+
-				"\", `category` = \""+ book.getCategory()+"\", `isbn-10` = \""+ book.getIsbn10()+"\", `isbn-13` = \""+ book.getIsbn13()+"\", `price` = \""+ book.getPrice()+"\","
-				+"`invQty` = \""+ book.getInvQty()+"\", where `Book ID` = "+book.getBookId(); 
+			if (conn != null)
+			{
+				stmt = conn.createStatement();	
+	
+				String strQuery = "UPDATE bookstore.book SET Title= \"" + book.getTitle() + "\", Author= \"" + book.getAuthor() + "\", bookCoverArt= \"" + book.getBookCoverArt() +
+					"\", BookDescription= \"" + book.getBookDescription() + "\", Edition= \"" + book.getEdition() + "\", Year= \"" + book.getYear() + "\", Publisher= \"" + book.getPublisher() +
+					"\", Category= \"" + book.getCategory() + "\", ISBN_10= \"" + book.getIsbn10() + "\", ISBN_13= \"" + book.getIsbn13() + "\", Price= \"" + book.getPrice() + 
+					"\", InvQty=" + book.getInvQty() + " WHERE `Book ID` =" + book.getBookId(); 
 				resultNo = stmt.executeUpdate(strQuery);
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch (SQLException e) { for (Throwable t:e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch(Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
 
 /*----------------------------------------------------------------------------*/
 	//delete one book	
-	public int deleteBook(int bookId){
+	public int deleteBook(int bookId)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
-		try{
+	
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "delete from `bookstore`.`book` where `Book ID` = "+bookId;
+				String strQuery = "DELETE FROM bookstore.book WHERE `Book ID` = " + bookId;
 				resultNo = stmt.executeUpdate(strQuery);
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    } catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch(SQLException e) { for (Throwable t:e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return resultNo;
 	}
 
 /*----------------------------------------------------------------------------*/
 	//select all books 	
-	public ArrayList<Book> selectBooks(){
+	public ArrayList<Book> selectBooks()
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
 		ArrayList<Book> books = new ArrayList<>();
-		try{
+
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`,"
-						+ "`year`, `publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `bookstore`.`book`";
+				String strQuery = "SELECT `Book ID`, title, author, bookCoverArt, bookDescription, edition, year, publisher, category, isbn_10, isbn_13, price, invQty FROM bookstore.book";
 				rs = stmt.executeQuery(strQuery);
-				while(rs.next()){
+
+				while (rs.next())
+				{
 					Book book = new Book();
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-					book.setBookCoverArt(rs.getBlob(4));
+					book.setBookCoverArt(rs.getBytes(4));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));
@@ -243,33 +246,25 @@ public class BookDB {
 					books.add(book);
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch (SQLException e) { for (Throwable t: e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return books;
 	}
-	
-	//select all books 
-	
-	public ArrayList<Book> selectBooksByTerm(String type, String term){
+
+/*----------------------------------------------------------------------------*/
+	//select all books 	
+	public ArrayList<Book> selectBooksByCategory(String type, String term){
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
@@ -281,10 +276,10 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, "
-						+ "`year`, `publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `bookstore`.`book` "
-						+ "where `"+type+"` like " + term;
-
+				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`,"
+						+ "`year`, `publisher`, `category`, `isbn_10`, `isbn_13`, `price`, `invQty` from `bookstore`.`book` "
+						+ "where '"+type+"' = " + term;
+				
 				rs = stmt.executeQuery(strQuery);
 				
 				while(rs.next()){
@@ -292,7 +287,7 @@ public class BookDB {
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-					book.setBookCoverArt(rs.getBlob(4));
+//					book.setBookCoverArt(rs.getBlob(4));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));

@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 
 		public transview(){}//only default constructor needed.
 		
-		//setters
+		//setters and getters
 		public int getOrder(){return order;}
 		public void setOrder(int order){ this.order = order;}
 		

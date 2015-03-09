@@ -4,7 +4,7 @@ import java.sql.*;
 import java.sql.Timestamp;
 import java.util.*;
 
-import ratingMgmt.rating.rating;
+import TransMgmt.trans.transviewDB;
 import data.dbConnect.DBConnectionPool;
 
 public class transviewDB {
@@ -30,11 +30,12 @@ public class transviewDB {
 	}
 	
 	//Sales last week
-	public ArrayList<transview> selectWeek( Date date)
+	public ArrayList<transview> selectWeek( Timestamp date)
 	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
+		Timestamp week = new Timestamp(604800000);
 		ArrayList<transview> transviewresult = new ArrayList<>();
 		try{
 
@@ -43,23 +44,19 @@ public class transviewDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select * from `bookstore`.`trans_view` where `Tran Date` <= " date "and `Tran Date` >= " Date - 7 days;
+				String strQuery = "select * from `bookstore`.`trans_view` where `Tran Date` <= " +date+ " and `Tran Date` >= " +(date.getTime() - week.getTime());
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					transview tv = new transview();
 					tv.setOrder(rs.getInt(1));
 					tv.setTransDate(rs.getTimestamp(2));
 					tv.setUserId(rs.getInt(3));
-					tv.setLastName(rs.getString(4));
-					tv.setFirstName(rs.getString(5));
-					tv.setEmail(rs.getString(6));
-					tv.setOrderQty(rs.getInt(7));
-					tv.setBookId(rs.getInt(8));
-					tv.setTitle(rs.getString(9));
-					tv.setAuthor(rs.getString(10));
-					tv.setCategory(rs.getString(11));
-					tv.setPrice(rs.getFloat(12));
-					tv.setInvQty(rs.getInt(13));
+					tv.setOrderQty(rs.getInt(4));
+					tv.setBookId(rs.getInt(5));
+					tv.setTitle(rs.getString(6));
+					tv.setCategory(rs.getString(7));
+					tv.setPrice(rs.getFloat(8));
+
 					
 					
 				}
@@ -91,11 +88,12 @@ public class transviewDB {
 
 	
 	//Sales Last Month
-	public ArrayList<transview> selectMonth(Date date)
+	public ArrayList<transview> selectMonth(Timestamp date)
 	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
+		Timestamp month = new Timestamp(604800000 * 4);
 		ArrayList<transview> transviewresult = new ArrayList<>();
 		try{
 
@@ -104,23 +102,18 @@ public class transviewDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select * from `bookstore`.`traqns_view` where `Tran Date` <= " date "and `Tran Date` >= " date - 30 days;
+				String strQuery = "select * from `bookstore`.`traqns_view` where `Tran Date` <= " +date+ "and `Tran Date` >= "+(date.getTime() - month.getTime());
 						rs = stmt.executeQuery(strQuery);
 						while(rs.next()){
 							transview tv = new transview();
 							tv.setOrder(rs.getInt(1));
 							tv.setTransDate(rs.getTimestamp(2));
 							tv.setUserId(rs.getInt(3));
-							tv.setLastName(rs.getString(4));
-							tv.setFirstName(rs.getString(5));
-							tv.setEmail(rs.getString(6));
-							tv.setOrderQty(rs.getInt(7));
-							tv.setBookId(rs.getInt(8));
-							tv.setTitle(rs.getString(9));
-							tv.setAuthor(rs.getString(10));
-							tv.setCategory(rs.getString(11));
-							tv.setPrice(rs.getFloat(12));
-							tv.setInvQty(rs.getInt(13));
+							tv.setOrderQty(rs.getInt(4));
+							tv.setBookId(rs.getInt(5));
+							tv.setTitle(rs.getString(6));
+							tv.setCategory(rs.getString(7));
+							tv.setPrice(rs.getFloat(8));
 				}
 			}
 		}catch(SQLException e){

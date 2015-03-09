@@ -11,14 +11,14 @@
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
-		<form action="addBook" method="post" enctype="multipart/form-data">
+		<form action="addBook" method="post">
 			<fieldset>
 				<legend class="legend_text"> Add a New Book to the Inventory. </legend>
 
 
 				
 				<div><label>  Title: </label>
-					<input type="text" name="title" id="title"  required/></div>
+					<input type="text" name="title" id="title"/></div>
 
 				<div><label>  Author: </label>
 					<input type="text" name="author" id="author"  required/></div>

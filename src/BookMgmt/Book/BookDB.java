@@ -1,9 +1,9 @@
 package BookMgmt.Book;
 
 import java.sql.*;
-import java.sql.PreparedStatement;
-
 import java.util.*;
+
+import org.apache.commons.io.IOUtils;
 
 import data.dbConnect.DBConnectionPool;
 import BookMgmt.Book.Book;
@@ -223,26 +223,32 @@ public class BookDB {
 
 /*----------------------------------------------------------------------------*/
 	//select all books 	
-	public ArrayList<Book> selectBooks(){
+	public ArrayList<Book> selectBooks()
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
 		ArrayList<Book> books = new ArrayList<>();
-		try{
+
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`,"
-						+ "`year`, `publisher`, `category`, `isbn_10`, `isbn_13`, `price`, `invQty` from `bookstore`.`book`";
+				String strQuery = "SELECT `Book ID`, title, author, bookCoverArt, bookDescription, edition, year, publisher, category, isbn_10, isbn_13, price, invQty FROM bookstore.book";
+				// String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`, `year`, `publisher`, `category`, `isbn_10`, `isbn_13`, `price`, `invQty` from `bookstore`.`book`";
 				rs = stmt.executeQuery(strQuery);
-				while(rs.next()){
+
+				while (rs.next())
+				{
 					Book book = new Book();
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-//					book.setBookCoverArt(rs.getBlob(4));
+					book.setBookCoverArt(IOUtils.toInputStream(rs.getCharacterStream(4).toString()));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));
@@ -255,29 +261,32 @@ public class BookDB {
 					books.add(book);
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch (SQLException e) { for (Throwable t: e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return books;
 	}
+// @Test
+// public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream()
+//   throws IOException {
+//     Reader initialReader = new StringReader("With Commons IO");
+ 
+//     InputStream targetStream =
+//       IOUtils.toInputStream(initialReader.toString());
+ 
+//     initialReader.close();
+//     targetStream.close();
+// }
 
 /*----------------------------------------------------------------------------*/
 	//select all books 	

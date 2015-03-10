@@ -68,7 +68,7 @@
 					</script>						
 				</div>
 					
-				<div><label> *Description <br></label><textarea name="BookDiscription" rows="10" cols="80" ><% out.println(book.getBookDescription()); %></textarea></div>
+				<div><label> *Description <br></label><textarea name="bookDescription" rows="10" cols="80" ><% out.println(book.getBookDescription()); %></textarea></div>
 									
 				<div><span class="star"></span><label>  *Edition  </label>
 					<input type="text" name="edition" id="edition" value= "<%=book.getEdition() %>" /></div>
@@ -77,9 +77,9 @@
 				<div><span class="star"></span><label>  *Publisher  </label>
 					<input type="text" name="publisher" id="publisher" value=<%=book.getPublisher() %>/></div>				
 				<div><span class="star"></span><label>  ISBN-10  </label>
-					<input type="text" name="isbn-10" id="isbn-10" value=<%=book.getIsbn10() %> /></div>
+					<input type="text" name="isbn10" id="isbn10" value=<%=book.getIsbn10() %> /></div>
 				<div><span class="star"></span><label>  ISBN-13  </label>
-					<input type="text" name="isbn-13" id="isbn-13" value=<%=book.getIsbn13() %> /></div>
+					<input type="text" name="isbn13" id="isbn13" value=<%=book.getIsbn13() %> /></div>
 				<div><span class="star"></span><label>  *Price  </label>
 					<input type="text" name="price" id="price" value=<%=book.getPrice() %> /></div>
 				<div><span class="star"></span><label>  *Inventory Quantity  </label>

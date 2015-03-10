@@ -56,7 +56,7 @@ public class BookDB {
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-					book.setBookCoverArt(rs.getBytes(4));
+//					book.setBookCoverArt(rs.getBytes(4));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));
@@ -98,13 +98,13 @@ public class BookDB {
 			
 			if(conn != null)
 			{
-				String strQuery = "INSERT INTO BookStore.book (Title, Author, BookCoverArt, BookDescription, Edition, Year, Publisher, Category, ISBN_10, ISBN_13, Price, InvQty) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+				String strQuery = "INSERT INTO BookStore.book (Title, Author, BookCoverPath, BookDescription, Edition, Year, Publisher, Category, ISBN_10, ISBN_13, Price, InvQty) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				stmt = conn.prepareStatement(strQuery);
 
 				stmt.setString(1, book.getTitle());
 				stmt.setString(2, book.getAuthor());				
-				stmt.setBytes(3, book.getBookCoverArt());
+				stmt.setString(3, book.getBookCoverPath());
 				stmt.setString(4, book.getBookDescription());
 				stmt.setString(5, book.getEdition());
 				stmt.setInt(6, book.getYear());
@@ -149,7 +149,7 @@ public class BookDB {
 			{
 				stmt = conn.createStatement();	
 	
-				String strQuery = "UPDATE bookstore.book SET Title= \"" + book.getTitle() + "\", Author= \"" + book.getAuthor() + "\", bookCoverArt= \"" + book.getBookCoverArt() +
+				String strQuery = "UPDATE bookstore.book SET Title= \"" + book.getTitle() + "\", Author= \"" + book.getAuthor() + "\", bookCoverArt= \"" + book.getBookCoverPath() +
 					"\", BookDescription= \"" + book.getBookDescription() + "\", Edition= \"" + book.getEdition() + "\", Year= \"" + book.getYear() + "\", Publisher= \"" + book.getPublisher() +
 					"\", Category= \"" + book.getCategory() + "\", ISBN_10= \"" + book.getIsbn10() + "\", ISBN_13= \"" + book.getIsbn13() + "\", Price= \"" + book.getPrice() + 
 					"\", InvQty=" + book.getInvQty() + " WHERE `Book ID` =" + book.getBookId(); 
@@ -233,7 +233,7 @@ public class BookDB {
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-					book.setBookCoverArt(rs.getBytes(4));
+//					book.setBookCoverArt(rs.getBytes(4));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));

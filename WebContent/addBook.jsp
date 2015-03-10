@@ -11,11 +11,9 @@
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
-		<form action="addBook" method="post">
+		<form action="addBook2" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend class="legend_text"> Add a New Book to the Inventory. </legend>
-
-
 				
 				<div><label>  Title: </label>
 					<input type="text" name="title" id="title"/></div>

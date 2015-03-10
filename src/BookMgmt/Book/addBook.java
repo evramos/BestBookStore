@@ -5,14 +5,11 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.codec.binary.Base64;
-
 import BookMgmt.Book.Book;
 import BookMgmt.Book.BookDB;
 
 
-@WebServlet("/addBook")
+@WebServlet("/AddBook")
 public class addBook extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -23,77 +20,37 @@ public class addBook extends HttpServlet{
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException
-	{
-		doPost(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException
-	{
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		Book book = new Book();
 
-		String title = request.getParameter("title");
-
-		if (title != null)
-		{
-			String author = request.getParameter("author");
-			
-			String filepath = "/Users/RevZero/Desktop/images/" + request.getParameter("bookCoverArt");
-			InputStream bookCoverArt = new FileInputStream(new File(filepath));
-			byte[] bytes = IOUtils.toByteArray(bookCoverArt);			
-
-			String category = request.getParameter("category");
-			String description = request.getParameter("bookDescription");
-			String edition = request.getParameter("edition");
-			int year = Integer.parseInt(request.getParameter("year"));
-			String publisher = request.getParameter("publisher");
-			String isbn10 = request.getParameter("isbn10");
-			String isbn13 = request.getParameter("isbn13");
-			Float price = Float.parseFloat(request.getParameter("price"));
-			int invQty = Integer.parseInt(request.getParameter("invQty"));
-
-			Book book = new Book(title, author, bytes, category, description, edition, year, publisher, isbn10, isbn13, price, invQty);
-
-			out.println("<p>" + title + "</p>");
-			out.println("<p>" + author + "</p>");
-
-			String bookCoverImage = new String(Base64.encodeBase64(book.getBookCoverArt()));
-			out.println("<img style='display:block; width:200px; height:300px;' src='data:image/jpeg;base64," + bookCoverImage + "' />");
-
-			out.println("<p>" + category + "</p>");
-			out.println("<p>" + description + "</p>");
-			out.println("<p>" + edition + "</p>");
-			out.println("<p>" + year + "</p>");
-			out.println("<p>" + publisher + "</p>");
-			out.println("<p>" + isbn10 + "</p>");
-			out.println("<p>" + isbn13 + "</p>");
-			out.println("<p>" + price + "</p>");
-			out.println("<p>" + invQty + "</p>");
-			
-			BookDB dbConn = new BookDB();
-
-			int i = dbConn.addBook(book);
-
-			out.println("<p>" + "Number: " + i + "</p>");
-
-			if (i > 0)
-			{
-				// response.sendRedirect("../addBook.jsp");
-				out.println("<p>Successful Added Book" + "</p>");
-			}
-			else
-			{
-				out.println("<p>Unsuccessful Added Book" + "</p>");
-			 	// response.sendRedirect("signUpError.html");
-			}
+		book.setTitle(request.getParameter("title"));
+		book.setAuthor(request.getParameter("author"));
+		book.setCategory(request.getParameter("category"));
+		
+//	    book.setBookCoverArt(request.getParameter("bookCoverArt"));
+		
+		book.setBookDescription(request.getParameter("bookDescription"));
+		book.setEdition(request.getParameter("edition"));
+		book.setYear(Integer.parseInt(request.getParameter("year")));
+		book.setPublisher(request.getParameter("publisher"));
+		book.setCategory(request.getParameter("category"));
+		book.setIsbn10(request.getParameter("isbn10"));
+		book.setIsbn13(request.getParameter("isbn13"));
+		book.setPrice(Float.parseFloat(request.getParameter("price")));
+		book.setInvQty(Integer.parseInt(request.getParameter("invQty")));		
+		
+		BookDB dbConn = new BookDB();
+		int i = dbConn.addBook(book);
+		if(i > 0){
+				response.sendRedirect("../addBook.jsp");
+		}else{
+			response.sendRedirect("signUpError.html");
 		}
-		else
-		{
-			response.sendRedirect("./addBook.jsp");
-		}		
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		doPost(request, response);
 	}
 }

@@ -1,19 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
-
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="BookMgmt.Book.*" %>
-<%@ page import="org.apache.commons.io.IOUtils"%>
-<%@ page import="org.apache.commons.codec.binary.Base64"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-	<title>All Books in the Bookstore</title>
-	<link rel="stylesheet" href="css/c06.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>All Books in the Bookstore</title>
+<link rel="stylesheet" href="css/c06.css"/>
 </head>
 <body>
 	<table>
@@ -35,21 +30,15 @@
 			</tr>
 		</thead>
 		<tbody>
-
 <%		
 		BookDB bookDB = new BookDB();
 		ArrayList<Book> bookList= bookDB.selectBooks(); 
-
-		for (int i = 0; i < bookList.size(); i++)
-		{
+		for(int i = 0; i< bookList.size(); i++){
 			out.println("<tr>");
 			out.println("<td>"+bookList.get(i).getBookId()+"</td>");
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
-
-			String bookCoverImage = new String(Base64.encodeBase64(bookList.get(i).getBookCoverArt()));
-			out.println("<td><IMG  style=\"display:block; width:40px; height:60px;\" SRC=\"data:image/jpeg;base64," + bookCoverImage + "\"></td>");
-
+			out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));
 			out.println("<td>"+descr+"</td>");

@@ -44,7 +44,7 @@ public class transviewDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `order`, `Tran Date`, `user_user id`, `book_book id`, `orderqty`, `title`, `category`, `price` from `bookstore`.`trans_view` where (`Tran Date` <= current_time() and `Tran Date` >= (current_time() - 86400000)) order by `Order`";
+				String strQuery = "select `order`, `Tran Date`, `user_user id`, `book_book id`, `orderqty`, `title`, `category`, `price` from `bookstore`.`trans_view` where (`Tran Date` BETWEEN "+date.getTime()+" and "+(date.getTime() -  week.getTime())+")) order by `Order`";
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					transview tv = new transview();

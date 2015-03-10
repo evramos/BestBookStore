@@ -1,5 +1,6 @@
 package UserMgmt.user;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class User implements Serializable
 {
@@ -11,8 +12,8 @@ public class User implements Serializable
 	private String passwd;
 	private String email;
 
-	private String signDate;
-	private String lastDate;
+	private Timestamp signDate;
+	private Timestamp lastDate;
 
 /*------------------------------------------------------------------------------------------------*/
 	//Default Constructors
@@ -56,10 +57,10 @@ public class User implements Serializable
 	
 	
 	//Get & Set Sign-in Date (The date user was created)
-	public String getSignDate() { return signDate; }
-	public void setSignDate(String signDate) { this.signDate = signDate; }
+	public Timestamp getSignDate() { return signDate; }
+	public void setSignDate(Timestamp signDate) { this.signDate = signDate; }
 	
 	//Get & Set Last Date (The last time this user was signed in)
-	public String getLastDate() { return lastDate; }
-	public void setLastDate(String lastDate) { this.lastDate = lastDate; }
+	public Timestamp getLastDate() { return lastDate; }
+	public void setLastDate(Timestamp lastDate) { this.lastDate = lastDate; }
 }

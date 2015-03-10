@@ -44,15 +44,15 @@ public class transviewDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select * from `bookstore`.`trans_view` where `Tran Date` <= " +date+ " and `Tran Date` >= " +(date.getTime() - week.getTime());
+				String strQuery = "select `order`, `Tran Date`, `user_user id`, `book_book id`, `orderqty`, `title`, `category`, `price` from `bookstore`.`trans_view` where (`Tran Date` <= current_time() and `Tran Date` >= (current_time() - 86400000)) order by `Order`";
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					transview tv = new transview();
 					tv.setOrder(rs.getInt(1));
 					tv.setTransDate(rs.getTimestamp(2));
 					tv.setUserId(rs.getInt(3));
-					tv.setOrderQty(rs.getInt(4));
-					tv.setBookId(rs.getInt(5));
+					tv.setBookId(rs.getInt(4));
+					tv.setOrderQty(rs.getInt(5));
 					tv.setTitle(rs.getString(6));
 					tv.setCategory(rs.getString(7));
 					tv.setPrice(rs.getFloat(8));
@@ -102,15 +102,15 @@ public class transviewDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select * from `bookstore`.`traqns_view` where `Tran Date` <= " +date+ "and `Tran Date` >= "+(date.getTime() - month.getTime());
+				String strQuery = "select `order`, `Tran Date`, `user_user id`, `book_book id`, `orderqty`, `title`, `category`, `price` from `bookstore`.`traqns_view` where (`Tran Date` <= " +date+ " and `Tran Date` >= "+(date.getTime() - month.getTime())+") sortby \"";
 						rs = stmt.executeQuery(strQuery);
 						while(rs.next()){
 							transview tv = new transview();
 							tv.setOrder(rs.getInt(1));
 							tv.setTransDate(rs.getTimestamp(2));
 							tv.setUserId(rs.getInt(3));
-							tv.setOrderQty(rs.getInt(4));
-							tv.setBookId(rs.getInt(5));
+							tv.setBookId(rs.getInt(4));
+							tv.setOrderQty(rs.getInt(5));
 							tv.setTitle(rs.getString(6));
 							tv.setCategory(rs.getString(7));
 							tv.setPrice(rs.getFloat(8));

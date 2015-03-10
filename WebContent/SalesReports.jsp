@@ -11,16 +11,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Sales Reports</title>
 </head>
 <body>
 
 <%
+	
 	transviewDB transviewDB = new transviewDB();
 	java.util.Date date = new java.util.Date();
-	Timestamp now = new Timestamp(date.getTime());
-	Timestamp lastweek = new Timestamp(date.getTime() - 604800000);
-	Timestamp lastmonth= new Timestamp(date.getTime() - (604800000 * 4));
+	java.sql.Timestamp now = new Timestamp(date.getTime());
+	java.sql.Timestamp lastweek = new Timestamp(date.getTime() - 604800000);
+	java.sql.Timestamp lastmonth= new Timestamp(date.getTime() - (604800000 * 4));
 	float TotalSales = 0;
 	int TotalTrans = 0;
 	float prevTotalSales = 0;
@@ -29,6 +30,10 @@
 	int currMonTrans = 0;
 	float prevMonSales = 0;
 	int prevMonTrans = 0;
+	
+	out.println(now+"<br>");
+	out.println(lastweek+"<br>");
+	out.println(lastmonth+"<br>");
 	
 	ArrayList<transview> weekTrans = transviewDB.selectWeek(now);
 	ArrayList<transview> prevWeekTrans = transviewDB.selectWeek(lastweek);

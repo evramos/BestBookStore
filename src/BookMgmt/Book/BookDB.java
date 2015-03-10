@@ -264,7 +264,7 @@ public class BookDB {
 
 /*----------------------------------------------------------------------------*/
 	//select all books 	
-	public ArrayList<Book> selectBooksByCategory(String type, String term){
+	public ArrayList<Book> selectBooksByTerm(String type, String term){
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
@@ -278,7 +278,7 @@ public class BookDB {
 				
 				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`,"
 						+ "`year`, `publisher`, `category`, `isbn_10`, `isbn_13`, `price`, `invQty` from `bookstore`.`book` "
-						+ "where '"+type+"' = " + term;
+						+ "where '"+type+"' like " + term;
 				
 				rs = stmt.executeQuery(strQuery);
 				

@@ -51,8 +51,8 @@ public class UserDB
 					user.setFirstName(rs.getString(2));
 					user.setLastName(rs.getString(3));
 					user.setEmail(rs.getString(4));
-					user.setSignDate(rs.getString(5));
-					user.setLastDate(rs.getString(6));
+					user.setSignDate(rs.getTimestamp(5));
+					user.setLastDate(rs.getTimestamp(6));
 				}
 			}
 		}catch(SQLException e){

@@ -11,8 +11,8 @@ public class UserDB
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
 	
-//	final static String db_passwd ="p0p1c0rn";		//David's Password
- 	final static String db_passwd ="nopassword";	 			//Martha's Password
+	final static String db_passwd ="p0p1c0rn";		//David's Password
+// 	final static String db_passwd ="nopassword";	 			//Martha's Password
 //	final static String db_passwd ="Blacktail85$";	//Matthew's Password
 
 

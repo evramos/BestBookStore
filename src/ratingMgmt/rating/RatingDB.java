@@ -259,7 +259,7 @@ public class RatingDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `User_User ID = "+ BookId;
+				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `Book_Book ID` = "+ BookId;
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					rating r = new rating();

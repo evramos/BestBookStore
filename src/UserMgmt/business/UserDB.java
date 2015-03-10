@@ -1,6 +1,8 @@
 package UserMgmt.business;
 
 import java.sql.*;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import UserMgmt.user.User;
@@ -10,9 +12,8 @@ public class UserDB
 {	
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
-	
-	final static String db_passwd ="p0p1c0rn";		//David's Password
-// 	final static String db_passwd ="nopassword";	 			//Martha's Password
+//	final static String db_passwd ="p0p1c0rn";		//David's Password
+ 	final static String db_passwd ="nopassword";	 			//Martha's Password
 //	final static String db_passwd ="Blacktail85$";	//Matthew's Password
 
 
@@ -53,6 +54,59 @@ public class UserDB
 					user.setEmail(rs.getString(4));
 					user.setSignDate(rs.getTimestamp(5));
 					user.setLastDate(rs.getTimestamp(6));
+				}
+			}
+		}catch(SQLException e){
+			for(Throwable t: e){	
+				t.printStackTrace();
+			}
+		}catch (Exception et) {
+			et.printStackTrace();
+		}finally {
+		    try {
+		    	if (rs != null){
+		            rs.close();
+		        }
+		    	if (stmt != null){
+		            stmt.close();
+		        }
+		        if (conn != null) {
+		            connPool.returnConnection(conn);
+		        }
+		    }catch(Exception e){
+		    	 System.err.println(e);
+		    }
+		}
+		return user;
+	}
+	
+	/*----------------------------------------------------------------------------*/
+	public User selectUserByEmail(String email){
+		Statement stmt = null;
+		ResultSet rs = null;
+		User user = new User();
+		Connection conn = null;
+		try{
+			conn = connPool.getConnection();
+			
+			if(conn != null){
+				stmt = conn.createStatement();
+				
+				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address` from `user` where `Email Address` = \"" + email + "\"";
+				rs = stmt.executeQuery(strQuery);
+				if(rs.next())
+				{
+					user.setUserId(rs.getInt(1));
+					user.setFirstName(rs.getString(2));
+					user.setLastName(rs.getString(3));
+					user.setEmail(rs.getString(4));
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+				    java.util.Date inDate = dateFormat.parse(rs.getString(5));
+				    Timestamp inTimestamp = new java.sql.Timestamp(inDate.getTime());
+					user.setSignDate(inTimestamp);
+					java.util.Date lastDate = dateFormat.parse(rs.getString(6));
+				    Timestamp lastTimestamp = new java.sql.Timestamp(lastDate.getTime());
+					user.setLastDate(lastTimestamp);
 				}
 			}
 		}catch(SQLException e){

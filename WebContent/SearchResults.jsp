@@ -43,7 +43,7 @@ ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
 			out.println("<td>"+bookList.get(i).getBookId()+"</td>");
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
-			out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");
+			/*out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");*/
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));
 			out.println("<td>"+descr+"</td>");

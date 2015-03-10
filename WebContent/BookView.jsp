@@ -26,7 +26,7 @@
 <%
 out.println("<h1>"+book.getTitle()+"</h1>");
 out.println("<h2>by "+book.getAuthor()+"</h2>");
-out.println(book.getBookCoverArt());
+/*out.println(book.getBookCoverArt());*/
 out.println("<h3><b>About this book: </b>");
 out.println(""+book.getBookDescription()+"</h3");
 out.println("<h3><b>Edition: </b>"+book.getEdition()+"</h3>");

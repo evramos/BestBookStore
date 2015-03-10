@@ -7,9 +7,14 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import org.apache.commons.fileupload.*;
-import org.apache.commons.fileupload.disk.*;
-import org.apache.commons.fileupload.servlet.*;
+//import org.apache.commons.fileupload.*;
+//import org.apache.commons.fileupload.disk.*;
+//import org.apache.commons.fileupload.servlet.*;
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import BookMgmt.Book.Book;
 import BookMgmt.Book.BookDB;
@@ -54,7 +59,7 @@ public class addBook2 extends HttpServlet{
 			try
 			{ 
 				// Parse the request to get file items.
-				List<FileItem> items = upload.parseRequest(request);
+				List<FileItem> items = upload.parseRequest((RequestContext) request);
 
 				// Process the uploaded file items
 				Iterator<FileItem> iter = items.iterator();

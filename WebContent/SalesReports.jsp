@@ -4,8 +4,6 @@
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="TransMgmt.trans.transviewDB" %>
 <%@ page import="TransMgmt.trans.transview" %>
-<%@ page import="org.apache.commons.io.IOUtils"%>
-<%@ page import="org.apache.commons.codec.binary.Base64"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

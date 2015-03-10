@@ -42,10 +42,10 @@ public class addBook extends HttpServlet{
 		{
 			String author = request.getParameter("author");
 			
-			String filepath = "/Users/RevZero/Desktop/images/" + request.getParameter("bookCoverArt");
-			InputStream bookCoverArt = new FileInputStream(new File(filepath));
-			byte[] bytes = IOUtils.toByteArray(bookCoverArt);			
-
+			//String filepath = request.getParameter("bookCoverArt");
+			//InputStream bookCoverArt = new FileInputStream(new File(filepath));
+			byte[] bytes = {};// = IOUtils.toByteArray(bookCoverArt);			
+			
 			String category = request.getParameter("category");
 			String description = request.getParameter("bookDescription");
 			String edition = request.getParameter("edition");
@@ -58,36 +58,36 @@ public class addBook extends HttpServlet{
 
 			Book book = new Book(title, author, bytes, category, description, edition, year, publisher, isbn10, isbn13, price, invQty);
 
-			out.println("<p>" + title + "</p>");
-			out.println("<p>" + author + "</p>");
+			out.println("<p>Title: " + title + "</p>");
+			out.println("<p>Author: " + author + "</p>");
 
-			String bookCoverImage = new String(Base64.encodeBase64(book.getBookCoverArt()));
-			out.println("<img style='display:block; width:200px; height:300px;' src='data:image/jpeg;base64," + bookCoverImage + "' />");
+			//String bookCoverImage = new String(Base64.encodeBase64(book.getBookCoverArt()));
+			//out.println("<img style='display:block; width:200px; height:300px;' src='data:image/jpeg;base64," + bookCoverImage + "' />");
 
-			out.println("<p>" + category + "</p>");
-			out.println("<p>" + description + "</p>");
-			out.println("<p>" + edition + "</p>");
-			out.println("<p>" + year + "</p>");
-			out.println("<p>" + publisher + "</p>");
-			out.println("<p>" + isbn10 + "</p>");
-			out.println("<p>" + isbn13 + "</p>");
-			out.println("<p>" + price + "</p>");
-			out.println("<p>" + invQty + "</p>");
+			out.println("<p>Category: " + category + "</p>");
+			out.println("<p>Description: " + description + "</p>");
+			out.println("<p>Edition: " + edition + "</p>");
+			out.println("<p>Year: " + year + "</p>");
+			out.println("<p>Publisher: " + publisher + "</p>");
+			out.println("<p>ISBN-10: " + isbn10 + "</p>");
+			out.println("<p>ISBN-13: " + isbn13 + "</p>");
+			out.println("<p>Price: " + price + "</p>");
+			out.println("<p>Inventory: " + invQty + "</p>");
 			
 			BookDB dbConn = new BookDB();
 
 			int i = dbConn.addBook(book);
 
-			out.println("<p>" + "Number: " + i + "</p>");
+			out.println("<p>Number: " + i + "</p>");
 
 			if (i > 0)
 			{
 				// response.sendRedirect("../addBook.jsp");
-				out.println("<p>Successful Added Book" + "</p>");
+				out.println("<p>Successful Added Book</p>");
 			}
 			else
 			{
-				out.println("<p>Unsuccessful Added Book" + "</p>");
+				out.println("<p>Unsuccessful Added Book</p>");
 			 	// response.sendRedirect("signUpError.html");
 			}
 		}

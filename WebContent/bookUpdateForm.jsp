@@ -3,13 +3,11 @@
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="BookMgmt.Book.*" %>
-<%@ page import="org.apache.commons.codec.binary.Base64" %>
 
 <%	
 	String bookId = request.getParameter("BookId");
 	BookDB bookDB = new BookDB();
 	Book book = bookDB.selectBook(Integer.parseInt(bookId));
-	String bookCoverArt = new String(Base64.encodeBase64(book.getBookCoverArt()));
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +17,6 @@
 	</head>
 	<body>
 		<form action="BookUpdate" method="post">
-			<input type="hidden" name="oldBookCover" value="<%= bookCoverArt %>" />
 
 			<fieldset>
 				<legend class="legend_text"> Update a Book in the Inventory. </legend>
@@ -30,8 +27,9 @@
 				<div><label>  Author: </label>
 					<input type="text" name="author" id="author"  value="<%=book.getAuthor() %>"  /></div>
 
-				<div><p><img style="display:block; width:200px; height:300px;" src="data:image/jpeg;base64, <%= bookCoverArt %>" /></p></div>
-				<div><p>Upload Book Cover: <input type="file" name="bookCoverArt" id="bookCoverArt"  /></p></div>
+				<div><p><img style="display:block; width:200px; height:300px;" src="BookCoverArt/<%= book.getBookCoverPath() %>" /></p></div>
+
+				<div><p>Upload Book Cover: <input type="file" name="imagePath" id="imagePath" alt="<%= book.getBookCoverPath() %>"  /></p></div>
 
 				<div><label>  Category: </label>
 					<select name="category" id="category" />

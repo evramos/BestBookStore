@@ -11,9 +11,7 @@ public class Book implements Serializable
 	private String title;
 	private String author;
 	private String category;
-
-	private byte[] bookCoverArt;
-
+	private String bookCoverPath;
 	private String bookDescription;
 	private String edition;
 
@@ -31,12 +29,12 @@ public class Book implements Serializable
 	public Book(){}
 
 	//Default Constructor
-	public Book(String title, String author, byte[] bookCoverArt, String category, String description,
-		String edition, int year, String publisher, String isbn10, String isbn13, float price, int invQty) throws IOException
+	public Book(String title, String author, String bookCoverPath, String category, String description,
+		String edition, int year, String publisher, String isbn10, String isbn13, float price, int invQty)
 	{
 		this.title = title;
 		this.author = author;
-		this.bookCoverArt = bookCoverArt;
+		this.bookCoverPath = bookCoverPath;
 		this.category = category;
 		bookDescription = description;
 		this.edition = edition;
@@ -60,9 +58,9 @@ public class Book implements Serializable
 
 	public String getCategory() { return category; }
 	public void setCategory(String category) { this.category = category; }
-	
-	public byte[] getBookCoverArt() { return bookCoverArt; }
-	public void setBookCoverArt(byte[] art) { bookCoverArt = art; }
+
+	public String getBookCoverPath() { return bookCoverPath; }
+	public void setBookCoverPath(String path) { bookCoverPath = path; }
 	
 	public String getBookDescription() { return bookDescription; }
 	public void setBookDescription(String description) { bookDescription = description; }

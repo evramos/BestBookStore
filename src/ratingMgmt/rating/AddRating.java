@@ -32,7 +32,7 @@ public class AddRating extends HttpServlet
 			
 			int i = dbConn.addRating(Rating);
 			if(i > 0){
-					response.sendRedirect("../index.jsp");
+					response.sendRedirect("BookListRatings.jsp?BookId="+BookId);
 			}else{
 				response.sendRedirect("/AddRatingsError.html");
 			}

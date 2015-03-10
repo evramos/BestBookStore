@@ -39,6 +39,9 @@ out.println("<h3><b>Price: </b>"+book.getPrice()+"</h3>");
 out.println("<h3><b>Available: </b>"+book.getInvQty()+"</h3>");
 
 // link to buy book (create transaction)
+
 %>
+<h3><a href=/BookListRatings.jsp?BookId=<%= book.getBookId()%>>View all book ratings</a></h3>
+<h3><a href="/AddRating.jsp?BookId="<%= book.getBookId()%>>Rate this book</a></h3>
 </body>
 </html>

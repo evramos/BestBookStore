@@ -78,6 +78,54 @@ public class UserDB
 		}
 		return user;
 	}
+	
+	/*----------------------------------------------------------------------------*/
+	public User selectUserByEmail(String email){
+		Statement stmt = null;
+		ResultSet rs = null;
+		User user = new User();
+		Connection conn = null;
+		try{
+			conn = connPool.getConnection();
+			
+			if(conn != null){
+				stmt = conn.createStatement();
+				
+				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address` from `user` where `Email Address` = \"" + email + "\"";
+				rs = stmt.executeQuery(strQuery);
+				if(rs.next())
+				{
+					user.setUserId(rs.getInt(1));
+					user.setFirstName(rs.getString(2));
+					user.setLastName(rs.getString(3));
+					user.setEmail(rs.getString(4));
+					user.setSignDate(rs.getString(5));
+					user.setLastDate(rs.getString(6));
+				}
+			}
+		}catch(SQLException e){
+			for(Throwable t: e){	
+				t.printStackTrace();
+			}
+		}catch (Exception et) {
+			et.printStackTrace();
+		}finally {
+		    try {
+		    	if (rs != null){
+		            rs.close();
+		        }
+		    	if (stmt != null){
+		            stmt.close();
+		        }
+		        if (conn != null) {
+		            connPool.returnConnection(conn);
+		        }
+		    }catch(Exception e){
+		    	 System.err.println(e);
+		    }
+		}
+		return user;
+	}
 
 /*----------------------------------------------------------------------------*/
 	//insert a new user

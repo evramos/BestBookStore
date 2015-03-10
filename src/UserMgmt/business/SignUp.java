@@ -50,7 +50,8 @@ public class SignUp extends HttpServlet
 			//In case any of the values might be NULL
 			if (email != null)
 			{
-				User user = new User(lastName, firstName, passwd, email);
+				User user = new User(firstName, lastName, passwd, email);
+				int userid = user.getUserId();
 				UserDB dbConn = new UserDB();
 				
 				int index = dbConn.registerUser(user);
@@ -60,9 +61,10 @@ public class SignUp extends HttpServlet
 					out.println("Welcome " + firstName + ", " + lastName);
 					out.println("Your email is: " + email);
 					out.println("Your password is: " + passwd);
-					out.println("\nSuccessful Register");
+					out.println("Your id is: " + userid);
+					out.println("Successful Register");
 
-					// response.sendRedirect("./signUpForm_User.jsp");
+					response.sendRedirect("index.jsp?UserId=" + userid);
 				}
 				else
 				{

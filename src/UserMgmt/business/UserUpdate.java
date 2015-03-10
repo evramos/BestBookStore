@@ -26,11 +26,10 @@ public class UserUpdate extends HttpServlet{
 		int i = dbConn.updateUser(user);
 		if(i > 0)
 		{
-			response.sendRedirect("/userList.jsp");
+			response.sendRedirect("/index.jsp");
 		}
 		else
 		{
-			response.sendRedirect("signUpError.html");
 		}
 	}
 	

@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 
 body {
-  background-color: #000;
+  background-color: #c39797;
   font-family: 'Oswald', 'Futura', sans-serif;
   margin: 0px; 
   padding: 0px;}
@@ -12,25 +12,22 @@ body {
   /* Responsive page rules at bottom of style sheet */
 
 h1 {
-  background-image: url(../images/kinglogo.png);
-  background-repeat: no-repeat;
-  background-position: center center;
+  color: #4e3756;
   text-align: center;
-  text-indent: -1000%;
-  height: 75px;
-  line-height: 75px;
-  width: 117px;
+  height: 45px;
+  line-height: 15px;
+  width: 500px;
   margin: 0px auto 0px auto;
   padding: 30px 10px 20px 10px;}
 
 h2 {
-  color: #fff;
+  color: #fff589;
   font-size: 24px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
   letter-spacing: .3em;
-  margin: 0px 0px 23px 0px;}
+  margin: 0px 0px 23px 30px;}
 
 h2 span {
   background-color: #fff;
@@ -45,17 +42,22 @@ h2 span {
   height: 22px;
   width: 26px;
   padding: 4px 0px 0px 0px;}
+  
+h3 {
+  color: ##fff;
+  font-size: 15px;
+  font-weight: normal;}
 
 ul {
-  background-color: #584f4d;
+  background-color: #bdbdbd;
   border:none;
-  padding: 0px;
-  margin: 0px;}
+  padding: 10px;
+  margin: 15px;}
 
 li {
-  background-color: #ec8b68;
+  background-color: #bdbdbd;
   color: #fff;
-  border-top: 1px solid #fe9772;
+  border-top: 1px solid #bdbdbd;
   border-bottom: 1px solid #9f593f;
   font-size: 24px;
   letter-spacing: .05em;
@@ -75,6 +77,16 @@ li a {
 
 li.complete a {
   background-image: none;}
+  
+th {
+	color: #fff589;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0px 0px 23px 30px;
+}
 
 p {
   background-color: #7f675c;
@@ -120,7 +132,7 @@ p {
 /* Form styles */
 
 form {
-  padding: 0px 60px 65px 60px;}
+  padding: 0px 0px 0px 30px;}
 
 label {
   color: #fff;

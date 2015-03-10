@@ -26,12 +26,6 @@ public class User implements Serializable
 		this.email = email;
 	}
 
-	// public User( String passwd, String FirstName, String LastName, String email){
-	// 	this.passwd = passwd;
-	// 	this.email = email;
-	// 	this.FirstName = FirstName;
-	// 	this.LastName = LastName;
-	// }
 
 /*------------------------------------------------------------------------------------------------*/
 	//Get & Set User ID

@@ -75,7 +75,7 @@
 				<div><span class="star"></span><label>  *Year  </label>
 					<input type="text" name="year" id="year" value=<%=book.getYear() %> /></div>					
 				<div><span class="star"></span><label>  *Publisher  </label>
-					<input type="text" name="publisher" id="publisher" value=<%=book.getPublisher() %>/></div>				
+					<input type="text" name="publisher" id="publisher" value="<%=book.getPublisher() %>"/></div>				
 				<div><span class="star"></span><label>  ISBN-10  </label>
 					<input type="text" name="isbn10" id="isbn10" value=<%=book.getIsbn10() %> /></div>
 				<div><span class="star"></span><label>  ISBN-13  </label>

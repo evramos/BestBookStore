@@ -11,10 +11,7 @@ public class Book implements Serializable
 	private String title;
 	private String author;
 	private String category;
-
-	// private byte[] bookCoverArt;
 	private String bookCoverPath;
-
 	private String bookDescription;
 	private String edition;
 
@@ -48,24 +45,6 @@ public class Book implements Serializable
 		this.price = price;
 		this.invQty = invQty;
 	}
-
-	// //Default Constructor
-	// public Book(String title, String author, byte[] bookCoverArt, String category, String description,
-	// 	String edition, int year, String publisher, String isbn10, String isbn13, float price, int invQty) throws IOException
-	// {
-	// 	this.title = title;
-	// 	this.author = author;
-	// 	this.bookCoverArt = bookCoverArt;
-	// 	this.category = category;
-	// 	bookDescription = description;
-	// 	this.edition = edition;
-	// 	this.year = year;
-	// 	this.publisher = publisher;
-	// 	this.isbn10 = isbn10;
-	// 	this.isbn13 = isbn13;
-	// 	this.price = price;
-	// 	this.invQty = invQty;
-	// }
 	
 /*----------------------------------------------------------------------------*/
 	public int getBookId() { return bookId; }
@@ -79,9 +58,6 @@ public class Book implements Serializable
 
 	public String getCategory() { return category; }
 	public void setCategory(String category) { this.category = category; }
-	
-	// public byte[] getBookCoverArt() { return bookCoverArt; }
-	// public void setBookCoverArt(byte[] art) { bookCoverArt = art; }
 
 	public String getBookCoverPath() { return bookCoverPath; }
 	public void setBookCoverPath(String path) { bookCoverPath = path; }

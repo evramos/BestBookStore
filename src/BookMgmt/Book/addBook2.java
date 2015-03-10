@@ -15,7 +15,7 @@ import BookMgmt.Book.Book;
 import BookMgmt.Book.BookDB;
 
 
-@WebServlet("/addBook2")
+@WebServlet("/addBook")
 public class addBook2 extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page import="BookMgmt.Book.addBook"%> 
+<%@ page import="BookMgmt.Book.addBook2"%> 
 
 <html>
 <head>
@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
-		<form action="addBook2" method="post" enctype="multipart/form-data">
+		<form action="addBook" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend class="legend_text"> Add a New Book to the Inventory. </legend>
 				

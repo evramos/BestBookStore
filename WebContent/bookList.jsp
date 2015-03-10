@@ -47,8 +47,7 @@
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
 
-			String bookCoverImage = new String(Base64.encodeBase64(bookList.get(i).getBookCoverArt()));
-			out.println("<td><IMG  style=\"display:block; width:40px; height:60px;\" SRC=\"data:image/jpeg;base64," + bookCoverImage + "\"></td>");
+			out.println("<td><img style=\"display:block; width:40px; height:60px;\" src=\"BookCoverArt/" + bookList.get(i).getBookCoverPath() + "\"></td>");
 
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));

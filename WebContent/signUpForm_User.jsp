@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Create New Account</title>
+	<title>Create Account - The Best Bookstore</title>
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>

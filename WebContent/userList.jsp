@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>List of Users</title>
+<title>All Users - The Best Bookstore</title>
 <link rel="stylesheet" href="css/c06.css"/>
 </head>
 <body>

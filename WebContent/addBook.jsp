@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Add Book to inventory</title>
+	<title>Add Book - The Best Bookstore</title>
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>

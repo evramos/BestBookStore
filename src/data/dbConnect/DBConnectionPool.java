@@ -18,10 +18,9 @@ public class DBConnectionPool
 	{
     	url = "jdbc:mysql://localhost:3306/BookStore";
     	username = "root";
-    	passwd = "Blacktail85$";	// Matthew's mySQL Password
-    	
+    	// passwd = "Blacktail85$";	// Matthew's mySQL Password
 		// passwd = "p0p1c0rn";		// David's mySQL Password
-		// passwd = "nopassword";	// Martha's mySQL Password
+		passwd = "nopassword";	// Martha's mySQL Password
     	
     	Class.forName(driver);
 	}

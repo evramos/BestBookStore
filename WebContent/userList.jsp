@@ -5,6 +5,7 @@
 <%@ page import="UserMgmt.user.User" %>
 <%@ page import="UserMgmt.business.UserDB" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
@@ -15,21 +16,22 @@
 	<table>
 		<thead>
 			<tr>
-				<th>UserId</th>
-				<th>FirstName </th>
+ 				<th>UserId</th>	
+ 				<th>FirstName </th>
 				<th>LastName</th>
 				<th>Email</th>
 				<th>Modify</th>
 			</tr>
 		</thead>
 		<tbody>
+
 <%
-		
 		UserDB userDB = new UserDB();
-		ArrayList<User> userList= userDB.selectUsers(); 
-		for(int i = 0; i< userList.size(); i++){
+		ArrayList<User> userList= userDB.selectUsers();
+
+		for (int i = 0; i< userList.size(); i++)
+			{
 			out.println("<tr>");
-			out.println("<td>"+userList.get(i).getUserId()+"</td>");
 			out.println("<td>"+userList.get(i).getFirstName()+"</td>");
 			out.println("<td>"+userList.get(i).getLastName()+"</td>");
 			out.println("<td>"+userList.get(i).getEmail()+"</td>");

@@ -61,10 +61,9 @@ public class SignUp extends HttpServlet
 					out.println("Welcome " + firstName + ", " + lastName);
 					out.println("Your email is: " + email);
 					out.println("Your password is: " + passwd);
-					out.println("Your id is: " + userid);
-					out.println("Successful Register");
+					out.println("\nSuccessful Register");
 
-					response.sendRedirect("index.jsp?UserId=" + userid);
+					response.sendRedirect("./signUpForm_User.jsp");
 				}
 				else
 				{

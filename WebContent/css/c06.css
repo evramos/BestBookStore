@@ -18,7 +18,28 @@ h1 {
   line-height: 15px;
   width: 500px;
   margin: 0px auto 0px auto;
-  padding: 30px 10px 20px 10px;}
+  padding: 30px 10px 20px 10px;
+  }
+  
+#response {
+	text-align:center;
+  background-color: #403c3b;
+  margin: 0px auto 30px auto;
+  famil-font: arial;
+  color: lightpink;
+  font-size: 25px;
+  padding: 0px 0px 20px 0px;}
+  
+#emph{
+	font-weight:bolder;
+	text-decoration:underline;
+	color: yellow;
+}
+
+.star{
+	font-weight:bolder;
+	color: yellow;
+}
 
 h2 {
   color: #fff589;
@@ -132,13 +153,20 @@ p {
 /* Form styles */
 
 form {
+<<<<<<< HEAD
   padding: 0px 0px 0px 30px;}
+
+
+img{
+	width: 200px;
+	height: 200px;
+}
 
 label {
   color: #fff;
-  display: block;
+  /*display: block;*/
   margin: 10px 0px 10px 0px;
-  font-size: 24px;}
+  font-size: 15px;}
 
 input[type='text'], input[type='password'], textarea {
   background-color: #999;
@@ -180,11 +208,50 @@ textarea {
   height: 5em;
   line-height: 1.4em;}
 
+form.form_els{
+  background-color: #000;
+  color: #666;
+  font-family: 'Oswald', 'Futura', sans-serif;
+  font-size: 24px;
+  width: 70%;
+  padding: 4px 6px;
+  border: 1px solid #999;
+  border-radius: 8px;}
+}
+
 select, option {
   font-size: 16px;}
 
+.feedback {
+  color: #fff;
+  background-image:url('../images/warning.png');
+  background-repeat:no-repeat;
+  background-position: 2px 14px;
+  padding: 10px 0px 0px 22px;}
 
-#feedback, #termsHint {
+
+/*Legend_Text used in (signUpForm_User.jsp)*/
+.legend_text
+{
+	color: #fff;
+	font-size: 20px;
+}
+
+/*body > form > fieldset > a*/
+/*/html/body/form/fieldset/a*/
+a.login.icon-lock
+{
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+}
+
+a.login.icon-lock::before
+{
+   content: url(60473.png); 
+}
+
+#termsHint {
   color: #fff;
   background-image: url('../images/warning.png');
   background-repeat: no-repeat;

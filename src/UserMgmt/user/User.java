@@ -5,13 +5,11 @@ import java.sql.Timestamp;
 public class User implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	
 	private int userId;
 	private String lastName;
 	private String firstName;
 	private String passwd;
 	private String email;
-
 	private Timestamp signDate;
 	private Timestamp lastDate;
 
@@ -32,7 +30,7 @@ public class User implements Serializable
 	//Get & Set User ID
 	public int getUserId() { return userId; }
 	public void setUserId(int userId) { this.userId = userId; }	
-	
+
 	//Get & Set Last Name
 	public String getLastName() { return lastName; }
 	public void setLastName(String lastName) { this.lastName = lastName; }

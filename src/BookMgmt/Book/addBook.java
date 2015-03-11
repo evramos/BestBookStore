@@ -16,11 +16,11 @@ import BookMgmt.Book.BookDB;
 
 
 @WebServlet("/addBook")
-public class addBook2 extends HttpServlet{
+public class addBook extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
-	public addBook2() throws Exception { super(); }
+	public addBook() throws Exception { super(); }
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

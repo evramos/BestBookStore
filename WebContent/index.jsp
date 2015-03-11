@@ -3,13 +3,6 @@
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="BookMgmt.Book.*" %>
-
-<%
-	Cookie c = new Cookie("userId", "Matthew");
-	c.setMaxAge(60*60*24*365); //Cookie is good for one year
-	c.setPath("/");
-	response.addCookie(c);		
-%>
  
 <%
 	Cookie[] cookies = request.getCookies();

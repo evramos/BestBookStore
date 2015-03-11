@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>All Books in the Bookstore</title>
+<title>Book List - The Best Bookstore</title>
 <link rel="stylesheet" href="css/c06.css"/>
 </head>
 <body>
@@ -38,13 +38,7 @@
 			out.println("<td>"+bookList.get(i).getBookId()+"</td>");
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
-<<<<<<< HEAD
-			out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");
-=======
-
 			out.println("<td><img style=\"display:block; width:40px; height:60px;\" src=\"BookCoverArt/" + bookList.get(i).getBookCoverPath() + "\"></td>");
-
->>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));
 			out.println("<td>"+descr+"</td>");
@@ -56,8 +50,9 @@
 			out.println("<td>"+bookList.get(i).getIsbn13()+"</td>");
 			out.println("<td>"+bookList.get(i).getPrice()+"</td>");
 			out.println("<td>"+bookList.get(i).getInvQty()+"</td>");
-			out.println("<td><a href=\"bookUpdateForm.jsp?BookId="+bookList.get(i).getBookId()+"\">[ Update ]</a>"+
-				"<a href=\"DeleteBook?BookId="+bookList.get(i).getBookId()+"\">[ Delete ]</a></td>");
+			out.println("<td><a href=\"BookView.jsp?BookId="+bookList.get(i).getBookId()+"\">[View]</a>"+
+				"<br><a href=\"bookUpdateForm.jsp?BookId="+bookList.get(i).getBookId()+"\">[Update]</a>"+
+				"<br><a href=\"DeleteBook?BookId="+bookList.get(i).getBookId()+"\">[Delete]</a></td>");
 			out.println("</tr>");
 		}
 

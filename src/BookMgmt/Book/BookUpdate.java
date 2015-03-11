@@ -10,7 +10,8 @@ import BookMgmt.Book.Book;
 import BookMgmt.Book.BookDB;
 
 @WebServlet("/BookUpdate")
-public class BookUpdate extends HttpServlet{
+public class BookUpdate extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
     
 	@Override
@@ -21,9 +22,15 @@ public class BookUpdate extends HttpServlet{
 		book.setTitle(request.getParameter("title"));
 		book.setAuthor(request.getParameter("author"));
 		book.setCategory(request.getParameter("category"));
+<<<<<<< HEAD
 		
 //	    book.setBookCoverArt(request.getParameter("bookCoverArt"));
+=======
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 		
+		System.out.println(request.getParameter("imagePath"));
+		book.setBookCoverPath(request.getParameter("imagePath"));
+				
 		book.setBookDescription(request.getParameter("bookDescription"));
 		book.setEdition(request.getParameter("edition"));
 		book.setYear(Integer.parseInt(request.getParameter("year")));
@@ -36,9 +43,10 @@ public class BookUpdate extends HttpServlet{
 		
 		BookDB dbConn = new BookDB();
 		int i = dbConn.updateBook(book);
+
 		if(i > 0)
 		{
-			response.sendRedirect("/bookList.jsp");
+			response.sendRedirect("bookList.jsp");
 		}
 		else
 		{

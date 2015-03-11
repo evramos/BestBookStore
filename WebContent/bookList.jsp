@@ -38,7 +38,13 @@
 			out.println("<td>"+bookList.get(i).getBookId()+"</td>");
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
+<<<<<<< HEAD
 			out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");
+=======
+
+			out.println("<td><img style=\"display:block; width:40px; height:60px;\" src=\"BookCoverArt/" + bookList.get(i).getBookCoverPath() + "\"></td>");
+
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));
 			out.println("<td>"+descr+"</td>");

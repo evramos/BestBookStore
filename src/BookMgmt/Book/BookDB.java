@@ -42,15 +42,24 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
+<<<<<<< HEAD
 				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`, `year`,"
 						+ "`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `bookstore`.`book` where `Book ID` = " + bookId;
+=======
+				String strQuery = "SELECT `Book ID`, Title, Author, BookCoverPath, BookDescription, Edition, Year,"
+						+ "Publisher, Category, Isbn_10, Isbn_13, Price, InvQty FROM bookstore.book WHERE `Book ID` = " + bookId;
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 				rs = stmt.executeQuery(strQuery);
 				if(rs.next())
 				{					
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
+<<<<<<< HEAD
 					book.setBookCoverArt(rs.getBlob(4));
+=======
+					book.setBookCoverPath(rs.getString(4));
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));
@@ -96,11 +105,34 @@ public class BookDB {
 		try{
 			conn = connPool.getConnection();
 			
+<<<<<<< HEAD
 			if(conn != null){
 				stmt = conn.createStatement();
 				
 				String strQuery = "insert into `bookstore`.`book` (`title`, `author`, `bookDescription`, ` edition`, `year`,`publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty`) values (\""+book.getTitle()+"\",\""+book.getAuthor()+"\",\""+book.getBookDescription()+"\",\""+book.getEdition()+"\",\""+book.getYear()+"\","+book.getPublisher()+"\",\""+book.getCategory()+"\",\""+book.getIsbn10()+"\",\""+book.getIsbn13()+"\",\""+book.getPrice()+"\",\""+book.getInvQty()+"\")";
 				resultNo = stmt.executeUpdate(strQuery);
+=======
+			if(conn != null)
+			{
+				String strQuery = "INSERT INTO BookStore.book (Title, Author, BookCoverPath, BookDescription, Edition, Year, Publisher, Category, ISBN_10, ISBN_13, Price, InvQty) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+				stmt = conn.prepareStatement(strQuery);
+
+				stmt.setString(1, book.getTitle());
+				stmt.setString(2, book.getAuthor());				
+				stmt.setString(3, book.getBookCoverPath());
+				stmt.setString(4, book.getBookDescription());
+				stmt.setString(5, book.getEdition());
+				stmt.setInt(6, book.getYear());
+				stmt.setString(7, book.getPublisher());
+				stmt.setString(8, book.getCategory());
+				stmt.setString(9, book.getIsbn10());
+				stmt.setString(10, book.getIsbn13());
+				stmt.setFloat(11, book.getPrice());
+				stmt.setInt(12, book.getInvQty());
+
+				resultNo = stmt.executeUpdate();
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 			}
 		}catch(SQLException e){
 			for(Throwable t: e){	
@@ -128,7 +160,8 @@ public class BookDB {
 
 /*----------------------------------------------------------------------------*/
 	//update one book's information
-	public int updateBook(Book book){
+	public int updateBook(Book book)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
@@ -137,12 +170,24 @@ public class BookDB {
 
 			conn = connPool.getConnection();
 			
+<<<<<<< HEAD
 			if(conn != null){
 				stmt = conn.createStatement();		
 				String strQuery = "update `bookstore`.`book` set `title` = \""+book.getTitle()+"\", `author` = \""+book.getAuthor()+"\",`bookCoverArt` = \""+book.getBookCoverArt()+
 				"\", `description` = \""+book.getBookDescription()+"\",` edition' = \""+book.getEdition()+"\",`year` = \""+book.getYear()+"\", `publisher` = \""+book.getPublisher()+
 				"\", `category` = \""+ book.getCategory()+"\", `isbn-10` = \""+ book.getIsbn10()+"\", `isbn-13` = \""+ book.getIsbn13()+"\", `price` = \""+ book.getPrice()+"\","
 				+"`invQty` = \""+ book.getInvQty()+"\", where `Book ID` = "+book.getBookId(); 
+=======
+			if (conn != null)
+			{
+				stmt = conn.createStatement();	
+	
+				String strQuery = "UPDATE bookstore.book SET Title= \"" + book.getTitle() + "\", Author= \"" + book.getAuthor() + "\", BookCoverPath= \"" + book.getBookCoverPath() +
+					"\", BookDescription= \"" + book.getBookDescription() + "\", Edition= \"" + book.getEdition() + "\", Year= \"" + book.getYear() + "\", Publisher= \"" + book.getPublisher() +
+					"\", Category= \"" + book.getCategory() + "\", ISBN_10= \"" + book.getIsbn10() + "\", ISBN_13= \"" + book.getIsbn13() + "\", Price= \"" + book.getPrice() + 
+					"\", InvQty=" + book.getInvQty() + " WHERE `Book ID` =" + book.getBookId();
+
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 				resultNo = stmt.executeUpdate(strQuery);
 			}
 		}catch(SQLException e){
@@ -222,15 +267,23 @@ public class BookDB {
 			if(conn != null){
 				stmt = conn.createStatement();
 				
+<<<<<<< HEAD
 				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, ` edition`,"
 						+ "`year`, `publisher`, `category`, `isbn-10`, `isbn-13`, `price`, `invQty` from `bookstore`.`book`";
+=======
+				String strQuery = "SELECT `Book ID`, title, author, bookCoverPath, bookDescription, edition, year, publisher, category, isbn_10, isbn_13, price, invQty FROM bookstore.book";
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					Book book = new Book();
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
+<<<<<<< HEAD
 					book.setBookCoverArt(rs.getBlob(4));
+=======
+					book.setBookCoverPath(rs.getString(4));
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));

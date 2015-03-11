@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<<<<<<< HEAD
 <%@ page import="UserMgmt.business.SignUp"%> 
+=======
+<%@ page import="BookMgmt.Book.addBook2"%> 
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 
 <html>
 <head>
@@ -11,11 +15,9 @@
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
-		<form action="addBook" method="post">
+		<form action="addBook" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend class="legend_text"> Add a New Book to the Inventory. </legend>
-
-
 				
 				<div><span class="star">*</span><label>  Title: </label>
 					<input type="text" name="title" id="title"  required/></div>

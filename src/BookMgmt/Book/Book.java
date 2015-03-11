@@ -9,7 +9,12 @@ public class Book implements Serializable
 	private int bookId;
 	private String title;
 	private String author;
+<<<<<<< HEAD
 	private Blob bookCoverArt;
+=======
+	private String category;
+	private String bookCoverPath;
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 	private String bookDescription;
 	private String edition;
 	private int year;
@@ -26,6 +31,7 @@ public class Book implements Serializable
 	
 
 	//Default Constructor
+<<<<<<< HEAD
 	public Book(String title, String author, int year, String publisher,
 		String category, String isbn10, String isbn13, float price, int invQty)
 	{
@@ -33,6 +39,14 @@ public class Book implements Serializable
 		this.author = author;
 		this.year = year;
 		this.publisher = publisher;
+=======
+	public Book(String title, String author, String bookCoverPath, String category, String description,
+		String edition, int year, String publisher, String isbn10, String isbn13, float price, int invQty)
+	{
+		this.title = title;
+		this.author = author;
+		this.bookCoverPath = bookCoverPath;
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 		this.category = category;
 		this.isbn10 = isbn10;
 		this.isbn13 = isbn13;
@@ -67,9 +81,18 @@ public class Book implements Serializable
 	
 	public String getAuthor() { return author; }
 	public void setAuthor(String author) { this.author = author; }
+<<<<<<< HEAD
 	
 	public Blob getBookCoverArt() { return bookCoverArt; }
 	public void setBookCoverArt(Blob art) { bookCoverArt = art; }
+=======
+
+	public String getCategory() { return category; }
+	public void setCategory(String category) { this.category = category; }
+
+	public String getBookCoverPath() { return bookCoverPath; }
+	public void setBookCoverPath(String path) { bookCoverPath = path; }
+>>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 	
 	public String getBookDescription() { return bookDescription; }
 	public void setBookDescription(String description) { bookDescription = description; }

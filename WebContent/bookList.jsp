@@ -11,6 +11,29 @@
 <link rel="stylesheet" href="css/c06.css"/>
 </head>
 <body>
+
+<%
+	Cookie[] cookies = request.getCookies();
+	String userId = "";
+	if (cookies != null)
+	{
+		for (int i = 0; i< cookies.length; i++)
+		{
+			if (cookies[i].getName().equals("userId"))
+			{
+				userId = cookies[i].getValue();
+				System.out.println(cookies[i].getValue());
+			}
+		}
+	}
+				
+	if (userId.equals(""))
+	{
+		userId = "No Cookies Found";
+	}
+			
+%>
+<p>Username: <%=userId %> </p>
 	<table>
 		<thead>
 			<tr>	

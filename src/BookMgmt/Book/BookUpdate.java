@@ -15,22 +15,22 @@ public class BookUpdate extends HttpServlet
 	private static final long serialVersionUID = 1L;
     
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException
+	{
+		doPost(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException
 	{
 		Book book = new Book();
 		book.setBookId(Integer.parseInt(request.getParameter("BookId")));
 		book.setTitle(request.getParameter("title"));
 		book.setAuthor(request.getParameter("author"));
 		book.setCategory(request.getParameter("category"));
-<<<<<<< HEAD
-		
-//	    book.setBookCoverArt(request.getParameter("bookCoverArt"));
-=======
->>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
-		
-		System.out.println(request.getParameter("imagePath"));
-		book.setBookCoverPath(request.getParameter("imagePath"));
-				
+		book.setBookCoverPath(request.getParameter("imagePath"));				
 		book.setBookDescription(request.getParameter("bookDescription"));
 		book.setEdition(request.getParameter("edition"));
 		book.setYear(Integer.parseInt(request.getParameter("year")));
@@ -53,10 +53,4 @@ public class BookUpdate extends HttpServlet
 			response.sendRedirect("bookError.html");
 		}
 	}
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		doPost(request, response);
-	}
-
 }

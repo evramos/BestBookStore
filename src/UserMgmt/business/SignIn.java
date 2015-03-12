@@ -50,6 +50,12 @@ public class SignIn extends HttpServlet
 				if (user.getPasswd().equals(passwd))
 				{
 					//Creates a cookie for the current user that logs in
+					
+					Cookie a = new Cookie("isAdmin", "" + user.getIsAdmin());
+					a.setMaxAge(60*60); //Cookie is good for one hour
+					a.setPath("/");
+					response.addCookie(a);	
+					
 					Cookie c = new Cookie("userId", ""+user.getUserId());
 					c.setMaxAge(60*60); //Cookie is good for one hour
 					c.setPath("/");

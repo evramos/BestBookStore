@@ -37,6 +37,8 @@ public class SignUp extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException
 	{
+		response.setContentType("text/html");
+
 		try
 		{
 			PrintWriter out = response.getWriter();
@@ -56,12 +58,12 @@ public class SignUp extends HttpServlet
 				
 				if (index > 0)
 				{	
-					out.println("Welcome " + firstName + ", " + lastName);
-					out.println("Your email is: " + email);
-					out.println("Your password is: " + passwd);
-					out.println("\nSuccessful Register");
+					out.println("Welcome " + firstName + ", " + lastName + "<br/>");
+					out.println("Your email is: " + email + "<br/>");
+					out.println("Your password is: " + passwd + "<br/>");
+					out.println("Successful Register<br/><a href=\"SignIn.jsp\">Click to login</a>");
 
-					response.sendRedirect("./signUpForm_User.jsp");
+//					response.sendRedirect("./signUpForm_User.jsp");
 				}
 				else
 				{
@@ -70,7 +72,7 @@ public class SignUp extends HttpServlet
 			}
 			else
 			{
-				out.println("Unsuccessful Registration");
+				response.sendRedirect("./signUpForm_User.jsp");
 			}
 		}
         catch (Exception e)

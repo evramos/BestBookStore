@@ -32,6 +32,7 @@
 		for (int i = 0; i< userList.size(); i++)
 			{
 			out.println("<tr>");
+			out.println("<td>"+userList.get(i).getUserId() +"</td>");
 			out.println("<td>"+userList.get(i).getFirstName()+"</td>");
 			out.println("<td>"+userList.get(i).getLastName()+"</td>");
 			out.println("<td>"+userList.get(i).getEmail()+"</td>");

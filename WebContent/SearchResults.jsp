@@ -3,12 +3,7 @@
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="BookMgmt.Book.*"%>
-<%		
-String type = request.getParameter("type");
-String term = "\"%" + request.getParameter("term") + "%\"";
-BookDB bookDB = new BookDB();
-ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
-%>  
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,12 +33,18 @@ ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
 		</thead>
 		<tbody>
 		<%
+
+		String type = request.getParameter("type");
+		String term = "\"%" + request.getParameter("term") + "%\"";
+		BookDB bookDB = new BookDB();
+		ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
+
 		for(int i = 0; i< bookList.size(); i++){
 			out.println("<tr>");
 			out.println("<td>"+bookList.get(i).getBookId()+"</td>");
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
-			/*out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");*/
+			out.println("<td><img style=\"display:block; width:40px; height:60px;\" src=\"BookCoverArt/" + bookList.get(i).getBookCoverPath() + "\"></td>");
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));
 			out.println("<td>"+descr+"</td>");

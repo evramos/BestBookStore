@@ -259,30 +259,35 @@ public class BookDB {
 
 /*----------------------------------------------------------------------------*/
 	//select all books 	
-	public ArrayList<Book> selectBooksByTerm(String type, String term){
+	public ArrayList<Book> selectBooksByTerm(String type, String term)
+	{
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
 		ArrayList<Book> books = new ArrayList<>();
 		
-		try{
+		try
+		{
 			conn = connPool.getConnection();
 			
-			if(conn != null){
+			if (conn != null)
+			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book ID`, `title`, `author`, `bookCoverArt`, `bookDescription`, `edition`,"
-						+ "`year`, `publisher`, `category`, `isbn_10`, `isbn_13`, `price`, `invQty` from `bookstore`.`book` "
-						+ "where '"+type+"' like " + term;
+				String strQuery = "SELECT `Book ID`, Title, Author, BookCoverPath, BookDescription, Edition,"
+						+ "Year, Publisher, Category, Isbn_10, Isbn_13, price, InvQty FROM bookstore.book "
+						+ "WHERE " + type + " LIKE " + term;
 				
 				rs = stmt.executeQuery(strQuery);
 				
-				while(rs.next()){
+				while (rs.next())
+				{
 					Book book = new Book();
+					
 					book.setBookId(rs.getInt(1));
 					book.setTitle(rs.getString(2));
 					book.setAuthor(rs.getString(3));
-//					book.setBookCoverArt(rs.getBlob(4));
+					book.setBookCoverPath(rs.getString(4));
 					book.setBookDescription(rs.getString(5));
 					book.setEdition(rs.getString(6));
 					book.setYear(rs.getInt(7));
@@ -292,29 +297,22 @@ public class BookDB {
 					book.setIsbn13(rs.getString(11));
 					book.setPrice(rs.getFloat(12));
 					book.setInvQty(rs.getInt(13));
+					
 					books.add(book);
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		} catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		}
+		catch (SQLException e) { for (Throwable t: e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return books;
 	}

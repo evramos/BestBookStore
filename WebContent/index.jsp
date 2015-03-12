@@ -8,14 +8,13 @@
 <%
 	Cookie[] cookies = request.getCookies();
 	String firstName = "";
+	String isAdmin = "";
 	if (cookies != null)
 	{
 		for (int i = 0; i< cookies.length; i++)
 		{
-			if (cookies[i].getName().equals("firstName"))
-			{
-				firstName = cookies[i].getValue();
-			}
+			if (cookies[i].getName().equals("firstName")) { firstName = cookies[i].getValue(); }
+			if (cookies[i].getName().equals("isAdmin")) { isAdmin = cookies[i].getValue(); }
 		}
 	}
 %>
@@ -29,17 +28,8 @@
 	 <title>Home - The Best Bookstore</title>
 	 
 	 <style type="text/css">
-	 	element.style
-	 	{
-	 		border-color: rgb(29, 107, 176);
-	 	}
-
-	 	div
-	 	{
-	 		background-color: lightblue;
-	 		padding: 5px;
-	 	}
-
+	 	element.style { border-color: rgb(29, 107, 176); }
+	 	div { background-color: lightblue; padding: 5px; }
 	 </style>
 </head>
 <body>
@@ -47,7 +37,10 @@
 		<h1>THE BEST BOOKSTORE</h1>
 <%
 	if (!firstName.equals("")) {%>
-		Welcome <%= firstName %><br/><a href="SignOut">Logout</a>
+		Welcome <%= firstName %>
+		<% if (isAdmin.equals("true")) {%>[ADMIN MODE]<%}%>
+		<br/><a href="SignOut">Logout</a>
+		
 	<%} else {%>
 		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a>
 	<%}

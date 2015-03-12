@@ -11,6 +11,7 @@ public class User implements Serializable
 	private String email;
 	private String signDate;
 	private String lastDate;
+	private boolean isAdmin;
 
 /*------------------------------------------------------------------------------------------------*/
 	//Default Constructors
@@ -53,4 +54,8 @@ public class User implements Serializable
 	//Get & Set Last Date (The last time this user was signed in)
 	public String getLastDate() { return lastDate; }
 	public void setLastDate(String lastDate) { this.lastDate = lastDate; }
+	
+	//Get & Set isAdmin
+	public boolean getIsAdmin() { return isAdmin; }
+	public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
 }

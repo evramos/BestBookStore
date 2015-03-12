@@ -90,7 +90,7 @@ public class UserDB
 			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "SELECT `User ID`, FirstName, LastName, Password, `Email Address`, SignUpDate FROM user WHERE `Email Address` = \"" + email + "\"";
+				String strQuery = "SELECT `User ID`, FirstName, LastName, Password, `Email Address`, SignUpDate, isAdmin FROM user WHERE `Email Address` = \"" + email + "\"";
 				rs = stmt.executeQuery(strQuery);
 
 				if (rs.next())
@@ -101,6 +101,7 @@ public class UserDB
 					user.setPasswd(rs.getString(4));
 					user.setEmail(rs.getString(5));
 					user.setSignDate(rs.getString(6));
+					user.setIsAdmin(rs.getBoolean(7));
 					
 //					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 //				    java.util.Date inDate = dateFormat.parse(rs.getString(7));

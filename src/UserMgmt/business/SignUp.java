@@ -50,7 +50,6 @@ public class SignUp extends HttpServlet
 			if (email != null)
 			{
 				User user = new User(firstName, lastName, passwd, email);
-				int userid = user.getUserId();
 				UserDB dbConn = new UserDB();
 				
 				int index = dbConn.registerUser(user);

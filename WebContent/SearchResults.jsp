@@ -13,6 +13,7 @@ ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/c06.css" />
 <title>Search Results - The Best Bookstore</title>
 </head>
 <body>
@@ -42,7 +43,7 @@ ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
 			out.println("<td>"+bookList.get(i).getBookId()+"</td>");
 			out.println("<td>"+bookList.get(i).getTitle()+"</td>");
 			out.println("<td>"+bookList.get(i).getAuthor()+"</td>");
-			out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");
+			/*out.println("<td>"+bookList.get(i).getBookCoverArt()+"</td>");*/
 			String descr = bookList.get(i).getBookDescription();
 			descr = descr.substring(0, Math.min(descr.length(), 100));
 			out.println("<td>"+descr+"</td>");
@@ -54,7 +55,7 @@ ArrayList<Book> bookList= bookDB.selectBooksByTerm(type, term);
 			out.println("<td>"+bookList.get(i).getIsbn13()+"</td>");
 			out.println("<td>"+bookList.get(i).getPrice()+"</td>");
 			out.println("<td>"+bookList.get(i).getInvQty()+"</td>");
-			out.println("<td><a href=\"BookView.jsp?BookId="+bookList.get(i).getBookId()+"\">View</a>");
+			out.println("<td><a href=\"BookView.jsp?BookId="+bookList.get(i).getBookId()+"\">[View]</a>");
 			out.println("</tr>");
 		}
 		%>

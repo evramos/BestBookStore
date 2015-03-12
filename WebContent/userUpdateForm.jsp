@@ -6,14 +6,14 @@
 <%@ page import="UserMgmt.business.UserDB"%> 
 <%@ page import="UserMgmt.business.UserUpdate"%> 
 <%	
-	String userId = request.getParameter("userId");
+	int userId = Integer.parseInt(request.getParameter("UserId"));
 	UserDB userDB = new UserDB();
-	User user = userDB.selectUser(Integer.parseInt(userId));
+	User user = userDB.selectUser(userId);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head><title>User Table</title>
-		<link rel="stylesheet" href="css/c06.css" />
+	<head><title>Edit Profile - The Best Bookstore</title>
+	<link rel="stylesheet" href="css/c06.css" />
 	</head>
 	<body>
 		<form action="UserUpdate" method="post">
@@ -24,7 +24,7 @@
 				<div><span class="star"></span><label>  Email: </label><input type="text" name="email" id="email" value="<%=user.getEmail()%>"/></div>
 				<input type="hidden" name="UserId" value="<%=user.getUserId()%>"/>
 				<input type="submit" value="Update Info" id="submit"/>
-				<div><a href="" id="passwd_change">Change your password</a></div>
+				<div><a href="/index?UserId="<%=user.getUserId() %> id="passwd_change">Change your password</a></div>
 			</fieldset>
 		</form>
 	</body>

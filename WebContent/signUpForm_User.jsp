@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Create New Account</title>
+	<title>Create Account - The Best Bookstore</title>
 	<link rel="stylesheet" href="css/c06.css" />
  </head>
 	<body>
@@ -15,28 +15,28 @@
 			<fieldset>
 				<legend class="legend_text"> New to BestBooks.com? Register Below. </legend>
 
-				<a href="https://www.google.com" class="login icon-lock">Sign In</a>
+				<a href="/SignIn.jsp" class="login icon-lock">Sign In</a>
 				
-				<div><span class="star">*</span><label>  First Name: </label>
+				<div><span class="star"></span><label>  *First Name: </label>
 					<input type="text" name="firstName" id="firstName"  required/></div>
 
-				<div><span class="star">*</span><label>  Last Name: </label>
+				<div><span class="star"></span><label>  *Last Name: </label>
 					<input type="text" name="lastName" id="lastName"  required/></div>
 					
-				<div><span class="star">*</span><label>  Password: </label>
+				<div><span class="star"></span><label>  *Password: </label>
 					<input type="password" name="password" id="password"  required/></div>
 					
-				<div><span class="star">*</span><label>  Confirm Password:  </label>
+				<div><span class="star"></span><label>  *Confirm Password:  </label>
 					<input type="password" name="repasswd" id="repasswd" required/></div>
 									
-				<div><span class="star">*</span><label>  Email: </label>
+				<div><span class="star"></span><label>  *Email: </label>
 					<input type="text" name="email" id="email"/></div>
 					
 				<div id="warning" class="feedback"></div>
-				<input type="submit" value="Sign Up" id="submit"/>
+				<input type="submit" value="SignUp" id="submit"/>
 				
 			</fieldset>
-			<div><span class="star">*</span><label>Mandatory Information</label></div><br/>
+			<div><span class="star"></span><label>* = Required</label></div><br/>
 		</form>
 		
 		<script>
@@ -46,13 +46,13 @@
 		{
 	        if (document.getElementById('firstName').value == "")
 	        {
-	                elMsg.textContent= "Pleaes enter a first name";
+	                elMsg.textContent= "Please enter a first name";
 	                document.getElementById('firstName').focus();
 	                return false;
 	        }
 	        if (document.getElementById('lastName').value == "")
 	        {
-	                elMsg.textContent= "Pleaes enter a last name";
+	                elMsg.textContent= "Please enter a last name";
 	                document.getElementById('lastName').focus();
 	                return false;
 	        }

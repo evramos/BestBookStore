@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import UserMgmt.user.User;
+import UserMgmt.business.*;
 
 @WebServlet("/UserUpdate")
 public class UserUpdate extends HttpServlet{
@@ -22,15 +23,19 @@ public class UserUpdate extends HttpServlet{
 		user.setLastName(request.getParameter("LastName"));
 		user.setEmail(request.getParameter("email"));
 		
-		UserDB dbConn = new UserDB();
+		UserDB dbConn = null;
+		try {
+			dbConn = new UserDB();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		int i = dbConn.updateUser(user);
 		if(i > 0)
 		{
-			response.sendRedirect("/userList.jsp");
+			response.sendRedirect("/index.jsp");
 		}
 		else
 		{
-			response.sendRedirect("signUpError.html");
 		}
 	}
 	

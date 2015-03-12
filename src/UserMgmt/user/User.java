@@ -1,18 +1,17 @@
 package UserMgmt.user;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class User implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	
 	private int userId;
 	private String lastName;
 	private String firstName;
 	private String passwd;
 	private String email;
-
-	private String signDate;
-	private String lastDate;
+	private Timestamp signDate;
+	private Timestamp lastDate;
 
 /*------------------------------------------------------------------------------------------------*/
 	//Default Constructors
@@ -26,18 +25,12 @@ public class User implements Serializable
 		this.email = email;
 	}
 
-	// public User( String passwd, String FirstName, String LastName, String email){
-	// 	this.passwd = passwd;
-	// 	this.email = email;
-	// 	this.FirstName = FirstName;
-	// 	this.LastName = LastName;
-	// }
 
 /*------------------------------------------------------------------------------------------------*/
 	//Get & Set User ID
 	public int getUserId() { return userId; }
 	public void setUserId(int userId) { this.userId = userId; }	
-	
+
 	//Get & Set Last Name
 	public String getLastName() { return lastName; }
 	public void setLastName(String lastName) { this.lastName = lastName; }
@@ -56,10 +49,10 @@ public class User implements Serializable
 	
 	
 	//Get & Set Sign-in Date (The date user was created)
-	public String getSignDate() { return signDate; }
-	public void setSignDate(String signDate) { this.signDate = signDate; }
+	public Timestamp getSignDate() { return signDate; }
+	public void setSignDate(Timestamp signDate) { this.signDate = signDate; }
 	
 	//Get & Set Last Date (The last time this user was signed in)
-	public String getLastDate() { return lastDate; }
-	public void setLastDate(String lastDate) { this.lastDate = lastDate; }
+	public Timestamp getLastDate() { return lastDate; }
+	public void setLastDate(Timestamp lastDate) { this.lastDate = lastDate; }
 }

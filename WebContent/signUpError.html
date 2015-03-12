@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="US-ASCII">
-<title>Sign up error</title>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<link rel="stylesheet" href="css/c06.css"/>
+</head>
+<title>Sign up error - The Best Bookstore</title>
 </head>
 <body>
-		<script>
-        	alert("Your email is already in use.");
-        	window.history.go(-1);
- 		</script>
+	<script>
+    	alert("Your username or email is already in our system, or it is already in use by another account.");
+    	window.history.go(-1);
+	</script>
+ 		
+ 	<form action="signUpForm_User.jsp" method="get">
+        <input type="submit" value="Return">
+    </form>
 </body>
 </html>

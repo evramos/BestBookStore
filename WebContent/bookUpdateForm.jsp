@@ -3,10 +3,7 @@
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="BookMgmt.Book.*" %>
-<<<<<<< HEAD
-=======
 
->>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 <%	
 	String bookId = request.getParameter("BookId");
 	BookDB bookDB = new BookDB();
@@ -14,15 +11,12 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head><title>Edit Book <%=book.getTitle() %></title>
+
+	<head><title>Edit <%=book.getTitle() %> - The Best Bookstore</title>
 		<link rel="stylesheet" href="css/c06.css" />
 	</head>
 	<body>
 		<form action="BookUpdate" method="post">
-<<<<<<< HEAD
-=======
-
->>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 			<fieldset>
 				<legend class="legend_text"> Update a Book in the Inventory. </legend>
 
@@ -32,22 +26,17 @@
 					<input type="text" name="title" id="title"  value="<%=book.getTitle() %>"  /></div>
 
 				<div><span class="star">*</span><label>  Author: </label>
+
 					<input type="text" name="author" id="author"  value="<%=book.getAuthor() %>"  /></div>
-<<<<<<< HEAD
-					
-				<div><span class="star">*</span><label>  Category: </label>
-					<select name="category" id="category">
-						<option value="">Please Choose a Category</option>
-=======
+
 
 				<div><p><img style="display:block; width:200px; height:300px;" src="BookCoverArt/<%= book.getBookCoverPath() %>" /></p></div>
 
 				<div><p>Upload Book Cover: <input type="file" name="imagePath" id="imagePath" alt="<%= book.getBookCoverPath() %>"  /></p></div>
 
-				<div><label>  Category: </label>
+				<div><label>  *Category: </label>
 					<select name="category" id="category" />
 						<option value="<%=book.getCategory() %>"/><%=book.getCategory() %></option>
->>>>>>> 8e7f5e2bae03de189905b0bb14dc6e7506771495
 						<option value="Arts & Photography Books">Arts & Photography Books</option>
 						<option value="Biographies & Memoirs">Biographies & Memoirs</option>
 						<option value="Business & Money">Business & Money</option>

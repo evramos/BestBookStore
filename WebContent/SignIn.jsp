@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/c06.css"/>
+</head>
 <title>Sign In - The Best Bookstore</title>
 </head>
 <body>

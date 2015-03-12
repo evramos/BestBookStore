@@ -9,7 +9,8 @@ import data.dbConnect.DBConnectionPool;
 public class RatingDB {
 	final static String db_url ="jdbc:mysql://localhost:3306/bookstore";
 	final static String db_username ="root";
-	final static String db_passwd ="nopassword";
+//	final static String db_passwd ="nopassword";
+	final static String db_passwd ="p0p1c0rn";
 	
 	DBConnectionPool connPool = null;
 	
@@ -244,7 +245,8 @@ public class RatingDB {
 		}
 		return ratings;
 	}
-public ArrayList<rating> selectRatingsByBook(int BookId)
+	
+	public ArrayList<rating> selectRatingsByBook(int BookId)
 	{
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -257,7 +259,7 @@ public ArrayList<rating> selectRatingsByBook(int BookId)
 			if(conn != null){
 				stmt = conn.createStatement();
 				
-				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `User_User ID = "+ BookId;
+				String strQuery = "select `Book_Book ID`,`Comments`,`Date`,`Ratings ID`,`Stars`,`User_User ID` from `bookstore`.`ratings` where `Book_Book ID` = "+ BookId;
 				rs = stmt.executeQuery(strQuery);
 				while(rs.next()){
 					rating r = new rating();

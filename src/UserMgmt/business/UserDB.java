@@ -1,7 +1,11 @@
 package UserMgmt.business;
 
 import java.sql.*;
+<<<<<<< HEAD
 //import java.sql.Date;
+=======
+import java.sql.Date;
+>>>>>>> davids-brqnch
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -28,6 +32,8 @@ public class UserDB
 	
 	public User selectUser(int userId){
 
+<<<<<<< HEAD
+=======
 		Statement stmt = null;
 		ResultSet rs = null;
 		User user = new User();
@@ -51,8 +57,8 @@ public class UserDB
 					user.setFirstName(rs.getString(2));
 					user.setLastName(rs.getString(3));
 					user.setEmail(rs.getString(4));
-//					user.setSignDate(rs.getTimestamp(5));
-//					user.setLastDate(rs.getTimestamp(6));
+					user.setSignDate(rs.getTimestamp(5));
+					user.setLastDate(rs.getTimestamp(6));
 				}
 			}
 		}
@@ -77,7 +83,7 @@ public class UserDB
 		}
 		return user;
 	}
-	
+		
 /*----------------------------------------------------------------------------*/
 	public User selectUserByEmail(String email)
 	{
@@ -114,26 +120,23 @@ public class UserDB
 ////					user.setLastDate(lastTimestamp);
 				}
 			}
-		}catch(SQLException e){
-			for(Throwable t: e){	
-				t.printStackTrace();
-			}
-		}catch (Exception et) {
-			et.printStackTrace();
-		}finally {
-		    try {
-		    	if (rs != null){
-		            rs.close();
-		        }
-		    	if (stmt != null){
-		            stmt.close();
-		        }
-		        if (conn != null) {
-		            connPool.returnConnection(conn);
-		        }
-		    }catch(Exception e){
-		    	 System.err.println(e);
+		catch (SQLException e)
+		{
+			for(Throwable t:e) { t.printStackTrace(); }
+		}
+
+		catch (Exception et) { et.printStackTrace(); }
+
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
 		    }
+
+		    catch (Exception e) { System.err.println(e); }
 		}
 		return user;
 	}

@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import UserMgmt.user.User;
+import UserMgmt.user.User;
+import UserMgmt.business.UserDB;
 
 @WebServlet("/UserDelete")
 public class UserDelete extends HttpServlet{
@@ -17,7 +18,13 @@ public class UserDelete extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String UserId= request.getParameter("UserId");
 		
-		UserDB dbConn = new UserDB();
+		UserDB dbConn = null;
+		try {
+			dbConn = new UserDB();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		int i = dbConn.deleteUser(Integer.parseInt(UserId));
 		if(i > 0){

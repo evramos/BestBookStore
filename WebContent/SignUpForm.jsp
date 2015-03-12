@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
-<%@ page import="UserMgmt.user.User" %>
+<%@ page import="UserMgmt.business.User" %>
 <%@ page import="UserMgmt.business.UserDB"%> 
 <%@ page import="UserMgmt.business.SignUp"%> 
 

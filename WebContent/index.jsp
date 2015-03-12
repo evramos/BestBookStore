@@ -7,24 +7,17 @@
  
 <%
 	Cookie[] cookies = request.getCookies();
-	String userId = "";
+	String firstName = "";
 	if (cookies != null)
 	{
 		for (int i = 0; i< cookies.length; i++)
 		{
-			if (cookies[i].getName().equals("userId"))
+			if (cookies[i].getName().equals("firstName"))
 			{
-				userId = cookies[i].getValue();
-				System.out.println(cookies[i].getValue());
+				firstName = cookies[i].getValue();
 			}
 		}
 	}
-				
-	if (userId.equals(""))
-	{
-		userId = "No Cookies Found";
-	}
-	
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,12 +25,36 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/c06.css" />
-	<title>Home - The Best Bookstore</title>
+<!-- 	<link rel="stylesheet" href="css/c06.css" /> -->	
+	 <title>Home - The Best Bookstore</title>
+	 
+	 <style type="text/css">
+	 	element.style
+	 	{
+	 		border-color: rgb(29, 107, 176);
+	 	}
+
+	 	div
+	 	{
+	 		background-color: lightblue;
+	 		padding: 5px;
+	 	}
+
+	 </style>
 </head>
 <body>
+	<div>
+		<h1>THE BEST BOOKSTORE</h1>
+<%
+	if (!firstName.equals("")) {%>
+		Welcome <%= firstName %><br/><a href="SignOut">Logout</a>
+	<%} else {%>
+		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a>
+	<%}
+%>
 
-	<h1>Welcome to THE BEST BOOKSTORE</h1>
+	</div>
+
 	<h2>Useful Links</h2>
 	<ul style="list-style-type:none">
 	<li><a href="signUpForm_User.jsp">Create an account</a></li>
@@ -60,7 +77,7 @@
 		<input type="text" name="term" id="Search box"/>
 		<input type="submit" value="Search" id="submit"/>
 		
-		<p>UserId: <%= userId %></p>						
+
 	</div>
 	</form>
 </body>

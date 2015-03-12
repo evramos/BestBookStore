@@ -6,12 +6,10 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import UserMgmt.user.User;
 import UserMgmt.business.UserDB;
 
 /**
@@ -49,7 +47,6 @@ public class SignIn extends HttpServlet
 
 			if (user != null)
 			{	
-				out.println( user.getPasswd() + " == " + passwd);
 				if (user.getPasswd().equals(passwd))
 				{
 					//Creates a cookie for the current user that logs in
@@ -57,6 +54,11 @@ public class SignIn extends HttpServlet
 					c.setMaxAge(60*60); //Cookie is good for one hour
 					c.setPath("/");
 					response.addCookie(c);	
+
+					Cookie d = new Cookie("firstName", user.getFirstName());
+					d.setMaxAge(60*60); //Cookie is good for one hour
+					d.setPath("/");
+					response.addCookie(d);	
 
 					out.println("Successful Login");
 					out.println("<a href=./index.jsp>Return to homepage</a>");

@@ -2,7 +2,7 @@
     pageEncoding="US-ASCII"%>
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
-<%@ page import="UserMgmt.user.User" %>
+<%@ page import="UserMgmt.business.User" %>
 <%@ page import="UserMgmt.business.UserDB" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 

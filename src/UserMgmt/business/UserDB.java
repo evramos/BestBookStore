@@ -1,15 +1,8 @@
 package UserMgmt.business;
 
 import java.sql.*;
-<<<<<<< HEAD
-//import java.sql.Date;
-=======
-import java.sql.Date;
->>>>>>> davids-brqnch
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-import UserMgmt.user.User;
 import data.dbConnect.DBConnectionPool;
 
 public class UserDB
@@ -32,8 +25,6 @@ public class UserDB
 	
 	public User selectUser(int userId){
 
-<<<<<<< HEAD
-=======
 		Statement stmt = null;
 		ResultSet rs = null;
 		User user = new User();
@@ -57,8 +48,8 @@ public class UserDB
 					user.setFirstName(rs.getString(2));
 					user.setLastName(rs.getString(3));
 					user.setEmail(rs.getString(4));
-					user.setSignDate(rs.getTimestamp(5));
-					user.setLastDate(rs.getTimestamp(6));
+					user.setSignDate(rs.getString(5));
+					user.setLastDate(rs.getString(6));
 				}
 			}
 		}
@@ -99,7 +90,7 @@ public class UserDB
 			{
 				stmt = conn.createStatement();
 				
-				String strQuery = "SELECT `User ID`, FirstName, LastName, Password, `Email Address`, SignUpDate FROM `user` where `Email Address` = \"" + email + "\"";
+				String strQuery = "SELECT `User ID`, FirstName, LastName, Password, `Email Address`, SignUpDate FROM user WHERE `Email Address` = \"" + email + "\"";
 				rs = stmt.executeQuery(strQuery);
 
 				if (rs.next())
@@ -120,6 +111,7 @@ public class UserDB
 ////					user.setLastDate(lastTimestamp);
 				}
 			}
+		}
 		catch (SQLException e)
 		{
 			for(Throwable t:e) { t.printStackTrace(); }

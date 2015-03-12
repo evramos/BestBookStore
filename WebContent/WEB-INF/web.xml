@@ -9,18 +9,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    <context-param>
+  <context-param>
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-    <!-- Matthew's BookCoverArt Path -->
+    
 		/Users/RevZero/Dropbox/Records/UW Bothell Statement/Class Database/Winter 2015/CSS 490/TheBestBookstore/WebContent/BookCoverArt
 		
-	<!-- Martha's BookCoverArt Path -->
-    <!-- <Your computer path to this location>/WebContent/BookCoverArt -->
+	
     
-    <!-- David's BookCoverArt Path -->
-    <!-- <Your computer path to this location>/WebContent/BookCoverArt -->
+    
+    
+    
 	</param-value>
   </context-param>
 </web-app>

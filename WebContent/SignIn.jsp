@@ -9,7 +9,7 @@
 <title>Sign In - The Best Bookstore</title>
 </head>
 <body>
-		<form action="SignIn" method="get">
+		<form action="SignIn" method="post">
 			<fieldset>
 				
 				<legend class="legend_text"> Have an account at TheBestBookstore.com? Sign in Below. </legend>
@@ -21,7 +21,7 @@
 					<input type="password" name="password" id="password"></div>
 					
 				<div id="warning" class="feedback"></div>
-				<input type="submit" value="Sign Up" id="submit"/>
+				<input type="submit" value="Sign In" id="submit"/>
 				Don't have an account? <a href="signUpForm_User.jsp">Sign Up</a>
 				
 			</fieldset>

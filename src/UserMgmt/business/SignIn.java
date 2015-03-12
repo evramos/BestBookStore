@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,8 @@ public class SignIn extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException
 	{
+		response.setContentType("text/html");
+
 		try
 		{
 			PrintWriter out = response.getWriter();
@@ -43,17 +46,18 @@ public class SignIn extends HttpServlet
 			User user = userDB.selectUserByEmail(email);
 
 			if (user != null)
-			{
-				if (user.getPasswd() == passwd)
+			{	
+				out.println( user.getPasswd() + " == " + passwd);
+				if (user.getPasswd().equals(passwd))
 				{
 					//Creates a cookie for the current user that logs in
-					Cookie c = new Cookie("userId", user.getUserId());
+					Cookie c = new Cookie("userId", ""+user.getUserId());
 					c.setMaxAge(60*60); //Cookie is good for one hour
 					c.setPath("/");
 					response.addCookie(c);	
 
 					out.println("Successful Login");
-					out.println("<a href=/index.jsp?UserId="+user.getUserId()+">Return to homepage</a>");
+					out.println("<a href=./index.jsp>Return to homepage</a>");
 				}
 				else
 				{

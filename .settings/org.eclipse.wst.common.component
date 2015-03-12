@@ -3,6 +3,6 @@
 		<wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
 		<property name="context-root" value="bookstore"/>
-		<property name="java-output-path" value="/bookstore/build/classes"/>
+        <property name="java-output-path" value="/TheBestBookstore/build/classes"/>
 	</wb-module>
 </project-modules>

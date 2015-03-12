@@ -219,16 +219,7 @@ pip-log.txt
 <<<<<<< HEAD
 src/UserMgmt/MySQL.java
 *.jsdtscope
-=======
-/bin/
-/bin/
-/bin/
-/bin/
->>>>>>> davids-brqnch
+.settings
+
 .project
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
 /bin/

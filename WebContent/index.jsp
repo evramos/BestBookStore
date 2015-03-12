@@ -51,7 +51,7 @@
 	<h2>Useful Links</h2>
 	<ul style="list-style-type:none">
 	<li><a href="signUpForm_User.jsp">Create an account</a></li>
-	<li><a href="SignIn.jsp">Log in</a></li>
+	<li><a href="userList.jsp">View all users</a></li>
 	<li><a href="bookList.jsp">View all books</a></li>
 	</ul>
 

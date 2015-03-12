@@ -37,7 +37,9 @@
 	if (!firstName.equals("")) {%>
 		Welcome <%= firstName %>
 		<% if (isAdmin.equals("true")) {%>[ADMIN MODE]<%}%>
-		<br/><a href="SignOut">Logout</a>
+		<br/>
+		<a href="./index.jsp">Home</a>		
+		<a href="SignOut">Logout</a>
 		
 	<%} else {%>
 		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a>

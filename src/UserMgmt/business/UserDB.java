@@ -272,7 +272,7 @@ public class UserDB
 			if (conn != null)
 			{
 				stmt = conn.createStatement();
-				String strQuery = "select `User ID`, `FirstName`, `LastName`, `Email Address` from `user`";
+				String strQuery = "SELECT `User ID`, FirstName, LastName, `Email Address`, isAdmin FROM `user`";
 				rs = stmt.executeQuery(strQuery);
 				
 				while (rs.next())
@@ -282,6 +282,7 @@ public class UserDB
 					u.setFirstName(rs.getString(2));
 					u.setLastName(rs.getString(3));
 					u.setEmail(rs.getString(4));
+					u.setIsAdmin(rs.getBoolean(5));
 //					u.setSignDate(rs.getString(5));
 //					u.setLastDate(rs.getString(6));
 					users.add(u);

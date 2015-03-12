@@ -4,9 +4,10 @@
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="UserMgmt.business.User" %>
 <%@ page import="UserMgmt.business.UserDB"%> 
-<%@ page import="UserMgmt.business.UserUpdate"%> 
+<%@ page import="UserMgmt.business.UserUpdate"%>
+
 <%	
-	int userId = Integer.parseInt(request.getParameter("UserId"));
+	int userId = Integer.parseInt(request.getParameter("userId"));
 	UserDB userDB = new UserDB();
 	User user = userDB.selectUser(userId);
 %>

@@ -3,8 +3,7 @@
 <%@ page import="java.sql.*,java.util.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="ratingMgmt.rating.*" %>
-<%@ page import="UserMgmt.user.*" %>
-<%@ page import="UserMgmt.business.UserDB" %>
+<%@ page import="UserMgmt.business.*" %>
 <%@ page import="BookMgmt.Book.*"%>
 <%	
 	RatingDB ratingDB = new RatingDB();

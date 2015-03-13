@@ -24,21 +24,32 @@ public class RatingDB {
 		}
 		return connPool;
 	}
-	
-	public int addRating(rating Rating)
+
+// -----------------------------------------------------------------------------
+	public int addRating(rating r)
 	{
-		Statement stmt = null;
+		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int resultNo = 0;
 		Connection conn = null;
+		
+	
 		try{
 			conn = connPool.getConnection();
 			
 			if(conn != null){
-				stmt = conn.createStatement();
 				
-				String strQuery = "INSERT INTO `bookstore`.`ratings` (`Date`,`Stars`,`Comments`,`User_User ID`,`Book_Book ID`) VALUES (\""+Rating.getDate()+"\",\""+Rating.getStars()+"\", \""+Rating.getComments()+"\", "+Rating.getUserId()+", "+Rating.getBookId()+")";
-				resultNo = stmt.executeUpdate(strQuery);
+				String strQuery = "INSERT INTO bookstore.ratings (Stars, Comments,`User_User ID`,`Book_Book ID`) VALUES (?,?,?,?)";
+				
+				stmt = conn.prepareStatement(strQuery);
+
+				stmt.setInt(1, r.getStars());
+				stmt.setString(2, r.getComments());
+				stmt.setInt(3, r.getUserId());
+				stmt.setInt(4, r.getBookId());
+
+				resultNo = stmt.executeUpdate();
+				
 			}
 		}catch(SQLException e){
 			for(Throwable t: e){	
@@ -63,7 +74,8 @@ public class RatingDB {
 		}
 		return resultNo;
 	}
-	
+
+// -----------------------------------------------------------------------------
 	public int editRating(rating Rating)
 	{
 		Statement stmt = null;
@@ -144,6 +156,8 @@ public class RatingDB {
 		return resultNo;
 	}
 
+// -----------------------------------------------------------------------------
+
 	public rating selectRating(int RatingId)
 	{
 		Statement stmt = null;
@@ -191,7 +205,8 @@ public class RatingDB {
 		}
 		return Rating;
 	}
-	
+
+// -----------------------------------------------------------------------------
 	public ArrayList<rating> selectRatingsByUser(int UserId)
 	{
 		Statement stmt = null;
@@ -241,7 +256,9 @@ public class RatingDB {
 		}
 		return ratings;
 	}
-	
+
+// -----------------------------------------------------------------------------
+
 	public ArrayList<rating> selectRatingsByBook(int BookId)
 	{
 		Statement stmt = null;

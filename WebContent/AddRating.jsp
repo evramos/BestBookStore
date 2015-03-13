@@ -1,20 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
+
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="ratingMgmt.rating.*" %>
-<%@ page import="UserMgmt.business.UserDB" %>
-<%@ page import="UserMgmt.business.User" %>
+<%@ page import="UserMgmt.business.*" %>
+<%@ page import="BookMgmt.Book.*"%>
 
-<%@ page import="BookMgmt.Book.Book"%>
-<%@ page import="BookMgmt.Book.BookDB"%>
-<%	
+<%
+	Cookie[] cookies = request.getCookies();
+	String userId = "";
+
+	if (cookies != null)
+	{
+		for (int i = 0; i< cookies.length; i++)
+		{
+			if (cookies[i].getName().equals("userId")) { userId = cookies[i].getValue(); }
+		}
+	}
+
 	RatingDB ratingDB = new RatingDB();
 	UserDB userDBConn = new UserDB();
 	BookDB bookDBConn = new BookDB();
 	
 	rating Rating = new rating(); 
-	User user = userDBConn.selectUser(Integer.parseInt(request.getParameter("UserId")));
+	User user = userDBConn.selectUser(Integer.parseInt(userId));
 	Book book = bookDBConn.selectBook(Integer.parseInt(request.getParameter("BookId")));
 
 %>     

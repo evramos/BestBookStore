@@ -5,14 +5,47 @@
 <%@ page import="TransMgmt.trans.transviewDB" %>
 <%@ page import="TransMgmt.trans.transview" %>
 
+<%
+	Cookie[] cookies = request.getCookies();
+	String firstName = "";
+	String isAdmin = "";
+	if (cookies != null)
+	{
+		for (int i = 0; i< cookies.length; i++)
+		{
+			if (cookies[i].getName().equals("firstName")) { firstName = cookies[i].getValue(); }
+			if (cookies[i].getName().equals("isAdmin")) { isAdmin = cookies[i].getValue(); }
+		}
+	}
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Sales Reports</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Sales Reports</title>
+	<style type="text/css">
+	 	element.style { border-color: rgb(29, 107, 176); }
+	 	div { background-color: lightblue; padding: 5px; }
+	 </style>
 </head>
 <body>
+	<div>
+		<h1>THE BEST BOOKSTORE</h1>
+<%
+	if (!firstName.equals(""))
+	{
+		out.println("Welcome " + firstName);
+		if (isAdmin.equals("true")) { out.println("[ADMIN MODE]"); }
+		out.println("<br/><a href=\"./index.jsp\">Home</a>");
+		out.println("<a href=\"SignOut\">Logout</a>");
 
+	} 
+	else { out.println("Please <a href=\"SignIn.jsp\">SignIn</a> or <a href=\"signUpForm_User.jsp\">Create an account</a>");	}
+%>
+
+	</div>
 <%
 	
 	transviewDB tviewDB = new transviewDB();

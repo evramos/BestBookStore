@@ -58,6 +58,8 @@
 		{
 			out.println("<li><a href=\"addBook.jsp\">Add a new book</a></li>");
 			out.println("<li><a href=\"userList.jsp\">View all users</a></li>");
+			out.println("<li><a href=\"SalesReports.jsp\">View Sales Report</a></li>");
+
 
 		}
 	}

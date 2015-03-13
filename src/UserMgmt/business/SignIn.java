@@ -61,7 +61,7 @@ public class SignIn extends HttpServlet
 					c.setPath("/");
 					response.addCookie(c);	
 
-					Cookie d = new Cookie("firstName", user.getFirstName());
+					Cookie d = new Cookie("firstName", user.getFirstName() + " " + user.getLastName());
 					d.setMaxAge(60*60); //Cookie is good for one hour
 					d.setPath("/");
 					response.addCookie(d);	

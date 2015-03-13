@@ -106,7 +106,7 @@
 	out.println("<p>Total Sales: $" + String.format("%.2f",totalSales) + "</p>");
 	out.println("</div>");
 
-	out.println("<h2>Sales previous week</h2>");
+	out.println("<h2>Difference Since Last Week</h2>");
 	out.println("<div>");	
 	out.println("<p>Total Transactions: " + prevTotalTrans + "</p>");
 	out.println("<p>Total Sales: $" + String.format("%.2f",prevTotalSales) + "</p>");

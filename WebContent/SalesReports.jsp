@@ -38,7 +38,7 @@
 	out.println(lastmonth+"<br>");
 	 */
 	ArrayList<transview> weekTrans = tviewDB.selectWeek(0,7); 			// 0 equals now; 7 equals number of days before now
-//	ArrayList<transview> prevWeekTrans = tviewDB.selectWeek(8, 15);
+	ArrayList<transview> prevWeekTrans = tviewDB.selectWeek(8, 15);
 //	ArrayList<transview> monTrans = transviewDB.selectMonth(now);
 //	ArrayList<transview> PrevMonTrans = transviewDB.selectMonth(lastmonth);
 	
@@ -47,14 +47,13 @@
 		totalTrans++;
 		totalSales += (weekTrans.get(i).getPrice() * weekTrans.get(i).getOrderQty());
 	}
-	/*	
-	totalSales = 0;
+
    	for(int i = 0; i < prevWeekTrans.size(); i++)
 	{
 		prevTotalTrans++;
-		totalSales += (prevWeekTrans.get(i).getPrice() * prevWeekTrans.get(i).getOrderQty());
+		prevTotalSales += (prevWeekTrans.get(i).getPrice() * prevWeekTrans.get(i).getOrderQty());
 	}
- */ 
+
 //	for(int i = 0; i < monTrans.size(); i++)
 //	{
 //				
@@ -72,6 +71,12 @@
 	out.println("<div>");	
 	out.println("<p>Total Transactions: " + totalTrans + "</p>");
 	out.println("<p>Total Sales: $" + String.format("%.2f",totalSales) + "</p>");
+	out.println("</div>");
+
+	out.println("<h2>Sales previous week</h2>");
+	out.println("<div>");	
+	out.println("<p>Total Transactions: " + prevTotalTrans + "</p>");
+	out.println("<p>Total Sales: $" + String.format("%.2f",prevTotalSales) + "</p>");
 	out.println("</div>");
 
 

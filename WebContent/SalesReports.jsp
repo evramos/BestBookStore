@@ -27,8 +27,19 @@
 	<title>Sales Reports</title>
 	<style type="text/css">
 	 	element.style { border-color: rgb(29, 107, 176); }
-	 	div { background-color: lightblue; padding: 5px; }
+ 	 	div {
+ 	 		background-color: lightblue;
+	 		padding: 5px;
+	 	}
+	 	
+	 	form {
+	 		padding: 5px;
+	 		border: 2px solid #a1a1a1;
+	 		width: 50%;
+	 		border-radius: 25px;
+	 	}
 	 </style>
+	 
 </head>
 <body>
 	<div>
@@ -43,11 +54,9 @@
 
 	} 
 	else { out.println("Please <a href=\"SignIn.jsp\">SignIn</a> or <a href=\"signUpForm_User.jsp\">Create an account</a>");	}
-%>
 
-	</div>
-<%
-	
+	out.println("</div><br/>");
+
 	transviewDB tviewDB = new transviewDB();
 	java.util.Date date = new java.util.Date();
 	java.sql.Timestamp now = new Timestamp(date.getTime());
@@ -60,20 +69,13 @@
 	float prevTotalSales = 0;
 	int prevTotalTrans = 0;
 	
-	float currMonSales = 0;
-	int currMonTrans = 0;
-	
-	float prevMonSales = 0;
-	int prevMonTrans = 0;
-	
-/* 	out.println(now+"<br>");
-	out.println(lastweek+"<br>");
-	out.println(lastmonth+"<br>");
-	 */
+
+
+
 	ArrayList<transview> weekTrans = tviewDB.selectWeek(0,7); 			// 0 equals now; 7 equals number of days before now
 	ArrayList<transview> prevWeekTrans = tviewDB.selectWeek(8, 15);
-//	ArrayList<transview> monTrans = transviewDB.selectMonth(now);
-//	ArrayList<transview> PrevMonTrans = transviewDB.selectMonth(lastmonth);
+	ArrayList<transview> monTrans = tviewDB.selectWeek(0, 31);
+	ArrayList<transview> prevMonTransV = tviewDB.selectWeek(32,63);
 	
 	for (int i = 0; i < weekTrans.size(); i++)
 	{		
@@ -81,53 +83,76 @@
 		totalSales += (weekTrans.get(i).getPrice() * weekTrans.get(i).getOrderQty());
 	}
 
-   	for(int i = 0; i < prevWeekTrans.size(); i++)
+   	for (int i = 0; i < prevWeekTrans.size(); i++)
 	{
 		prevTotalTrans++;
 		prevTotalSales += (prevWeekTrans.get(i).getPrice() * prevWeekTrans.get(i).getOrderQty());
 	}
 
-//	for(int i = 0; i < monTrans.size(); i++)
-//	{
-//				
-//		currMonTrans = currMonTrans++;
-//		currMonSales = currMonSales + (monTrans.get(i).getPrice() * monTrans.get(i).getOrderQty());
-//	}
-//	
-//	for(int i = 0; i < PrevMonTrans.size(); i++)
-//	{
-//				
-//		prevMonTrans = prevMonTrans++;
-//		prevMonSales = prevMonSales + (PrevMonTrans.get(i).getPrice() * PrevMonTrans.get(i).getOrderQty());
-//	}
+
+	out.println("<form><br/>");
+	out.println("Now: " + now + "<br>");
+	out.println("LastWeek: " + lastweek + "<br>");
+
+	out.println("<p>");
 	out.println("<h2>Sales this week</h2>");
-	out.println("<div>");	
 	out.println("<p>Total Transactions: " + totalTrans + "</p>");
 	out.println("<p>Total Sales: $" + String.format("%.2f",totalSales) + "</p>");
-	out.println("</div>");
+	out.println("</p>");
 
-	out.println("<h2>Difference Since Last Week</h2>");
-	out.println("<div>");	
+	out.println("<p>");
+	out.println("<h2>Sales Last Week</h2>");
 	out.println("<p>Total Transactions: " + prevTotalTrans + "</p>");
 	out.println("<p>Total Sales: $" + String.format("%.2f",prevTotalSales) + "</p>");
-	out.println("</div>");
+	out.println("</p>");
+
+	out.println("<p>");
+	out.println("<h2>Difference Since Last Week</h2>");
+	out.println("<p>Transaction Difference: " + (Math.abs(prevTotalTrans - totalTrans)) + "</p>");
+	out.println("<p>Transaction Difference: $" + String.format("%.2f", Math.abs(prevTotalSales - totalSales)) + "</p>");
+	out.println("</p></form>");
 
 
+
+	float currMonSales = 0;
+	int currMonTrans = 0;
+	
+	float prevMonSales = 0;
+	int prevMonTrans = 0;
+	
+
+	for (int i = 0; i < monTrans.size(); i++)
+	{
+		currMonTrans++;
+		currMonSales += (monTrans.get(i).getPrice() * monTrans.get(i).getOrderQty());
+	}
+	
+	for (int i = 0; i < prevMonTransV.size(); i++)
+	{
+		prevMonTrans++;
+		prevMonSales += (prevMonTransV.get(i).getPrice() * prevMonTransV.get(i).getOrderQty());
+	}
+
+	out.println("<form><br/>");
+	out.println("Now: " + now + "<br>");
+	out.println("Last Month: " + lastmonth + "<br>");
+
+	out.println("<p><h2>Sales this Month</h2>");
+	out.println("<p>Total Transactions: " + currMonTrans + "</p>");
+	out.println("<p>Total Sales: $" + String.format("%.2f",currMonSales) + "</p>");
+	out.println("</p>");
+
+	out.println("<p><h2>Sales Last Month</h2>");
+	out.println("<p>Total Transactions: " + prevMonTrans + "</p>");
+	out.println("<p>Total Sales: $" + String.format("%.2f",prevMonSales) + "</p>");
+	out.println("</p>");
+
+	out.println("<p><h2>Difference Since Last Month</h2>");
+	out.println("<p>Transaction Difference: " + (Math.abs(prevMonTrans - currMonTrans)) + "</p>");
+	out.println("<p>Transaction Difference: $" + String.format("%.2f", Math.abs(prevMonSales - currMonSales)) + "</p>");
+	out.println("</p>");
+	out.println("</form>");
 %>
-
-<h2>Difference Since Last Week</h2>
-	<p>Transaction Difference <%=prevTotalTrans - totalTrans %></p>
-	<p>Transaction Difference $<%=prevTotalSales - totalSales %></p>
-
-<h2>Sales this Month</h2>
-<div>
-	<p>Total Transactions: <%=currMonTrans %></p>
-	<p>Total Sales: $<%=currMonSales %></p>
-</div>
-
-<h2>Difference Since Last Month</h2>
-	<p>Transaction Difference <%=prevMonTrans - currMonTrans %></p>
-	<p>Sales Difference $<%=prevMonSales - currMonSales %></p>
 
 </body>
 </html>

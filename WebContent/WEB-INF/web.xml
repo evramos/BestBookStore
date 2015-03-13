@@ -13,14 +13,7 @@
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-    
 		/Users/RevZero/Dropbox/Records/UW Bothell Statement/Class Database/Winter 2015/CSS 490/TheBestBookstore/WebContent/BookCoverArt
-		
-	
-    
-    
-    
-    
 	</param-value>
   </context-param>
 </web-app>

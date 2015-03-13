@@ -7,14 +7,10 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import org.apache.commons.fileupload.*;
-import org.apache.commons.fileupload.disk.*;
-import org.apache.commons.fileupload.servlet.*;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import BookMgmt.Book.Book;
 import BookMgmt.Book.BookDB;
@@ -41,7 +37,6 @@ public class addBook extends HttpServlet{
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-
 		// Check that we have a file upload request
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart == true)
@@ -50,17 +45,11 @@ public class addBook extends HttpServlet{
 			ServletContext context = request.getServletContext();
 			String fileUploadPath = context.getInitParameter("file-upload");
 
-			// Create a factory for disk-based file items
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-
-			// Create a new file upload handler
-			ServletFileUpload upload = new ServletFileUpload(factory);
-
 			try
 			{ 
 				// Parse the request to get file items.
-				List<FileItem> items = upload.parseRequest((RequestContext) request);
-
+//				List<FileItem> items = upload.parseRequest((RequestContext) request);
+				List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 				// Process the uploaded file items
 				Iterator<FileItem> iter = items.iterator();
 

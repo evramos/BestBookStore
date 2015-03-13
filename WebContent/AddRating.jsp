@@ -3,8 +3,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="data.dbConnect.DBConnectionPool" %>
 <%@ page import="ratingMgmt.rating.*" %>
-<%@ page import="UserMgmt.user.*" %>
 <%@ page import="UserMgmt.business.UserDB" %>
+<%@ page import="UserMgmt.business.User" %>
+
 <%@ page import="BookMgmt.Book.Book"%>
 <%@ page import="BookMgmt.Book.BookDB"%>
 <%	

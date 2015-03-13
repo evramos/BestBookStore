@@ -27,9 +27,9 @@ public class UserDelete extends HttpServlet{
 		
 		int i = dbConn.deleteUser(Integer.parseInt(UserId));
 		if(i > 0){
-				response.sendRedirect("/userList.jsp");
+				response.sendRedirect("./userList.jsp");
 		}else{
-			response.sendRedirect("signUpError.html");
+			response.sendRedirect("./signUpError.html");
 		}
 	}
 	

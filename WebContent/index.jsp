@@ -36,22 +36,36 @@
 	<div>
 		<h1>THE BEST BOOKSTORE</h1>
 <%
-	if (!firstName.equals("")) {%>
-		Welcome <%= firstName %>
-		<% if (isAdmin.equals("true")) {%>[ADMIN MODE]<%}%>
-		<br/><a href="SignOut">Logout</a>
-		
-	<%} else {%>
-		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a>
-	<%}
+	if (!firstName.equals(""))
+	{
+		out.println("Welcome " + firstName);
+		if (isAdmin.equals("true")) { out.println("[ADMIN MODE]"); }
+		out.println("<br/><a href=\"SignOut\">Logout</a>");
+	} 
+	else { out.println("Please <a href=\"SignIn.jsp\">SignIn</a> or <a href=\"signUpForm_User.jsp\">Create an account</a>");	}
 %>
 
 	</div>
 
 	<h2>Useful Links</h2>
 	<ul style="list-style-type:none">
-	<li><a href="signUpForm_User.jsp">Create an account</a></li>
-	<li><a href="userList.jsp">View all users</a></li>
+	
+<%
+	if (!firstName.equals(""))
+	{
+	
+		if (isAdmin.equals("true"))
+		{
+			out.println("<li><a href=\"addBook.jsp\">Add a new book</a></li>");
+			out.println("<li><a href=\"userList.jsp\">View all users</a></li>");
+
+		}
+	}
+	else
+	{
+		out.println("<li><a href=\"signUpForm_User.jsp\">Create an account</a></li>");	
+	}
+%>
 	<li><a href="bookList.jsp">View all books</a></li>
 	</ul>
 

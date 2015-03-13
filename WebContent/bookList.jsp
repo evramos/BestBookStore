@@ -42,7 +42,8 @@
 		<a href="SignOut">Logout</a>
 		
 	<%} else {%>
-		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a>
+		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a><br/>
+		<a href="./index.jsp">Home</a>
 	<%}
 %>
 

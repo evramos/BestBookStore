@@ -88,10 +88,9 @@
 
 <%
 	if (!firstName.equals("")) {
-		out.println("Only members can see me");
+		out.println("<h3><a href=AddRating.jsp?BookId=" + book.getBookId() + ">Rate this book</a></h3>");
+		out.println("<h3><a href=AddTrans.jsp?BookId=" + book.getBookId() + ">Buy this book</a></h3>");
 	}
 %>
-<h3><a href=AddRating.jsp?BookId=<%= book.getBookId()%>>Rate this book</a></h3>
-<h3><a href=BuyBook.jsp?BookId=<%=book.getBookId() %>>Buy this book</a></h3>
 </body>
 </html>

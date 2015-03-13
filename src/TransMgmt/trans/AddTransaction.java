@@ -28,9 +28,12 @@ public class AddTransaction extends HttpServlet{
 			Transaction order = new Transaction(userId, bookId, orderQty);
 		
 			TransactionDB dbConn = new TransactionDB();
-			
 			int i = dbConn.AddTransaction(order);
+			
+			System.out.println("Did you work? " +i);
+
 			if(i > 0){
+				
 					response.sendRedirect("../index.jsp");
 			}else{
 				response.sendRedirect("signUpError.html");

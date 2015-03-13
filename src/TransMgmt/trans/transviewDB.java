@@ -1,7 +1,6 @@
 package TransMgmt.trans;
 
 import java.sql.*;
-import java.sql.Timestamp;
 import java.util.*;
 
 import TransMgmt.trans.transviewDB;
@@ -16,8 +15,11 @@ public class transviewDB
 	
 	public DBConnectionPool setDBConnection()
 	{
-		try { connPool = new DBConnectionPool(); }
-		catch (Exception et) { et.printStackTrace(); }
+		try{
+			connPool = new DBConnectionPool();
+		}catch (Exception et) {
+			et.printStackTrace();
+		}
 		return connPool;
 	}
 

@@ -33,19 +33,19 @@
 		</thead>
 		<tbody>
 <%
-		ArrayList<rating> ratingList=ratingDB.selectRatingsByUser(user.getUserId()); 
+	ArrayList<Rating> ratingList=ratingDB.selectRatingsByUser(user.getUserId()); 
 		for(int i = 0; i< ratingList.size(); i++){
-			book = bookDB.selectBook(ratingList.get(i).getBookId());
-			out.println("<tr>");
-			out.println("<td>"+book.getTitle()+"</td>");
-			out.println("<td>"+book.getAuthor()+"</td>");
-			out.println("<td>"+book.getCategory()+"</td>");
-			out.println("<td>"+ratingList.get(i).getStars()+"</td>");
-			out.println("<td>"+ratingList.get(i).getComments()+"</td>");
+	book = bookDB.selectBook(ratingList.get(i).getBookId());
+	out.println("<tr>");
+	out.println("<td>"+book.getTitle()+"</td>");
+	out.println("<td>"+book.getAuthor()+"</td>");
+	out.println("<td>"+book.getCategory()+"</td>");
+	out.println("<td>"+ratingList.get(i).getStars()+"</td>");
+	out.println("<td>"+ratingList.get(i).getComments()+"</td>");
 
-			out.println("<td><a href=\"EditRating.jsp?ratingId="+ratingList.get(i).getRatingsId()+"\">[ Update ]</a>"+
-				"<a href=\"DeleteRating?ratingId="+ratingList.get(i).getRatingsId()+"\">[ Delete ]</a></td>");
-			out.println("</tr>");
+	out.println("<td><a href=\"EditRating.jsp?ratingId="+ratingList.get(i).getRatingsId()+"\">[ Update ]</a>"+
+		"<a href=\"DeleteRating?ratingId="+ratingList.get(i).getRatingsId()+"\">[ Delete ]</a></td>");
+	out.println("</tr>");
 		}
 %>
 		</tbody>

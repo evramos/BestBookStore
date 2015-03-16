@@ -10,15 +10,60 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<!-- <link rel="stylesheet" href="css/c06.css" /> -->	
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
 	<title>Home - The Best Bookstore</title>
+	
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+ 
+			$("[rel='tooltip']").tooltip();	
+ 
+			$('#hover-cap-4col .thumbnail').hover(
+				function() { $(this).find('.caption').fadeIn(250);}, //.slideDown(250)
+				function() { $(this).find('.caption').fadeOut(500);} //.slideUp(205)
+			);	
+		});	
+	</script>
+	
+	
 	<style type="text/css">
 		element.style { border-color: rgb(29, 107, 176); }
-		div { background-color: lightblue; padding: 5px; }
+		.navigation { background-color: lightblue; padding: 5px; }
+		
+		.center
+		{
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 85%;
+		}
+		
+/*  		.container {border: 1px solid Black}
+ */ 		
+ 		#hover-cap-4col .thumbnail
+ 		{
+			position:relative;
+			overflow:hidden;	
+		}
+		.caption
+		{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(0,0,0,0.4);
+			width: 100%;
+			height: 100%;
+			color:#fff !important;
+		}
+ 
+ 		
 	</style>
 </head>
 <body>
-
 <%
 /*------------------------------------------------------------------------------------------------*/
 	//Request all the cookies
@@ -36,20 +81,23 @@
 	}
 
 	//Navigation Menubar
-	out.println("<div><h1>THE BEST BOOKSTORE</h1>");
+	out.println("<div class=\"row\">");
+	out.println("<div class=\"container navigation\"><h1 class=\"col-md-9\">THE BEST BOOKSTORE</h1>");
 			
+	out.println("<div class=\"col-md-3\">");
 	if (!firstName.equals(""))
 	{
 		out.println("Welcome " + firstName);
 		if (isAdmin == true) { out.println("[ADMIN MODE]"); }
 		out.println("<br/><a href=\"SignOut\">Logout</a>");
 	} 
-	else { out.println("Please <a href=SignIn.jsp>SignIn</a> or <a href=signUpForm_User.jsp>Create an account</a>"); }
-	
-	out.println("</div>");
+	else { out.println("<a style=\"width: 85px\" class=\"btn btn-primary \" href=SignIn.jsp>Sign In</a> or <a href=signUpForm_User.jsp>Create an account</a>"); }
+	out.println("</div></div></div>");
 %>
-	<h2>Useful Links</h2>
+	<div class="container">
+		<h2>Useful Links</h2>
 		<ul style="list-style-type:none">
+		
 <%
   	if (!firstName.equals(""))
 	{	
@@ -65,10 +113,39 @@
 %>
 			<li><a href="bookList.jsp">View all books</a></li>
 		</ul>
+	</div>
+
+	<div class="container">
+		<h2>Top 10 books</h2>
+		<div class="center row">
+		
+<%
+	for (int i = 0; i < 10; i++)
+	{%>
+		<div class="col-xs-2" id="hover-cap-4col"> <!-- col-xs-1 col-sm-2 col-md-3  -->
+		
+			<div class="thumbnail">
+				<div style="text-align: center" class="caption">
+				<br/>
+				<h4><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h4>
+ 				<p>View Details</p>
+				 <p>View Reviews</p>
+				 <p>Book Price</p>
+				 <p>Add to Cart</p>
+				</div>			
+				<img src="BookCoverArt/51MWGzWGOKL.jpg" alt="...">
+			</div>
+			<h5 style="text-align: center;"> Ranked #<%=i+1 %></h5>
+		</div>
+  <%}
+%>
+		</div>
+	</div>
+	
 
 	<form action="SearchResults.jsp" method="get">
-		<h2>Search for a book</h2>
-		<div><select name="type">
+		<h2 class="container">Search for a book</h2>
+		<div class="container navigation"><select name="type">
 			<option value="" disabled>Search By...</option>
 			<option value="Author">Author</option>
 			<option value="Title">Title</option>
@@ -81,11 +158,12 @@
 		<input type="text" name="term" id="Search box"/>
 		<input type="submit" value="Search" id="submit"/>
 		</div>
-		
-		<p></p>
-		<div> 
-		Privacy Notice | © 2015, BestBookStore.com
-		</div>
 	</form>
+
+		<!-- Button trigger modal -->
+		<!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  		Launch demo modal
+		</button>-->
+
 </body>
 </html>

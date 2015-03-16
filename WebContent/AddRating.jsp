@@ -15,7 +15,7 @@
 	{
 		for (int i = 0; i< cookies.length; i++)
 		{
-			if (cookies[i].getName().equals("userId")) { userId = cookies[i].getValue(); }
+	if (cookies[i].getName().equals("userId")) { userId = cookies[i].getValue(); }
 		}
 	}
 
@@ -23,10 +23,9 @@
 	UserDB userDBConn = new UserDB();
 	BookDB bookDBConn = new BookDB();
 	
-	rating Rating = new rating(); 
+	Rating Rating = new Rating(); 
 	User user = userDBConn.selectUser(Integer.parseInt(userId));
 	Book book = bookDBConn.selectBook(Integer.parseInt(request.getParameter("BookId")));
-
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

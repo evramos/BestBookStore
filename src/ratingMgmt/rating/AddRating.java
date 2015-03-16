@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 
 import ratingMgmt.rating.RatingDB;
-import ratingMgmt.rating.rating;
+import ratingMgmt.rating.Rating;
 
 @WebServlet("/AddRating")
 public class AddRating extends HttpServlet
@@ -27,7 +27,7 @@ public class AddRating extends HttpServlet
 			int BookId = Integer.parseInt(request.getParameter("BookId"));
 			int UserId = Integer.parseInt(request.getParameter("UserId"));
 			
-			rating Rating = new rating(Stars, Comments, UserId, BookId );
+			Rating Rating = new Rating(Stars, Comments, UserId, BookId );
 			RatingDB dbConn = new RatingDB();
 			
 			int i = dbConn.addRating(Rating);

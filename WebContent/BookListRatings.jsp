@@ -67,20 +67,20 @@
 		</thead>
 		<tbody>
 <%
-		ArrayList<rating> ratingList=ratingDB.selectRatingsByBook(book.getBookId()); 
+	ArrayList<Rating> ratingList=ratingDB.selectRatingsByBook(book.getBookId()); 
 		for(int i = 0; i < ratingList.size(); i++)
 		{
-			user = userDB.selectUser(ratingList.get(i).getUserId());
-			
-			out.println("<tr>");
-			out.println("<td>"+user.getLastName()+", "+user.getFirstName()+"</td>");
-			out.println("<td>"+ratingList.get(i).getStars()+"</td>");			
-			
-			String descr = ratingList.get(i).getComments();
-			descr = descr.substring(0, Math.min(descr.length(), 500));
-			out.println("<td>"+descr+"</td>");
-			
-			out.println("</tr>");
+	user = userDB.selectUser(ratingList.get(i).getUserId());
+	
+	out.println("<tr>");
+	out.println("<td>"+user.getLastName()+", "+user.getFirstName()+"</td>");
+	out.println("<td>"+ratingList.get(i).getStars()+"</td>");			
+	
+	String descr = ratingList.get(i).getComments();
+	descr = descr.substring(0, Math.min(descr.length(), 500));
+	out.println("<td>"+descr+"</td>");
+	
+	out.println("</tr>");
 		}
 %>
 		</tbody>

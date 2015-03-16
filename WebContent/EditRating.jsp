@@ -5,15 +5,15 @@
 <%@ page import="ratingMgmt.rating.*" %>
 <%@ page import="UserMgmt.business.*" %>
 <%@ page import="BookMgmt.Book.*"%>
-<%	
+<%
 	RatingDB ratingDB = new RatingDB();
 	UserDB userDBConn = new UserDB();
 	BookDB bookDBConn = new BookDB();
 	
-	rating Rating = ratingDB.selectRating(Integer.parseInt(request.getParameter("ratingId")));
-	Book book= bookDBConn.selectBook(Rating.getBookId());
-	User user = userDBConn.selectUser(Rating.getUserId());
-%>     
+/* 	Rating rating = ratingDB.selectRating(Integer.parseInt(request.getParameter("ratingId")));
+	Book book= bookDBConn.selectBook(rating.getBookId());
+	User user = userDBConn.selectUser(rating.getUserId());
+ */%>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,9 +26,9 @@
 	<form action="UpdateRating" method="post">
 
 			<div>
-				<label>  Title: </label><%=book.getTitle()%><br>
+<%-- 				<label>  Title: </label><%=book.getTitle()%><br>
 				<label>  Author: </label><%=book.getAuthor()%><br>
-				<label>  Category: </label><%=book.getTitle()%><br>
+				<label>  Category: </label><%=book.getTitle()%><br> --%>
 			</div>
 		<fieldset>
 			<div><span class="star"></span><label>  Stars: </label>
@@ -37,8 +37,8 @@
 				<input type="radio" name="Stars" value="5" /> 5
 			</div>
 			<div><label> Comments: </label><textarea name="comment" rows="5" cols="80"></textarea></div>
-				<input type="hidden" name="RatingId" value=<%=Rating.getRatingsId()%> />
-				<input type="submit" value="Update Rating" id="submit"/>
+<%-- 				<input type="hidden" name="RatingId" value=<%=rating.getRatingsId()%> />
+ --%>				<input type="submit" value="Update Rating" id="submit"/>
 		</fieldset>
 	</form>
 </div>

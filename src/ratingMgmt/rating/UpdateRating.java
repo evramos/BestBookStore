@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ratingMgmt.rating.RatingDB;
-import ratingMgmt.rating.rating;
+import ratingMgmt.rating.Rating;
 
 
 @WebServlet("/UpdateRating")
@@ -20,9 +20,9 @@ public class UpdateRating extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		RatingDB dbConn = new RatingDB();
-		rating oldRating = dbConn.selectRating(Integer.parseInt(request.getParameter("RatingId")));
+		Rating oldRating = dbConn.selectRating(Integer.parseInt(request.getParameter("RatingId")));
 		
-		rating Rating = new rating();
+		Rating Rating = new Rating();
 		Rating.setRatingsId(oldRating.getRatingsId());
 		Rating.setComments(request.getParameter("comment"));
 		Rating.setStars(Integer.parseInt(request.getParameter("Stars")));

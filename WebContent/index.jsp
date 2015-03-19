@@ -1,28 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-<%@ page import="java.sql.*,java.util.*" %>
-<%@ page import="data.dbConnect.DBConnectionPool" %>
-<%@ page import="BookMgmt.Book.BookDB" %>
-<%@ page import="BookMgmt.Book.*" %>
+<%@ page import="BookMgmt.Book.BookDB, BookMgmt.Book.Book, java.util.ArrayList" %>
 
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="css/bootstrap.css" />
-	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
+	
 	<title>Home - The Best Bookstore</title>
 	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-	
+
+
 	<script type="text/javascript">
 		$(document).ready(function() {
  
 			$("[rel='tooltip']").tooltip();	
  
-			$('#hover-cap-4col .thumbnail').hover(
+			$('#hover .thumbnail').hover(
 				function() { $(this).find('.caption').fadeIn(250);}, //.slideDown(250)
 				function() { $(this).find('.caption').fadeOut(500);} //.slideUp(205)
 			);	
@@ -31,8 +28,15 @@
 	
 	
 	<style type="text/css">
-		element.style { border-color: rgb(29, 107, 176); }
-		.navigation { background-color: lightblue; padding: 5px; }
+		element.style
+		{
+			border-color: rgb(29, 107, 176);
+		}
+		.navigation
+		{
+			background-color: lightblue;
+			padding: 5px;
+		}
 		
 		.center
 		{
@@ -43,7 +47,7 @@
 		
 /*  		.container {border: 1px solid Black}
  */ 		
- 		#hover-cap-4col .thumbnail
+ 		#hover .thumbnail
  		{
 			position:relative;
 			overflow:hidden;	
@@ -54,8 +58,8 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: rgba(0,0,0,0.4);
-			width: 100%;
+ 			background: rgba(0,0,0,0.5);
+ 			width: 100%;
 			height: 100%;
 			color:#fff !important;
 		}
@@ -125,9 +129,9 @@
 	
 	for (int i = 0; i < 10; i++)
 	{%>
-		<div class="col-xs-2" id="hover-cap-4col"> <!-- col-xs-1 col-sm-2 col-md-3  -->
+		<div class="col-xs-2" id="hover"> <!-- col-xs-1 col-sm-2 col-md-3  -->
 		
-			<div class="thumbnail">
+			<div class="thumbnail" >
 				<div style="text-align: center" class="caption">
 				<br/>
 				<h4><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h4>
@@ -137,9 +141,9 @@
 				 <p>Add to Cart</p>
 				</div>		
 					
-				<img style="display:block; width:140px; height:185px" src="BookCoverArt/<%=bookList.get(i).getBookCoverPath() %>" >
-<!-- 				<img src="BookCoverArt/51MWGzWGOKL.jpg" alt="...">
- -->			</div>
+				<img style="display:block; width:123px; height:185px" src="BookCoverArt/<%=bookList.get(i).getBookCoverPath() %>" >
+				
+			</div>
 			<h5 style="text-align: center;"> Ranked #<%=i+1 %></h5>
 		</div>
   <%}

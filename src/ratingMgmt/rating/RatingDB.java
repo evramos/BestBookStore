@@ -241,11 +241,10 @@ public class RatingDB
 	//Select all ratings by book
 	public ArrayList<Rating> selectRatingsByBook(int BookId)
 	{
-		System.out.println("Select all ratings by Book ID");
 		Statement stmt = null;
 		ResultSet rs = null;
-		
 		ArrayList<Rating> ratings = new ArrayList<>();
+		
 		try
 		{
 			conn = connPool.getConnection();
@@ -257,6 +256,8 @@ public class RatingDB
 			
 				rs = stmt.executeQuery(strQuery);
 				
+				double totalStarsOfBook = 0.0;
+				
 				while (rs.next())
 				{
 					Rating r = new Rating();
@@ -265,10 +266,20 @@ public class RatingDB
 					r.setComments(rs.getString(2));
 					r.setDate(rs.getString(3));
 					r.setRatingsId(Integer.parseInt(rs.getString(4)));
-					r.setStars(Integer.parseInt(rs.getString(5)));
+					
+					int stars = Integer.parseInt(rs.getString(5));
+					r.setStars(stars);
+					totalStarsOfBook += stars;
+					
 					r.setUserId(Integer.parseInt(rs.getString(6)));
 					
 					ratings.add(r);
+				}
+				
+				if (totalStarsOfBook != 0.0)
+				{
+					strQuery = "UPDATE BookStore.book SET bookRating=" + String.format("%.2f", totalStarsOfBook / ratings.size()) + " WHERE `Book ID`=" + BookId;
+					stmt.executeUpdate(strQuery);	
 				}
 			}
 		}
@@ -289,9 +300,8 @@ public class RatingDB
 
 /*------------------------------------------------------------------------------------------------*/
 	//Does this user have a rating with this book
-	public boolean isRated(int UserId, int BookId, int ratingId) throws Exception
+	public boolean isRated(int UserId, int BookId) throws Exception
 	{	
-		ResultSet rs = null;
 		boolean result = false;
 		//Opens up a connection with the database
 		conn = connPool.getConnection();
@@ -300,11 +310,7 @@ public class RatingDB
 			//SQL Query
 			String strQuery = "SELECT `Ratings ID` FROM Ratings WHERE `User_User ID`=" + UserId + " AND `Book_Book ID`=" + BookId;
 			//Checking to see if entries exist base on the user and current book they may be looking at. 
-			rs = conn.createStatement().executeQuery(strQuery);
-			
-			ratingId = rs.getInt(1);
-			
-			rs.close();
+			result = conn.createStatement().executeQuery(strQuery).next();			
 			connPool.returnConnection(conn);
 		}
 		return result;	

@@ -120,6 +120,9 @@
 		<div class="center row">
 		
 <%
+	BookDB bookDB = new BookDB();
+	ArrayList<Book> bookList= bookDB.selectTopBooks(10); 
+	
 	for (int i = 0; i < 10; i++)
 	{%>
 		<div class="col-xs-2" id="hover-cap-4col"> <!-- col-xs-1 col-sm-2 col-md-3  -->
@@ -132,9 +135,11 @@
 				 <p>View Reviews</p>
 				 <p>Book Price</p>
 				 <p>Add to Cart</p>
-				</div>			
-				<img src="BookCoverArt/51MWGzWGOKL.jpg" alt="...">
-			</div>
+				</div>		
+					
+				<img style="display:block; width:140px; height:185px" src="BookCoverArt/<%=bookList.get(i).getBookCoverPath() %>" >
+<!-- 				<img src="BookCoverArt/51MWGzWGOKL.jpg" alt="...">
+ -->			</div>
 			<h5 style="text-align: center;"> Ranked #<%=i+1 %></h5>
 		</div>
   <%}

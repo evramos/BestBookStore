@@ -316,4 +316,51 @@ public class BookDB {
 		}
 		return books;
 	}
+	
+	/*----------------------------------------------------------------------------*/
+	//select all books 	
+	public ArrayList<Book> selectTopBooks(int NumberOfRows)
+	{
+		Statement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		ArrayList<Book> books = new ArrayList<>();
+		
+		try
+		{
+			conn = connPool.getConnection();
+			
+			if (conn != null)
+			{
+				stmt = conn.createStatement();
+				
+				String strQuery = "SELECT bookCoverPath FROM book ORDER BY bookRating DESC LIMIT " + NumberOfRows;
+				
+				rs = stmt.executeQuery(strQuery);
+				
+				while (rs.next())
+				{
+					Book book = new Book();
+					
+					book.setBookCoverPath(rs.getString(1));
+					
+					books.add(book);
+				}
+			}
+		}
+		catch (SQLException e) { for (Throwable t: e) { t.printStackTrace(); }}
+		catch (Exception et) { et.printStackTrace(); }
+		finally
+		{
+		    try
+		    {
+		    	if (rs != null) { rs.close(); }
+		    	if (stmt != null) { stmt.close(); }
+		        if (conn != null) { connPool.returnConnection(conn); }
+		    }
+		    catch (Exception e) { System.err.println(e); }
+		}
+		return books;
+	}
+	
 }

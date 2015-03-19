@@ -20,7 +20,7 @@
 	</style>
 </head>
 <body>
-
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <%
 	Cookie[] cookies = request.getCookies();
 
@@ -35,8 +35,6 @@
 			if (cookies[i].getName().equals("firstName")) { firstName = cookies[i].getValue(); }
 			if (cookies[i].getName().equals("isAdmin")) { isAdmin = cookies[i].getValue(); }
 			if (cookies[i].getName().equals("userId")) { userId = Integer.parseInt(cookies[i].getValue()); }
-
-			
 		}
 	}
 %>
@@ -52,26 +50,27 @@
 		<a href="SignOut">Logout</a>
 		
 	<%} else {%>
-		
 		Please <a href="SignIn.jsp">SignIn</a> or <a href="signUpForm_User.jsp">Create an account</a><br/>
 		<a href="./index.jsp">Home</a>
 		<a href="./bookList.jsp">View all books</a>		
 	<%}
 %>
 	</div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+	
 <%
-	//Gain Book Information
+	//Acquire the current book information
 	BookDB bookDB = new BookDB();
 	Book book = bookDB.selectBook(Integer.parseInt(request.getParameter("BookId")));
 
+	
+	//Display the current book information
 	out.println("<h1>"+book.getTitle()+"</h1>");
 	out.println("<h2>by "+book.getAuthor()+"</h2>");
-
 	out.println("<img style='display:block; width:200px; height:300px;' src='BookCoverArt/" + book.getBookCoverPath() + "'/>");
-
 	out.println("<h3><b>About this book: </b></h3>");
 	out.println(book.getBookDescription());
-
 	out.println("<br/><b>Edition: </b>"+book.getEdition());
 	out.println("<br/><b>Year: </b>"+book.getYear());
 	out.println("<br/><b>Publisher: </b>"+book.getPublisher());
@@ -80,22 +79,22 @@
 	out.println("<br/><b>ISBN-13: </b>"+book.getIsbn13());
 	out.println("<br/><b>Price: </b>"+book.getPrice());
 	out.println("<br/><b>Available: </b>"+book.getInvQty());
-		
-// link to buy book (create transaction)
-	//Gets all the reviews from this book
 
+	
+	//Link to buy book (create transaction)
+	/* code goes here */
+	
+	//Gets all the reviews from this book
 	RatingDB ratingDB = new RatingDB();
-	ArrayList<Rating> rate =  ratingDB.selectRatingsByBook(Integer.parseInt(request.getParameter("BookId")));
+	ArrayList<Rating> rate =  ratingDB.selectRatingsByBook(book.getBookId());
 %>
 	<h3><a href="BookListRatings.jsp?BookId=<%= book.getBookId()%>"> View all book ratings</a></h3>
 <%	
-	int ratingId = 0;
-
+	//Display the login users options
 	if (!firstName.equals(""))
 	{		
-		System.out.println("Rating ID: " + ratingId);
 		//Check if this user has already rated this book		
-		if (ratingDB.isRated(userId , book.getBookId(), ratingId))
+		if (ratingDB.isRated(userId , book.getBookId()))
 		{
 			out.println("<h3><a href=EditRating.jsp?BookId=" + book.getBookId() + "&UserId="+ userId + ">Edit your rating</a></h3>");
 		}
@@ -106,6 +105,7 @@
 		
 		out.println("<h3><a href=AddTrans.jsp?BookId=" + book.getBookId() + ">Buy this book</a></h3>");
 	}
+
 %>
 	<table>
 		<thead>
@@ -120,8 +120,6 @@
 		</thead>
 		<tbody>
 <%
-		double totalRank = 0.0;
-
 		for (int i = 0; i< rate.size(); i++)
 		{
 			out.println("<tr>");
@@ -134,10 +132,7 @@
 			out.println("<td>" + rate.get(i).getUserId() + "</td>");
 			out.println("<td>" + rate.get(i).getBookId() + "</td>");
 			out.println("</tr>");
-			
-			totalRank+=rate.get(i).getStars();
 		}
-		System.out.println("Final Rating: " + totalRank/rate.size());
 %>
 		</tbody>
 	</table>
